@@ -1,0 +1,13 @@
+{
+  "buildCommand": "echo 'build'",
+  "devCommand": "node server.js",
+  "framework": "express",
+  "env": {
+    "STRIPE_SECRET_KEY": "@stripe_secret_key",
+    "STRIPE_PUBLISHABLE_KEY": "@stripe_publishable_key",
+    "STRIPE_WEBHOOK_SECRET": "@stripe_webhook_secret",
+    "SUPABASE_URL": "@supabase_url",
+    "SUPABASE_ANON_KEY": "@supabase_anon_key",
+    "SESSION_SECRET": "@session_secret"
+  }
+}
