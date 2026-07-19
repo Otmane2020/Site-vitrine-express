@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin — Webify</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/svg+xml" href="/images/favicon.svg" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --purple:#7c3aed; --purple-bg:#f5f3ff; --text:#0a0a0f; --muted:#64748b; --border:#e2e8f0; }
+    html { overflow-x: hidden; }
+    body { font-family:'Inter',sans-serif; color:var(--text); background:#f8fafc; line-height:1.6; -webkit-tap-highlight-color: transparent; }
+    .icn { vertical-align:-3px; flex-shrink:0; }
+    i[data-icon] { display:inline-flex; align-items:center; font-style:normal; }
+    .btn { display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:10px 18px; border-radius:10px; font-weight:600; font-size:.9rem; cursor:pointer; text-decoration:none; border:2px solid transparent; transition:all .2s; font-family:inherit; min-height:40px; }
+    .btn-primary { background:var(--purple); color:#fff; }
+    .btn-primary:hover { background:#5b21b6; }
+    .btn-outline { background:transparent; color:var(--purple); border-color:var(--purple); }
+    .btn-outline:hover { background:var(--purple-bg); }
+    .btn-pay { background:linear-gradient(135deg,#ea580c,#f59e0b); color:#fff; }
+    .btn-sm { padding:8px 14px; font-size:.83rem; min-height:auto; }
+    .btn-block { width:100%; }
+    .btn:disabled { opacity:.5; cursor:not-allowed; }
+
+    /* Login */
+    .login-page { min-height:100dvh; display:flex; align-items:center; justify-content:center; padding:20px; }
+    .login-card { background:#fff; border-radius:18px; padding:36px 26px; width:100%; max-width:380px; box-shadow:0 20px 60px rgba(124,58,237,.12); }
+    .login-card h1 { font-size:1.3rem; font-weight:800; margin:12px 0 4px; }
+    .login-card p { color:var(--muted); font-size:.88rem; margin-bottom:24px; }
+    .lg { display:flex; flex-direction:column; gap:6px; margin-bottom:14px; }
+    .lg label { font-size:.85rem; font-weight:600; }
+    .lg input { padding:11px 14px; border:1.5px solid var(--border); border-radius:10px; font-size:1rem; font-family:inherit; width:100%; }
+    .lg input:focus { outline:none; border-color:var(--purple); }
+
+    /* Layout — mobile: top bar + bottom tab bar */
+    .admin-layout { display:flex; flex-direction:column; min-height:100dvh; }
+    .sidebar { display:none; }
+    .main { flex:1; overflow-y:auto; padding-bottom: 72px; }
+    .topbar { background:#fff; border-bottom:1px solid var(--border); padding:14px 16px; display:flex; align-items:center; justify-content:space-between; gap:10px; position:sticky; top:0; z-index:10; }
+    .topbar h1 { font-size:1.05rem; font-weight:700; }
+    .topbar-date { display:none; }
+    .content { padding:16px; }
+
+    .mobile-tabbar { display:flex; position:fixed; bottom:0; left:0; right:0; background:#0a0a0f; z-index:50; padding-bottom: env(safe-area-inset-bottom); }
+    .mobile-tabbar a { flex:1; display:flex; flex-direction:column; align-items:center; gap:3px; padding:10px 4px; color:rgba(255,255,255,.5); text-decoration:none; font-size:.68rem; font-weight:600; background:none; border:none; font-family:inherit; cursor:pointer; }
+    .mobile-tabbar a.active { color:#fff; }
+
+    /* Stats */
+    .stats-grid { display:grid; grid-template-columns: 1fr 1fr; gap:12px; margin-bottom:24px; }
+    .stat-card { background:#fff; border:1px solid var(--border); border-radius:14px; padding:16px; }
+    .stat-label { font-size:.74rem; color:var(--muted); margin-bottom:6px; display:flex; align-items:center; gap:6px; }
+    .stat-value { font-size:1.4rem; font-weight:800; color:var(--purple); }
+
+    /* Table */
+    .table-wrap { background:#fff; border:1px solid var(--border); border-radius:14px; overflow:hidden; }
+    .filters { padding:12px 14px; border-bottom:1px solid var(--border); display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
+    .filters input, .filters select { padding:9px 12px; border:1.5px solid var(--border); border-radius:9px; font-size:.9rem; font-family:inherit; }
+    .filters input:focus, .filters select:focus { outline:none; border-color:var(--purple); }
+    .table-scroll { overflow-x:auto; -webkit-overflow-scrolling: touch; }
+    table { width:100%; min-width:640px; border-collapse:collapse; }
+    thead { background:#f8fafc; }
+    th { text-align:left; padding:11px 16px; font-size:.75rem; font-weight:700; color:var(--muted); text-transform:uppercase; letter-spacing:.5px; }
+    td { padding:13px 16px; border-top:1px solid var(--border); font-size:.88rem; vertical-align:middle; }
+    tr:hover td { background:#f8fafc; }
+
+    .status-badge { padding:4px 12px; border-radius:100px; font-size:.75rem; font-weight:700; white-space:nowrap; }
+    .status-new { background:#fef3c7; color:#92400e; }
+    .status-in_progress { background:#dbeafe; color:#1e40af; }
+    .status-review { background:#ede9fe; color:#5b21b6; }
+    .status-awaiting_payment { background:#ffedd5; color:#9a3412; }
+    .status-paid { background:#d1fae5; color:#065f46; }
+    .status-delivered, .status-completed { background:#d1fae5; color:#065f46; }
+    .status-cancelled { background:#fee2e2; color:#991b1b; }
+
+    /* Modal */
+    .modal-backdrop { position:fixed; inset:0; background:rgba(0,0,0,.5); z-index:200; display:flex; align-items:flex-end; justify-content:center; padding:0; }
+    .modal { background:#fff; border-radius:18px 18px 0 0; width:100%; max-width:720px; max-height:92dvh; overflow-y:auto; }
+    .modal-header { padding:18px 20px; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; position:sticky; top:0; background:#fff; z-index:1; }
+    .modal-header h2 { font-size:1rem; font-weight:700; }
+    .modal-close { background:none; border:none; font-size:1.3rem; cursor:pointer; color:var(--muted); width:32px; height:32px; }
+    .modal-body { padding:18px 20px; }
+    .dsec { margin-bottom:22px; }
+    .dsec h4 { font-size:.76rem; font-weight:700; color:var(--muted); text-transform:uppercase; letter-spacing:.5px; margin-bottom:12px; display:flex; align-items:center; gap:7px; }
+    .dgrid { display:grid; grid-template-columns:1fr; gap:12px; }
+    .ditem label { font-size:.76rem; color:var(--muted); display:block; }
+    .ditem span, .ditem p { font-size:.92rem; font-weight:500; }
+    .ditem.full { grid-column:1/-1; }
+    .sform { background:#f8fafc; border-radius:12px; padding:16px; }
+    .sform select, .sform input, .sform textarea { width:100%; padding:10px 12px; border:1.5px solid var(--border); border-radius:9px; font-size:.92rem; font-family:inherit; margin-bottom:10px; }
+    .sform select:focus, .sform input:focus, .sform textarea:focus { outline:none; border-color:var(--purple); }
+    .paylink-box { background:#fff7ed; border:1.5px solid #fed7aa; border-radius:12px; padding:16px; font-size:.85rem; }
+    .paylink-box a { color:#9a3412; word-break:break-all; }
+    .ev { display:flex; flex-direction:column; gap:2px; padding:8px 0; border-bottom:1px solid #f1f5f9; font-size:.85rem; }
+    .ev-date { color:var(--muted); font-size:.74rem; }
+
+    .toast { position:fixed; bottom:88px; left:16px; right:16px; background:#1f2937; color:#fff; padding:14px 18px; border-radius:12px; font-size:.88rem; opacity:0; transform:translateY(16px); transition:all .3s; pointer-events:none; z-index:999; text-align:center; }
+    .toast.show { opacity:1; transform:translateY(0); }
+    .toast.success { background:#059669; }
+    .toast.error { background:#dc2626; }
+
+    /* ══════ DESKTOP (min-width: 900px) ══════ */
+    @media (min-width: 900px) {
+      .admin-layout { flex-direction:row; }
+      .sidebar { display:flex; width:230px; background:#0a0a0f; color:#fff; flex-shrink:0; flex-direction:column; }
+      .sidebar-logo { padding:22px 24px; font-weight:800; border-bottom:1px solid rgba(255,255,255,.08); display:flex; align-items:center; gap:10px; }
+      .sidebar-nav { flex:1; padding:16px 0; }
+      .sidebar-nav a { display:flex; align-items:center; gap:11px; padding:12px 24px; color:rgba(255,255,255,.6); text-decoration:none; font-size:.9rem; transition:all .2s; }
+      .sidebar-nav a:hover, .sidebar-nav a.active { background:rgba(124,58,237,.25); color:#fff; }
+      .sidebar-foot { padding:16px 24px; font-size:.75rem; color:rgba(255,255,255,.3); }
+      .mobile-tabbar { display:none; }
+      .main { padding-bottom:0; }
+      .topbar { padding:16px 32px; position:static; }
+      .topbar h1 { font-size:1.15rem; }
+      .topbar-date { display:inline; font-size:.85rem; color:var(--muted); }
+      .content { padding:32px; }
+      .stats-grid { grid-template-columns:repeat(auto-fit,minmax(170px,1fr)); gap:16px; margin-bottom:32px; }
+      .stat-value { font-size:1.7rem; }
+      .table-scroll { overflow-x:visible; }
+      table { min-width:0; }
+      .modal-backdrop { align-items:center; padding:24px; }
+      .modal { border-radius:18px; max-height:90vh; }
+      .modal-header { padding:22px 28px; }
+      .modal-header h2 { font-size:1.05rem; }
+      .modal-body { padding:26px 28px; }
+      .dgrid { grid-template-columns:1fr 1fr; }
+      .ev { flex-direction:row; gap:10px; }
+      .ev-date { min-width:118px; }
+      .toast { left:auto; right:24px; bottom:24px; max-width:340px; text-align:left; }
+      .topbar-logo { display:none; }
+    }
+
+    .logo-mark { display:inline-flex; align-items:center; justify-content:center; width:26px; height:26px; }
+    .logo-mark img { width:100%; height:100%; display:block; }
+    .logo-mark.login-mark { width:44px; height:44px; }
+  </style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="loginPage" class="login-page" style="display:none">
+  <div class="login-card">
+    <span class="logo-mark login-mark"><img src="/images/logo.svg" alt="Webify" /></span>
+    <h1>Espace Admin</h1>
+    <p>Webify — Gestion des commandes</p>
+    <form id="loginForm">
+      <div class="lg"><label>Email</label><input type="email" id="loginEmail" required /></div>
+      <div class="lg"><label>Mot de passe</label><input type="password" id="loginPassword" required /></div>
+      <div id="loginError" style="color:#dc2626;font-size:.85rem;margin-bottom:12px;display:none"></div>
+      <button type="submit" class="btn btn-primary btn-block">Se connecter</button>
+    </form>
+  </div>
+</div>
+
+<!-- APP -->
+<div id="adminApp" class="admin-layout" style="display:none">
+  <aside class="sidebar">
+    <div class="sidebar-logo"><span class="logo-mark"><img src="/images/logo.svg" alt="Webify" /></span> Webify</div>
+    <nav class="sidebar-nav">
+      <a href="#" class="active" onclick="showSection('dashboard', event)"><i data-icon="layout-dashboard" data-size="17"></i> Dashboard</a>
+      <a href="#" onclick="showSection('orders', event)"><i data-icon="package" data-size="17"></i> Commandes</a>
+      <a href="#" onclick="logout()"><i data-icon="log-out" data-size="17"></i> Déconnexion</a>
+    </nav>
+    <div class="sidebar-foot">Admin : <span id="adminEmail"></span></div>
+  </aside>
+
+  <nav class="mobile-tabbar">
+    <a href="#" class="active" onclick="showSection('dashboard', event)"><i data-icon="layout-dashboard" data-size="19"></i> Dashboard</a>
+    <a href="#" onclick="showSection('orders', event)"><i data-icon="package" data-size="19"></i> Commandes</a>
+    <a href="#" onclick="logout()"><i data-icon="log-out" data-size="19"></i> Déconnexion</a>
+  </nav>
+
+  <div class="main">
+    <div class="topbar">
+      <div style="display:flex;align-items:center;gap:8px">
+        <span class="logo-mark topbar-logo"><img src="/images/logo.svg" alt="Webify" /></span>
+        <h1 id="pageTitle">Dashboard</h1>
+      </div>
+      <span id="topbarDate" class="topbar-date"></span>
+    </div>
+    <div class="content">
+
+      <section id="section-dashboard">
+        <div class="stats-grid">
+          <div class="stat-card"><div class="stat-label"><i data-icon="package" data-size="14"></i> Total</div><div class="stat-value" id="stat-total">—</div></div>
+          <div class="stat-card"><div class="stat-label"><i data-icon="palette" data-size="14"></i> À produire</div><div class="stat-value" id="stat-progress">—</div></div>
+          <div class="stat-card"><div class="stat-label"><i data-icon="credit-card" data-size="14"></i> Attente paiement</div><div class="stat-value" id="stat-awaiting">—</div></div>
+          <div class="stat-card"><div class="stat-label"><i data-icon="check-circle" data-size="14"></i> Payées</div><div class="stat-value" id="stat-paid">—</div></div>
+          <div class="stat-card"><div class="stat-label"><i data-icon="rocket" data-size="14"></i> En ligne</div><div class="stat-value" id="stat-delivered">—</div></div>
+          <div class="stat-card"><div class="stat-label"><i data-icon="trending-up" data-size="14"></i> Chiffre d'affaires</div><div class="stat-value" id="stat-revenue">—</div></div>
+        </div>
+        <h2 style="font-size:1.05rem;font-weight:700;margin-bottom:14px">Commandes récentes</h2>
+        <div class="table-wrap" id="recentOrdersTable"></div>
+      </section>
+
+      <section id="section-orders" style="display:none">
+        <div class="table-wrap">
+          <div class="filters">
+            <input type="text" id="searchInput" placeholder="Rechercher client, email, code..." oninput="loadOrders()" />
+            <select id="statusFilter" onchange="loadOrders()">
+              <option value="all">Tous les statuts</option>
+              <option value="new">Nouvelle</option>
+              <option value="in_progress">En création</option>
+              <option value="review">En validation</option>
+              <option value="awaiting_payment">Attente paiement</option>
+              <option value="paid">Payée</option>
+              <option value="delivered">En ligne</option>
+              <option value="completed">Terminée</option>
+              <option value="cancelled">Annulée</option>
+            </select>
+            <button class="btn btn-outline btn-sm" onclick="loadOrders()">Rafraîchir</button>
+          </div>
+          <div id="ordersTableBody"></div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+</div>
+
+<!-- MODAL -->
+<div id="orderModal" class="modal-backdrop" style="display:none" onclick="closeModal(event)">
+  <div class="modal" onclick="event.stopPropagation()">
+    <div class="modal-header">
+      <h2 id="modalTitle">Commande</h2>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="modal-body" id="modalBody"></div>
+  </div>
+</div>
+
+<div id="toast" class="toast"></div>
+
+<script src="/js/icons.js"></script>
+<script>
+function showToast(msg, type = '') {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = 'toast show ' + type;
+  setTimeout(() => t.className = 'toast', 3500);
+}
+function fmt(d) { return d ? new Date(d).toLocaleString('fr-FR', { dateStyle: 'short', timeStyle: 'short' }) : '—'; }
+function fmtEur(c) { return (c / 100).toLocaleString('fr-FR', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }); }
+function esc(s) { const d = document.createElement('div'); d.textContent = s || ''; return d.innerHTML; }
+
+const STATUS_LABELS = {
+  new: 'Nouvelle', in_progress: 'En création', review: 'En validation',
+  awaiting_payment: 'Attente paiement', paid: 'Payée',
+  delivered: 'En ligne', completed: 'Terminée', cancelled: 'Annulée'
+};
+function statusBadge(s) { return `<span class="status-badge status-${s}">${STATUS_LABELS[s] || s}</span>`; }
+
+// AUTH
+async function checkAuth() {
+  const res = await fetch('/api/admin/me');
+  if (res.ok) {
+    const data = await res.json();
+    document.getElementById('adminEmail').textContent = data.email;
+    showApp();
+  } else showLogin();
+}
+function showLogin() {
+  document.getElementById('loginPage').style.display = 'flex';
+  document.getElementById('adminApp').style.display = 'none';
+}
+function showApp() {
+  document.getElementById('loginPage').style.display = 'none';
+  document.getElementById('adminApp').style.display = 'flex';
+  document.getElementById('topbarDate').textContent = new Date().toLocaleDateString('fr-FR', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+  loadStats();
+  loadRecentOrders();
+}
+document.getElementById('loginForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const res = await fetch('/api/admin/login', {
+    method: 'POST', headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email: document.getElementById('loginEmail').value, password: document.getElementById('loginPassword').value })
+  });
+  if (res.ok) {
+    const data = await res.json();
+    document.getElementById('adminEmail').textContent = data.email;
+    showApp();
+  } else {
+    const err = document.getElementById('loginError');
+    err.textContent = 'Email ou mot de passe incorrect';
+    err.style.display = 'block';
+  }
+});
+async function logout() { await fetch('/api/admin/logout', { method: 'POST' }); showLogin(); }
+
+// NAV
+function showSection(name, e) {
+  if (e) e.preventDefault();
+  document.querySelectorAll('.main section').forEach(s => s.style.display = 'none');
+  document.getElementById(`section-${name}`).style.display = 'block';
+  document.querySelectorAll('.sidebar-nav a, .mobile-tabbar a').forEach(a => a.classList.remove('active'));
+  document.querySelectorAll(`.sidebar-nav a[onclick*="'${name}'"], .mobile-tabbar a[onclick*="'${name}'"]`).forEach(a => a.classList.add('active'));
+  document.getElementById('pageTitle').textContent = name === 'dashboard' ? 'Dashboard' : 'Commandes';
+  if (name === 'orders') loadOrders();
+}
+
+// STATS
+async function loadStats() {
+  const s = await (await fetch('/api/admin/stats')).json();
+  document.getElementById('stat-total').textContent = s.total;
+  document.getElementById('stat-progress').textContent = s.inProgress;
+  document.getElementById('stat-awaiting').textContent = s.awaiting;
+  document.getElementById('stat-paid').textContent = s.paid;
+  document.getElementById('stat-delivered').textContent = s.delivered;
+  document.getElementById('stat-revenue').textContent = fmtEur(s.revenue);
+}
+
+// TABLE
+function renderTable(orders, containerId) {
+  const el = document.getElementById(containerId);
+  if (!orders.length) {
+    el.innerHTML = '<p style="padding:32px;text-align:center;color:var(--muted)">Aucune commande</p>';
+    return;
+  }
+  el.innerHTML = `
+    <div class="table-scroll">
+    <table>
+      <thead><tr><th>Code</th><th>Client</th><th>Entreprise</th><th>Montant</th><th>Statut</th><th>Deadline</th><th></th></tr></thead>
+      <tbody>
+        ${orders.map(o => `
+          <tr>
+            <td><code style="font-size:.82rem;color:var(--purple)">${o.tracking_code}</code></td>
+            <td><div style="font-weight:600">${esc(o.client_name)}</div><div style="font-size:.78rem;color:var(--muted)">${esc(o.client_email)}</div></td>
+            <td>${esc(o.business_name)}</td>
+            <td>${fmtEur(o.amount)}</td>
+            <td>${statusBadge(o.status)}</td>
+            <td style="font-size:.82rem">${fmt(o.deadline)}</td>
+            <td><button class="btn btn-outline btn-sm" onclick="openOrder('${o.id}')">Gérer</button></td>
+          </tr>`).join('')}
+      </tbody>
+    </table>
+    </div>`;
+}
+async function loadRecentOrders() {
+  const orders = await (await fetch('/api/admin/orders')).json();
+  renderTable(orders.slice(0, 10), 'recentOrdersTable');
+}
+async function loadOrders() {
+  const search = document.getElementById('searchInput')?.value || '';
+  const status = document.getElementById('statusFilter')?.value || 'all';
+  const params = new URLSearchParams();
+  if (search) params.set('search', search);
+  if (status !== 'all') params.set('status', status);
+  renderTable(await (await fetch(`/api/admin/orders?${params}`)).json(), 'ordersTableBody');
+}
+
+// MODAL
+async function openOrder(id) {
+  const o = await (await fetch(`/api/admin/orders/${id}`)).json();
+  document.getElementById('modalTitle').textContent = `Commande ${o.tracking_code}`;
+
+  const parse = (s, fallback = '—') => { try { const v = JSON.parse(s || '[]'); return Array.isArray(v) ? (v.join(', ') || fallback) : (v || fallback); } catch { return s || fallback; } };
+  const socials = (() => { try { const s = JSON.parse(o.socials || '{}'); return [s.fb, s.other].filter(Boolean).join(' · ') || '—'; } catch { return '—'; } })();
+
+  const domainMap = { new: 'Nouveau domaine', existing: 'Domaine existant', suggest: 'À proposer' };
+  const eventsHtml = (o.events || []).slice().reverse().map(ev => `
+    <div class="ev"><div class="ev-date">${fmt(ev.created_at)}</div><div><strong>${STATUS_LABELS[ev.status] || ev.status}</strong>${ev.message ? `<div style="color:var(--muted)">${esc(ev.message)}</div>` : ''}</div></div>`).join('');
+
+  document.getElementById('modalBody').innerHTML = `
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;flex-wrap:wrap;gap:8px">
+      ${statusBadge(o.status)}
+      <span style="font-size:.85rem;color:var(--muted)">Total : <strong>${fmtEur(o.amount)}</strong> · Payé : <strong>${o.payment_status === 'paid' ? '✓ Oui' : 'Non'}</strong></span>
+    </div>
+
+    <div class="dsec"><h4>${icon('user', 14)} Client</h4>
+      <div class="dgrid">
+        <div class="ditem"><label>Nom</label><span>${esc(o.client_name)}</span></div>
+        <div class="ditem"><label>Email</label><span>${esc(o.client_email)}</span></div>
+        <div class="ditem"><label>Téléphone</label><span>${esc(o.client_phone)}</span></div>
+        <div class="ditem"><label>Commande le</label><span>${fmt(o.created_at)}</span></div>
+        <div class="ditem"><label>Deadline</label><span style="color:var(--purple);font-weight:700">${fmt(o.deadline)}</span></div>
+        ${o.paid_at ? `<div class="ditem"><label>Payé le</label><span>${fmt(o.paid_at)}</span></div>` : ''}
+      </div>
+    </div>
+
+    <div class="dsec"><h4>${icon('briefcase', 14)} Activité</h4>
+      <div class="dgrid">
+        <div class="ditem"><label>Entreprise</label><span>${esc(o.business_name)}</span></div>
+        <div class="ditem"><label>Secteur</label><span>${esc(o.business_type)}</span></div>
+        <div class="ditem"><label>Adresse</label><span>${esc(o.address) || '—'}</span></div>
+        <div class="ditem"><label>Horaires</label><span>${esc(o.hours) || '—'}</span></div>
+        <div class="ditem full"><label>Réseaux sociaux</label><span>${esc(socials)}</span></div>
+        <div class="ditem full"><label>Description</label><p>${esc(o.description)}</p></div>
+      </div>
+    </div>
+
+    <div class="dsec"><h4>${icon('globe', 14)} Domaine</h4>
+      <div class="dgrid">
+        <div class="ditem"><label>Choix</label><span>${domainMap[o.domain_choice] || '—'}</span></div>
+        <div class="ditem"><label>Domaine</label><span>${esc(o.domain_name) || '—'}</span></div>
+        <div class="ditem"><label>Registrar</label><span>${esc(o.domain_registrar) || '—'}</span></div>
+      </div>
+    </div>
+
+    <div class="dsec"><h4>${icon('palette', 14)} Site demandé</h4>
+      <div class="dgrid">
+        <div class="ditem"><label>Pages</label><span>${parse(o.pages)}</span></div>
+        <div class="ditem"><label>Style</label><span>${esc(o.style) || '—'}</span></div>
+        <div class="ditem"><label>Couleurs</label><span>${esc(o.colors) || '—'}</span></div>
+        <div class="ditem"><label>Références</label><span>${esc(o.reference_urls) || '—'}</span></div>
+        <div class="ditem"><label>Logo</label><span>${{ have: 'Client en a un', create: 'À créer (+25€)', none: 'Typographie' }[o.logo_choice] || '—'}</span></div>
+        <div class="ditem"><label>Photos</label><span>${{ own: 'Photos du client', stock: "Banque d'images" }[o.photos_choice] || '—'}</span></div>
+        <div class="ditem full"><label>Options</label><span>${parse(o.options, 'Aucune')}</span></div>
+        ${o.content_text ? `<div class="ditem full"><label>Textes fournis</label><p style="white-space:pre-wrap">${esc(o.content_text)}</p></div>` : ''}
+      </div>
+    </div>
+
+    ${o.payment_link && o.payment_status !== 'paid' ? `
+    <div class="dsec"><h4>${icon('credit-card', 14)} Lien de paiement actif</h4>
+      <div class="paylink-box">Le client peut payer via sa page de suivi, ou envoyez-lui ce lien :<br/><a href="${o.payment_link}" target="_blank">${o.payment_link}</a></div>
+    </div>` : ''}
+
+    ${o.payment_status !== 'paid' ? `
+    <div class="dsec"><h4>${icon('send', 14)} Demander le paiement</h4>
+      <div class="sform">
+        <p style="font-size:.85rem;color:var(--muted);margin-bottom:10px">Génère un lien Stripe de ${fmtEur(o.amount)} et passe la commande en « Attente paiement ». Le lien apparaît automatiquement sur la page de suivi du client.</p>
+        <button class="btn btn-pay" onclick="createPaymentLink('${o.id}')">${icon('credit-card', 15)} Générer le lien de paiement (${fmtEur(o.amount)})</button>
+      </div>
+    </div>` : ''}
+
+    <div class="dsec"><h4>${icon('settings', 14)} Mettre à jour le statut</h4>
+      <div class="sform">
+        <select id="newStatus">
+          ${Object.entries(STATUS_LABELS).map(([k, v]) => `<option value="${k}" ${o.status === k ? 'selected' : ''}>${v}</option>`).join('')}
+        </select>
+        <input type="url" id="previewUrl" placeholder="URL d'aperçu (pour statut « En validation »)" value="${o.preview_url || ''}" />
+        <input type="url" id="deliveryUrl" placeholder="URL du site final (pour statut « En ligne »)" value="${o.delivery_url || ''}" />
+        <textarea id="statusMessage" rows="2" placeholder="Message pour le client (optionnel)"></textarea>
+        <button class="btn btn-primary btn-sm" onclick="updateStatus('${o.id}')">Mettre à jour</button>
+      </div>
+    </div>
+
+    <div class="dsec"><h4>${icon('file-text', 14)} Notes internes</h4>
+      <div class="sform">
+        <textarea id="orderNotes" rows="3" placeholder="Notes visibles uniquement par l'admin...">${esc(o.notes)}</textarea>
+        <button class="btn btn-outline btn-sm" onclick="saveNotes('${o.id}')">Sauvegarder</button>
+      </div>
+    </div>
+
+    <div class="dsec"><h4>${icon('clock', 14)} Historique</h4>${eventsHtml || '<p style="color:var(--muted);font-size:.85rem">Aucun événement</p>'}</div>
+  `;
+  document.getElementById('orderModal').style.display = 'flex';
+}
+
+async function createPaymentLink(id) {
+  const res = await fetch(`/api/admin/orders/${id}/payment-link`, { method: 'POST' });
+  const data = await res.json();
+  if (res.ok) {
+    showToast('Lien de paiement généré !', 'success');
+    openOrder(id);
+    refreshAll();
+  } else showToast(data.error || 'Erreur', 'error');
+}
+
+async function updateStatus(id) {
+  const res = await fetch(`/api/admin/orders/${id}/status`, {
+    method: 'PATCH', headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      status: document.getElementById('newStatus').value,
+      preview_url: document.getElementById('previewUrl').value.trim(),
+      delivery_url: document.getElementById('deliveryUrl').value.trim(),
+      message: document.getElementById('statusMessage').value.trim()
+    })
+  });
+  if (res.ok) {
+    showToast('Statut mis à jour !', 'success');
+    closeModal();
+    refreshAll();
+  } else showToast('Erreur mise à jour', 'error');
+}
+
+async function saveNotes(id) {
+  const res = await fetch(`/api/admin/orders/${id}/notes`, {
+    method: 'PATCH', headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ notes: document.getElementById('orderNotes').value })
+  });
+  if (res.ok) showToast('Notes sauvegardées', 'success');
+}
+
+function refreshAll() {
+  loadStats();
+  loadRecentOrders();
+  if (document.getElementById('section-orders').style.display !== 'none') loadOrders();
+}
+
+function closeModal(e) {
+  if (!e || e.target === document.getElementById('orderModal')) {
+    document.getElementById('orderModal').style.display = 'none';
+  }
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+checkAuth();
+</script>
+</body>
+</html>

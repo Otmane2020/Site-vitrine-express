@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Demande envoyée — Webify</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/svg+xml" href="/images/favicon.svg" />
+  <link rel="stylesheet" href="/css/landing.css" />
+  <style>
+    .success-page { min-height: 100vh; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #f5f3ff, #fdf2f8); padding: 40px 24px; }
+    .success-card { background: #fff; border-radius: 24px; padding: 56px 48px; text-align: center; max-width: 560px; box-shadow: 0 20px 80px rgba(124,58,237,.15); }
+    .success-check { width: 84px; height: 84px; border-radius: 50%; background: linear-gradient(135deg, #059669, #34d399); color: #fff; display: flex; align-items: center; justify-content: center; margin: 0 auto 28px; animation: pop .5s cubic-bezier(.68,-.55,.27,1.55); }
+    @keyframes pop { from { transform: scale(0); } to { transform: scale(1); } }
+    .success-card h1 { font-size: 1.7rem; font-weight: 800; margin-bottom: 12px; }
+    .success-card > p { color: #64748b; margin-bottom: 24px; line-height: 1.65; }
+    .tracking-code-display { background: #f5f3ff; color: #7c3aed; font-size: 1.5rem; font-weight: 800; letter-spacing: 2px; padding: 16px 32px; border-radius: 14px; display: inline-block; margin-bottom: 8px; }
+    .code-hint { color: #94a3b8; font-size: .85rem; margin-bottom: 28px; }
+    .next-steps { text-align: left; background: #f8fafc; border-radius: 14px; padding: 20px 24px; margin-bottom: 28px; }
+    .next-steps h3 { font-size: .85rem; text-transform: uppercase; letter-spacing: 1px; color: #64748b; margin-bottom: 14px; }
+    .next-step { display: flex; gap: 12px; align-items: flex-start; padding: 8px 0; font-size: .9rem; color: #334155; }
+    .next-step .icn { color: #7c3aed; margin-top: 2px; flex-shrink: 0; }
+    .success-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .btn-s-main { background: linear-gradient(135deg, #7c3aed, #ec4899); color: #fff; padding: 13px 28px; border-radius: 100px; font-weight: 700; text-decoration: none; font-size: .95rem; }
+    .btn-s-ghost { color: #7c3aed; padding: 13px 24px; border: 2px solid #e2e8f0; border-radius: 100px; font-weight: 700; text-decoration: none; font-size: .95rem; }
+  </style>
+</head>
+<body>
+<div class="success-page">
+  <div class="success-card">
+    <div class="success-check"><i data-icon="check" data-size="42"></i></div>
+    <h1 id="pageTitle">Demande envoyée !</h1>
+    <p id="pageDesc">C'est parti — notre équipe démarre la création de votre site. <strong>Vous n'avez rien payé aujourd'hui.</strong></p>
+
+    <div id="tracking-section" style="display:none">
+      <div class="tracking-code-display" id="trackingCode">—</div>
+      <p class="code-hint">Votre code de suivi — gardez-le précieusement</p>
+    </div>
+
+    <div class="next-steps">
+      <h3>Et maintenant ?</h3>
+      <div class="next-step"><i data-icon="palette" data-size="17"></i><span>On crée votre site sous 48h — suivez l'avancement avec votre code.</span></div>
+      <div class="next-step"><i data-icon="eye" data-size="17"></i><span>Vous recevez un lien d'aperçu pour valider le résultat.</span></div>
+      <div class="next-step"><i data-icon="credit-card" data-size="17"></i><span>Il vous plaît ? Vous réglez par carte sécurisée, et il est mis en ligne.</span></div>
+      <div class="next-step"><i data-icon="mail" data-size="17"></i><span>Si besoin (logo, photos, accès domaine), on vous contacte par email.</span></div>
+    </div>
+
+    <div class="success-actions">
+      <a href="/tracking.html" class="btn-s-main" id="trackBtn">Suivre ma commande</a>
+      <a href="/" class="btn-s-ghost">Retour à l'accueil</a>
+    </div>
+  </div>
+</div>
+
+<script src="/js/icons.js"></script>
+<script>
+  (async () => {
+    const params = new URLSearchParams(location.search);
+    const sessionId = params.get('session_id');
+    const tracking = params.get('tracking');
+
+    if (tracking) {
+      document.getElementById('trackingCode').textContent = tracking;
+      document.getElementById('tracking-section').style.display = 'block';
+      document.getElementById('trackBtn').href = `/tracking.html?code=${tracking}`;
+    }
+
+    // Si retour d'un paiement Stripe → message différent
+    if (sessionId) {
+      try {
+        const res = await fetch(`/api/payment/verify/${sessionId}`);
+        const data = await res.json();
+        if (data.paid) {
+          document.getElementById('pageTitle').textContent = 'Paiement confirmé !';
+          document.getElementById('pageDesc').innerHTML = 'Merci ! Votre site va être mis en ligne très rapidement. Vous recevrez le lien final sur votre page de suivi.';
+          document.querySelector('.next-steps').style.display = 'none';
+        }
+      } catch (_) {}
+    }
+  })();
+</script>
+</body>
+</html>

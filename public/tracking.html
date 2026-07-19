@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Suivi de commande — Webify</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/svg+xml" href="/images/favicon.svg" />
+  <link rel="stylesheet" href="/css/landing.css" />
+  <style>
+    body { background: #f8fafc; }
+    .track-header { background: #fff; border-bottom: 1px solid #e2e8f0; }
+    .track-header-inner { max-width: 1180px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 64px; }
+    .track-logo { font-weight: 800; text-decoration: none; color: #0a0a0f; display: flex; align-items: center; gap: 8px; }
+    .back-link { color: #64748b; text-decoration: none; font-size: .9rem; font-weight: 600; }
+    .back-link:hover { color: #7c3aed; }
+    .tracking-hero { padding: 56px 24px 40px; text-align: center; }
+    .tracking-hero h1 { font-size: 1.8rem; font-weight: 800; margin-bottom: 8px; display: flex; align-items: center; justify-content: center; gap: 12px; }
+    .tracking-hero h1 .icn { color: #7c3aed; }
+    .tracking-hero p { color: #64748b; }
+    .tracking-box { max-width: 520px; margin: 24px auto 0; display: flex; gap: 10px; }
+    .tracking-box input { flex: 1; padding: 13px 18px; border: 2px solid #e2e8f0; border-radius: 12px; font-size: 1rem; font-family: inherit; text-transform: uppercase; }
+    .tracking-box input:focus { outline: none; border-color: #7c3aed; }
+    .tracking-box button { background: linear-gradient(135deg, #7c3aed, #ec4899); color: #fff; border: none; padding: 13px 26px; border-radius: 12px; font-family: inherit; font-weight: 700; font-size: .95rem; cursor: pointer; }
+    .result-wrap { max-width: 640px; margin: 0 auto; padding: 0 24px 80px; }
+    .order-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 18px; padding: 28px 32px; margin-bottom: 24px; }
+    .order-card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px; border-bottom: 1px solid #e2e8f0; padding-bottom: 16px; gap: 12px; flex-wrap: wrap; }
+    .order-card-code { font-size: .82rem; color: #64748b; }
+    .order-card-code strong { color: #7c3aed; font-size: 1.15rem; display: block; }
+    .status-badge { padding: 6px 15px; border-radius: 100px; font-size: .8rem; font-weight: 700; white-space: nowrap; }
+    .status-new, .status-pending { background: #fef3c7; color: #92400e; }
+    .status-in_progress { background: #dbeafe; color: #1e40af; }
+    .status-review { background: #ede9fe; color: #5b21b6; }
+    .status-awaiting_payment { background: #ffedd5; color: #9a3412; }
+    .status-paid { background: #d1fae5; color: #065f46; }
+    .status-delivered, .status-completed { background: #d1fae5; color: #065f46; }
+    .status-cancelled { background: #fee2e2; color: #991b1b; }
+    .order-detail-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px; }
+    .odi label { font-size: .78rem; color: #94a3b8; display: block; }
+    .odi span { font-weight: 600; font-size: .95rem; }
+    .progress-wrap { margin: 16px 0; }
+    .progress-labels { display: flex; justify-content: space-between; font-size: .78rem; color: #94a3b8; margin-bottom: 6px; }
+    .progress-track { background: #e2e8f0; border-radius: 100px; height: 8px; }
+    .progress-fill { background: linear-gradient(90deg, #7c3aed, #ec4899); border-radius: 100px; height: 8px; transition: width .5s; }
+    .cta-box { border-radius: 14px; padding: 18px 20px; margin-top: 16px; display: flex; align-items: flex-start; gap: 14px; }
+    .cta-box .icn { flex-shrink: 0; margin-top: 2px; }
+    .cta-box-preview { background: #ede9fe; color: #5b21b6; }
+    .cta-box-pay { background: #fff7ed; color: #9a3412; border: 1.5px solid #fed7aa; }
+    .cta-box-live { background: #d1fae5; color: #065f46; }
+    .cta-box strong { display: block; margin-bottom: 4px; }
+    .cta-btn { display: inline-block; margin-top: 10px; background: linear-gradient(135deg, #7c3aed, #ec4899); color: #fff; padding: 10px 22px; border-radius: 100px; font-weight: 700; font-size: .88rem; text-decoration: none; }
+    .cta-btn-pay { background: linear-gradient(135deg, #ea580c, #f59e0b); }
+    .cta-btn-live { background: #059669; }
+    .deadline-bar { background: #f5f3ff; border-radius: 12px; padding: 14px 18px; margin-top: 16px; display: flex; align-items: center; gap: 12px; font-size: .9rem; }
+    .deadline-bar .icn { color: #7c3aed; }
+    .deadline-bar strong { color: #7c3aed; }
+    .timeline { padding-top: 8px; }
+    .timeline h3 { font-size: 1rem; font-weight: 700; margin-bottom: 24px; }
+    .timeline-event { display: flex; gap: 16px; position: relative; padding-bottom: 26px; }
+    .timeline-event:not(:last-child)::before { content: ''; position: absolute; left: 17px; top: 38px; bottom: 0; width: 2px; background: #e2e8f0; }
+    .timeline-dot { width: 36px; height: 36px; border-radius: 50%; background: #ede9fe; border: 2px solid #7c3aed; display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: #7c3aed; }
+    .timeline-event:first-child .timeline-dot { background: #7c3aed; color: #fff; }
+    .timeline-status { font-weight: 700; margin-bottom: 2px; font-size: .95rem; }
+    .timeline-message { font-size: .88rem; color: #64748b; }
+    .timeline-date { font-size: .78rem; color: #94a3b8; margin-top: 4px; }
+    .not-found { text-align: center; padding: 60px 24px; }
+    .not-found .icn { color: #cbd5e1; }
+    .not-found h2 { margin: 16px 0 8px; }
+    .not-found p { color: #64748b; }
+  </style>
+</head>
+<body>
+
+<header class="track-header">
+  <div class="track-header-inner">
+    <a href="/" class="track-logo"><span class="logo-mark logo-mark-sm"><img src="/images/logo.svg" alt="Webify" /></span> Webify</a>
+    <a href="/" class="back-link">← Retour à l'accueil</a>
+  </div>
+</header>
+
+<section class="tracking-hero">
+  <h1><i data-icon="package" data-size="28"></i> Suivi de commande</h1>
+  <p>Entrez votre code de suivi pour voir l'avancement de votre site</p>
+  <div class="tracking-box">
+    <input type="text" id="trackingInput" placeholder="Ex : WEB-AB12CD" />
+    <button onclick="trackOrder()">Rechercher</button>
+  </div>
+</section>
+
+<div class="result-wrap" id="result"></div>
+
+<script src="/js/icons.js"></script>
+<script>
+const STATUS_LABELS = {
+  new: 'Demande reçue',
+  pending: 'Demande reçue',
+  in_progress: 'Création en cours',
+  review: 'Aperçu disponible',
+  awaiting_payment: 'En attente de paiement',
+  paid: 'Paiement reçu',
+  delivered: 'Site en ligne',
+  completed: 'Projet terminé',
+  cancelled: 'Annulé',
+  payment_failed: 'Paiement échoué'
+};
+
+const STATUS_ICONS = {
+  new: 'clipboard', pending: 'clipboard', in_progress: 'palette',
+  review: 'eye', awaiting_payment: 'credit-card', paid: 'check-circle',
+  delivered: 'rocket', completed: 'check-circle',
+  cancelled: 'x', payment_failed: 'x'
+};
+
+async function trackOrder() {
+  const code = document.getElementById('trackingInput').value.trim().toUpperCase();
+  if (!code) return;
+
+  const result = document.getElementById('result');
+  result.innerHTML = '<p style="text-align:center;padding:40px;color:#64748b">Recherche en cours...</p>';
+
+  try {
+    const res = await fetch(`/api/orders/track/${code}`);
+    if (!res.ok) {
+      result.innerHTML = `
+        <div class="not-found">
+          ${icon('search', 48)}
+          <h2>Commande introuvable</h2>
+          <p>Vérifiez votre code de suivi (format : WEB-XXXXXX)</p>
+        </div>`;
+      return;
+    }
+    renderOrder(await res.json());
+  } catch (e) {
+    result.innerHTML = '<p style="text-align:center;padding:40px;color:#dc2626">Erreur de connexion</p>';
+  }
+}
+
+function renderOrder(o) {
+  const deadline = o.deadline ? new Date(o.deadline) : null;
+  const hoursLeft = deadline ? Math.max(0, Math.floor((deadline - Date.now()) / 3600000)) : null;
+
+  const progress = { new: 10, pending: 10, in_progress: 40, review: 65, awaiting_payment: 80, paid: 90, delivered: 100, completed: 100, cancelled: 0 };
+  const pct = progress[o.status] ?? 0;
+
+  let ctaHtml = '';
+  if (o.status === 'review' && o.preview_url) {
+    ctaHtml = `<div class="cta-box cta-box-preview">${icon('eye', 20)}<div>
+      <strong>Votre site est prêt à être visionné !</strong>
+      Regardez l'aperçu et dites-nous si tout vous convient.
+      <a href="${o.preview_url}" target="_blank" class="cta-btn">Voir l'aperçu de mon site →</a>
+    </div></div>`;
+  }
+  if (o.status === 'awaiting_payment' && o.payment_link) {
+    ctaHtml = `${o.preview_url ? `<div class="cta-box cta-box-preview">${icon('eye', 20)}<div><strong>Aperçu de votre site</strong><a href="${o.preview_url}" target="_blank" class="cta-btn">Revoir l'aperçu →</a></div></div>` : ''}
+    <div class="cta-box cta-box-pay">${icon('credit-card', 20)}<div>
+      <strong>Votre site vous plaît ? Mettons-le en ligne !</strong>
+      Réglez ${(o.amount / 100).toFixed(0)}€ par carte sécurisée (Stripe) et votre site sera publié immédiatement.
+      <a href="${o.payment_link}" class="cta-btn cta-btn-pay">Payer ${(o.amount / 100).toFixed(0)}€ et mettre en ligne →</a>
+    </div></div>`;
+  }
+  if ((o.status === 'delivered' || o.status === 'completed') && o.delivery_url) {
+    ctaHtml = `<div class="cta-box cta-box-live">${icon('rocket', 20)}<div>
+      <strong>Votre site est en ligne !</strong>
+      Félicitations, votre site est accessible à tous.
+      <a href="${o.delivery_url}" target="_blank" class="cta-btn cta-btn-live">Voir mon site →</a>
+    </div></div>`;
+  }
+
+  const deadlineHtml = deadline && ['new', 'in_progress'].includes(o.status) ? `
+    <div class="deadline-bar">
+      ${icon('clock', 18)}
+      <div>Livraison de l'aperçu prévue avant le <strong>${deadline.toLocaleString('fr-FR', { dateStyle: 'full', timeStyle: 'short' })}</strong>${hoursLeft !== null ? ` — <strong>${hoursLeft}h restantes</strong>` : ''}</div>
+    </div>` : '';
+
+  const events = (o.events || []).slice().reverse();
+  const timelineHtml = events.map(ev => `
+    <div class="timeline-event">
+      <div class="timeline-dot">${icon(STATUS_ICONS[ev.status] || 'check', 16)}</div>
+      <div>
+        <div class="timeline-status">${STATUS_LABELS[ev.status] || ev.status}</div>
+        ${ev.message ? `<div class="timeline-message">${escapeHtml(ev.message)}</div>` : ''}
+        <div class="timeline-date">${new Date(ev.created_at).toLocaleString('fr-FR')}</div>
+      </div>
+    </div>`).join('');
+
+  document.getElementById('result').innerHTML = `
+    <div class="order-card">
+      <div class="order-card-header">
+        <div class="order-card-code">Commande<br /><strong>${o.tracking_code}</strong></div>
+        <span class="status-badge status-${o.status}">${STATUS_LABELS[o.status] || o.status}</span>
+      </div>
+
+      <div class="order-detail-row">
+        <div class="odi"><label>Client</label><span>${escapeHtml(o.client_name)}</span></div>
+        <div class="odi"><label>Entreprise</label><span>${escapeHtml(o.business_name)}</span></div>
+        <div class="odi"><label>Total à la livraison</label><span>${(o.amount / 100).toFixed(0)} € ${o.payment_status === 'paid' ? '· payé ✓' : '· 0€ payé pour l\'instant'}</span></div>
+        <div class="odi"><label>Commande le</label><span>${new Date(o.created_at).toLocaleDateString('fr-FR')}</span></div>
+      </div>
+
+      <div class="progress-wrap">
+        <div class="progress-labels"><span>Progression</span><span>${pct}%</span></div>
+        <div class="progress-track"><div class="progress-fill" style="width:${pct}%"></div></div>
+      </div>
+
+      ${deadlineHtml}
+      ${ctaHtml}
+    </div>
+
+    <div class="timeline">
+      <h3>Historique</h3>
+      ${timelineHtml || '<p style="color:#64748b">Aucun événement</p>'}
+    </div>
+  `;
+}
+
+function escapeHtml(s) {
+  const d = document.createElement('div');
+  d.textContent = s || '';
+  return d.innerHTML;
+}
+
+const params = new URLSearchParams(location.search);
+const code = params.get('code');
+if (code) {
+  document.getElementById('trackingInput').value = code;
+  trackOrder();
+}
+
+document.getElementById('trackingInput').addEventListener('keypress', e => {
+  if (e.key === 'Enter') trackOrder();
+});
+</script>
+</body>
+</html>

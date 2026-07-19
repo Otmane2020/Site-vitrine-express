@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Commander mon site — 0€ aujourd'hui | Webify</title>
+  <meta name="description" content="Décrivez votre activité en 5 minutes, sans engagement. Vous ne payez que lorsque votre site est prêt et vous plaît." />
+  <link rel="canonical" href="https://webify.fr/commander.html" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/svg+xml" href="/images/favicon.svg" />
+  <link rel="stylesheet" href="/css/commander.css" />
+</head>
+<body>
+
+<header class="cmd-header">
+  <a href="/" class="cmd-logo"><span class="logo-mark"><img src="/images/logo.svg" alt="Webify" /></span> Webify</a>
+  <a href="/" class="cmd-close" aria-label="Annuler et revenir à l'accueil"><i data-icon="x" data-size="20"></i></a>
+</header>
+
+<main class="cmd-main">
+  <div class="cmd-intro">
+    <div class="cmd-badge"><i data-icon="check-circle" data-size="14"></i> 0€ aujourd'hui — payez seulement quand c'est prêt</div>
+    <h1>Créons votre site</h1>
+    <p>On vous demande tout ce qu'il faut, une seule fois. Aucun paiement aujourd'hui.</p>
+  </div>
+
+  <div class="wizard" id="wizard">
+    <!-- Progress -->
+    <div class="wiz-progress">
+      <div class="wiz-progress-bar"><div class="wiz-progress-fill" id="wizFill"></div></div>
+      <div class="wiz-steps-labels">
+        <span class="wiz-label active" data-step="1">Vous</span>
+        <span class="wiz-label" data-step="2">Activité</span>
+        <span class="wiz-label" data-step="3">Domaine</span>
+        <span class="wiz-label" data-step="4">Contenus</span>
+        <span class="wiz-label" data-step="5">Design</span>
+        <span class="wiz-label" data-step="6">Récap</span>
+      </div>
+    </div>
+
+    <form id="orderForm">
+
+      <!-- ÉTAPE 1 : VOUS -->
+      <div class="wiz-step active" data-step="1">
+        <div class="form-card">
+          <div class="form-card-title"><i data-icon="user" data-size="20"></i> Qui êtes-vous ?</div>
+          <div class="fgrid-2">
+            <div class="fg">
+              <label>Prénom &amp; Nom *</label>
+              <input type="text" name="client_name" required placeholder="Jean Dupont" />
+            </div>
+            <div class="fg">
+              <label>Email *</label>
+              <input type="email" name="client_email" required placeholder="jean@exemple.fr" />
+            </div>
+            <div class="fg">
+              <label>Téléphone * <small>(pour vous joindre pendant la création)</small></label>
+              <input type="tel" name="client_phone" required placeholder="06 12 34 56 78" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ÉTAPE 2 : ACTIVITÉ -->
+      <div class="wiz-step" data-step="2">
+        <div class="form-card">
+          <div class="form-card-title"><i data-icon="briefcase" data-size="20"></i> Votre activité</div>
+          <div class="fgrid-2">
+            <div class="fg">
+              <label>Nom de l'entreprise / marque *</label>
+              <input type="text" name="business_name" placeholder="Ma Belle Boutique" />
+            </div>
+            <div class="fg">
+              <label>Secteur d'activité *</label>
+              <select name="business_type">
+                <option value="">Sélectionnez...</option>
+                <option>Restaurant / Bar / Café</option>
+                <option>Beauté / Bien-être</option>
+                <option>Artisan / BTP</option>
+                <option>Commerce / Boutique</option>
+                <option>Services aux entreprises</option>
+                <option>Santé / Médical</option>
+                <option>Sport / Fitness</option>
+                <option>Immobilier</option>
+                <option>Éducation / Formation</option>
+                <option>Association</option>
+                <option>Autre</option>
+              </select>
+            </div>
+          </div>
+          <div class="fg">
+            <label>Décrivez votre activité *</label>
+            <textarea name="description" rows="4" placeholder="Qui êtes-vous ? Que proposez-vous ? Quel est votre client type ? Plus vous donnez de détails, plus le site sera pertinent..."></textarea>
+          </div>
+          <div class="fgrid-2">
+            <div class="fg">
+              <label>Adresse de l'établissement <small>(pour Google Maps)</small></label>
+              <input type="text" name="address" placeholder="12 rue de la République, 69001 Lyon" />
+            </div>
+            <div class="fg">
+              <label>Horaires d'ouverture</label>
+              <input type="text" name="hours" placeholder="Lun-Ven 9h-19h, Sam 10h-17h" />
+            </div>
+          </div>
+          <div class="fgrid-2">
+            <div class="fg">
+              <label>Page Facebook / Instagram <small>(si vous en avez)</small></label>
+              <input type="text" name="social_fb" placeholder="https://instagram.com/mamarque" />
+            </div>
+            <div class="fg">
+              <label>Autre réseau (LinkedIn, TikTok...)</label>
+              <input type="text" name="social_other" placeholder="https://..." />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ÉTAPE 3 : DOMAINE -->
+      <div class="wiz-step" data-step="3">
+        <div class="form-card">
+          <div class="form-card-title"><i data-icon="globe" data-size="20"></i> Votre nom de domaine</div>
+          <p class="form-hint">C'est l'adresse de votre site (ex : <strong>maboutique.fr</strong>). La 1ère année est incluse dans les 49€.</p>
+
+          <div class="radio-cards">
+            <label class="radio-card">
+              <input type="radio" name="domain_choice" value="new" checked />
+              <div class="radio-card-inner">
+                <div class="radio-card-title"><i data-icon="sparkles" data-size="17"></i> Je veux un nouveau domaine</div>
+                <div class="radio-card-desc">On l'achète et on le configure pour vous (inclus)</div>
+              </div>
+            </label>
+            <label class="radio-card">
+              <input type="radio" name="domain_choice" value="existing" />
+              <div class="radio-card-inner">
+                <div class="radio-card-title"><i data-icon="check-circle" data-size="17"></i> J'ai déjà un domaine</div>
+                <div class="radio-card-desc">On connecte votre site à votre domaine existant</div>
+              </div>
+            </label>
+            <label class="radio-card">
+              <input type="radio" name="domain_choice" value="suggest" />
+              <div class="radio-card-inner">
+                <div class="radio-card-title"><i data-icon="message-circle" data-size="17"></i> Proposez-moi</div>
+                <div class="radio-card-desc">On vous propose 3 noms disponibles avant de créer le site</div>
+              </div>
+            </label>
+          </div>
+
+          <div id="domainNew" class="domain-fields">
+            <div class="fg">
+              <label>Domaine souhaité <small>(on vérifie la disponibilité — donnez 1 ou 2 alternatives)</small></label>
+              <input type="text" name="domain_name" placeholder="maboutique.fr, ma-boutique.fr, maboutiquelyon.fr" />
+            </div>
+          </div>
+
+          <div id="domainExisting" class="domain-fields" style="display:none">
+            <div class="fgrid-2">
+              <div class="fg">
+                <label>Votre domaine actuel</label>
+                <input type="text" name="domain_existing" placeholder="maboutique.fr" />
+              </div>
+              <div class="fg">
+                <label>Chez quel hébergeur / registrar ?</label>
+                <input type="text" name="domain_registrar" placeholder="OVH, Ionos, GoDaddy, Gandi..." />
+              </div>
+            </div>
+            <div class="info-box">
+              <i data-icon="lock" data-size="17"></i>
+              <div>Après la commande, nous vous enverrons un email sécurisé pour récupérer les accès nécessaires (ou une simple modification DNS à faire — on vous guide pas à pas). <strong>Ne mettez jamais vos mots de passe dans ce formulaire.</strong></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ÉTAPE 4 : CONTENUS -->
+      <div class="wiz-step" data-step="4">
+        <div class="form-card">
+          <div class="form-card-title"><i data-icon="file-text" data-size="20"></i> Vos contenus</div>
+
+          <div class="fg fg-mb">
+            <label>Les textes du site</label>
+            <div class="radio-cards radio-cards-2">
+              <label class="radio-card">
+                <input type="radio" name="content_choice" value="provided" />
+                <div class="radio-card-inner">
+                  <div class="radio-card-title"><i data-icon="clipboard" data-size="16"></i> J'ai mes textes</div>
+                  <div class="radio-card-desc">Collez-les ci-dessous</div>
+                </div>
+              </label>
+              <label class="radio-card">
+                <input type="radio" name="content_choice" value="write" checked />
+                <div class="radio-card-inner">
+                  <div class="radio-card-title"><i data-icon="sparkles" data-size="16"></i> Rédigez pour moi</div>
+                  <div class="radio-card-desc">Inclus — à partir de votre description</div>
+                </div>
+              </label>
+            </div>
+            <textarea name="content_text" id="contentText" rows="5" class="content-textarea" placeholder="Collez ici vos textes : présentation, services, tarifs, mentions à afficher..."></textarea>
+          </div>
+
+          <div class="fg fg-mb">
+            <label>Votre logo</label>
+            <div class="radio-cards">
+              <label class="radio-card">
+                <input type="radio" name="logo_choice" value="have" checked />
+                <div class="radio-card-inner">
+                  <div class="radio-card-title"><i data-icon="image" data-size="16"></i> J'en ai un</div>
+                  <div class="radio-card-desc">Envoyé par email après commande</div>
+                </div>
+              </label>
+              <label class="radio-card">
+                <input type="radio" name="logo_choice" value="create" />
+                <div class="radio-card-inner">
+                  <div class="radio-card-title"><i data-icon="palette" data-size="16"></i> Créez-en un</div>
+                  <div class="radio-card-desc">+25€ — logo simple et pro</div>
+                </div>
+              </label>
+              <label class="radio-card">
+                <input type="radio" name="logo_choice" value="none" />
+                <div class="radio-card-inner">
+                  <div class="radio-card-title"><i data-icon="x" data-size="16"></i> Pas besoin</div>
+                  <div class="radio-card-desc">Le nom en jolie typographie</div>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <div class="fg">
+            <label>Vos photos</label>
+            <div class="radio-cards radio-cards-2">
+              <label class="radio-card">
+                <input type="radio" name="photos_choice" value="own" />
+                <div class="radio-card-inner">
+                  <div class="radio-card-title"><i data-icon="image" data-size="16"></i> J'ai mes photos</div>
+                  <div class="radio-card-desc">Envoyées par email après commande</div>
+                </div>
+              </label>
+              <label class="radio-card">
+                <input type="radio" name="photos_choice" value="stock" checked />
+                <div class="radio-card-inner">
+                  <div class="radio-card-title"><i data-icon="sparkles" data-size="16"></i> Banque d'images pro</div>
+                  <div class="radio-card-desc">Inclus — photos libres de droits adaptées</div>
+                </div>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ÉTAPE 5 : DESIGN & OPTIONS -->
+      <div class="wiz-step" data-step="5">
+        <div class="form-card">
+          <div class="form-card-title"><i data-icon="palette" data-size="20"></i> Design &amp; options</div>
+
+          <div class="fg fg-mb">
+            <label>Pages souhaitées <small>(3 incluses, +10€/page au-delà)</small></label>
+            <div class="check-tags" id="pagesTags">
+              <label class="tag-check"><input type="checkbox" name="pages" value="Accueil" checked/> Accueil</label>
+              <label class="tag-check"><input type="checkbox" name="pages" value="Services" checked/> Services / Prestations</label>
+              <label class="tag-check"><input type="checkbox" name="pages" value="Contact" checked/> Contact</label>
+              <label class="tag-check"><input type="checkbox" name="pages" value="À propos"/> À propos</label>
+              <label class="tag-check"><input type="checkbox" name="pages" value="Galerie"/> Galerie</label>
+              <label class="tag-check"><input type="checkbox" name="pages" value="Témoignages"/> Témoignages</label>
+              <label class="tag-check"><input type="checkbox" name="pages" value="FAQ"/> FAQ</label>
+              <label class="tag-check"><input type="checkbox" name="pages" value="Tarifs"/> Tarifs</label>
+            </div>
+          </div>
+
+          <div class="fg fg-mb">
+            <label>Style souhaité</label>
+            <div class="check-tags">
+              <label class="tag-check"><input type="radio" name="style" value="moderne" checked/> Moderne &amp; épuré</label>
+              <label class="tag-check"><input type="radio" name="style" value="elegant"/> Élégant &amp; haut de gamme</label>
+              <label class="tag-check"><input type="radio" name="style" value="chaleureux"/> Chaleureux &amp; convivial</label>
+              <label class="tag-check"><input type="radio" name="style" value="dynamique"/> Dynamique &amp; coloré</label>
+            </div>
+          </div>
+
+          <div class="fgrid-2 fg-mb">
+            <div class="fg">
+              <label>Couleurs préférées</label>
+              <input type="text" name="colors" placeholder="Ex : bleu marine, doré, blanc..." />
+            </div>
+            <div class="fg">
+              <label>Sites que vous aimez <small>(inspiration)</small></label>
+              <input type="text" name="reference_urls" placeholder="https://exemple.com" />
+            </div>
+          </div>
+
+          <div class="fg">
+            <label>Options <small>(payables à la livraison, comme le reste)</small></label>
+            <div class="options-list" id="optionsList">
+              <label class="option-row">
+                <input type="checkbox" name="options" value="reservation" data-price="29" />
+                <span class="option-name">Réservation en ligne</span>
+                <span class="option-price">+29€</span>
+              </label>
+              <label class="option-row">
+                <input type="checkbox" name="options" value="blog" data-price="19" />
+                <span class="option-name">Blog / actualités</span>
+                <span class="option-price">+19€</span>
+              </label>
+              <label class="option-row">
+                <input type="checkbox" name="options" value="galerie" data-price="15" />
+                <span class="option-name">Galerie photos avancée</span>
+                <span class="option-price">+15€</span>
+              </label>
+              <label class="option-row">
+                <input type="checkbox" name="options" value="express24" data-price="20" />
+                <span class="option-name">Livraison prioritaire 24h</span>
+                <span class="option-price">+20€</span>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ÉTAPE 6 : RÉCAP -->
+      <div class="wiz-step" data-step="6">
+        <div class="form-card">
+          <div class="form-card-title"><i data-icon="check-circle" data-size="20"></i> Récapitulatif</div>
+          <div id="recap" class="recap"></div>
+          <div class="recap-total">
+            <div class="recap-total-row">
+              <span>Total à la livraison</span>
+              <strong id="recapTotal">49 €</strong>
+            </div>
+            <div class="recap-today">
+              <i data-icon="check-circle" data-size="18"></i>
+              <span>À payer aujourd'hui : <strong>0 €</strong> — vous payez uniquement quand votre site est prêt et validé.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- NAVIGATION WIZARD -->
+      <div class="wiz-nav">
+        <div class="wiz-total">Total livraison : <strong id="wizTotal">49 €</strong> · <span class="wiz-today">0€ aujourd'hui</span></div>
+        <div class="wiz-nav-btns">
+          <button type="button" class="wiz-btn wiz-btn-back" id="wizBack" style="visibility:hidden">← Retour</button>
+          <button type="button" class="wiz-btn wiz-btn-next" id="wizNext">Continuer →</button>
+          <button type="submit" class="wiz-btn wiz-btn-submit" id="wizSubmit" style="display:none">
+            <span id="submitText">Envoyer ma demande — 0€ aujourd'hui</span>
+            <div id="submitSpinner" class="spinner" style="display:none"></div>
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</main>
+
+<div id="toast" class="toast"></div>
+
+<script src="/js/icons.js"></script>
+<script src="/js/pixel.js"></script>
+<script src="/js/commander.js"></script>
+</body>
+</html>
