@@ -3,11 +3,13 @@
   "devCommand": "node server.js",
   "framework": "express",
   "env": {
-    "STRIPE_SECRET_KEY": "@stripe_secret_key",
-    "STRIPE_PUBLISHABLE_KEY": "@stripe_publishable_key",
-    "STRIPE_WEBHOOK_SECRET": "@stripe_webhook_secret",
-    "SUPABASE_URL": "@supabase_url",
-    "SUPABASE_ANON_KEY": "@supabase_anon_key",
-    "SESSION_SECRET": "@session_secret"
+    "STRIPE_SECRET_KEY": "sk_test_REMPLACEZ_PAR_VOTRE_CLE",
+    "STRIPE_PUBLISHABLE_KEY": "pk_test_REMPLACEZ_PAR_VOTRE_CLE",
+    "STRIPE_WEBHOOK_SECRET": "whsec_test",
+    "SUPABASE_URL": "https://lwvdqvsgwirzbtvfqovz.supabase.co",
+    "SUPABASE_ANON_KEY": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx3dmRxdnNnd2lyemJ0dmZxb3Z6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODQ0ODUxOTEsImV4cCI6MjEwMDA2MTE5MX0.WdkN0d3yDSC3n4wpEKx0zJBU52mY-MREyEUW5Tfie6E",
+    "SESSION_SECRET": "site-vitrine-express-secret-2025",
+    "ADMIN_EMAIL": "admin@example.com",
+    "ADMIN_PASSWORD": "admin123"
   }
 }
