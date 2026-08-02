@@ -7,8 +7,6 @@
   <meta name="description" content="Création de site internet vitrine pour artisans, commerçants et indépendants : 49€ tout compris, livré en 48h. 0€ à la commande — vous payez uniquement quand votre site est prêt et vous plaît." />
   <meta name="keywords" content="création site internet pas cher, site vitrine 49 euros, site web artisan, site internet commerçant, création site 48h" />
   <link rel="canonical" href="https://webify.fr/" />
-
-  <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Votre site vitrine pro à 49€ — payez quand c'est prêt" />
   <meta property="og:description" content="Livré en 48h. 0€ aujourd'hui : vous payez seulement quand votre site est prêt et validé." />
@@ -17,7 +15,6 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Votre site vitrine pro à 49€ — payez quand c'est prêt" />
   <meta name="twitter:description" content="Livré en 48h. 0€ aujourd'hui — payez à la livraison." />
-
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -29,371 +26,497 @@
     "offers": { "@type": "Offer", "price": "49", "priceCurrency": "EUR" }
   }
   </script>
-
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="icon" type="image/svg+xml" href="/images/favicon.svg" />
   <link rel="stylesheet" href="/css/landing.css" />
 </head>
 <body>
 
-<!-- NAV -->
+<!-- ═══════════════════════════ NAV ═══════════════════════════ -->
 <nav class="nav" id="navbar">
   <div class="nav-inner">
-    <a href="/" class="nav-logo"><span class="logo-mark"><img src="/images/logo.svg" alt="Webify" /></span> <span>Webify</span></a>
-    <div class="nav-links">
+    <a href="/" class="nav-logo">
+      <span class="nav-logo-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+      </span>
+      <span>Webify</span>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="#comment">Comment ça marche</a>
       <a href="#realisations">Réalisations</a>
       <a href="#tarifs">Tarif</a>
       <a href="#faq">FAQ</a>
-      <a href="/tracking.html" class="nav-track"><i data-icon="package" data-size="15"></i> Suivi commande</a>
+      <a href="/tracking.html" class="nav-track">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Suivi commande
+      </a>
     </div>
     <a href="/commander.html" class="nav-cta">Démarrer — 0€ aujourd'hui</a>
-    <button class="nav-burger" id="burger" onclick="toggleMenu()">☰</button>
+    <button class="nav-burger" id="burger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
 
-<!-- HERO -->
+<!-- ═══════════════════════════ HERO ═══════════════════════════ -->
 <section class="hero">
   <div class="hero-bg">
     <div class="hero-orb hero-orb-1"></div>
     <div class="hero-orb hero-orb-2"></div>
+    <div class="hero-orb hero-orb-3"></div>
     <div class="hero-grid"></div>
   </div>
-  <div class="hero-content">
-    <div class="hero-eyebrow">
-      <span class="dot"></span> 0€ à la commande · Payez uniquement quand c'est prêt
-    </div>
-    <h1 class="hero-title">
-      Votre site vitrine pro<br/>
-      pour <span class="hero-highlight">49€</span>,<br/>
-      <span class="hero-gradient">livré en 48h</span>
-    </h1>
-    <p class="hero-sub">
-      Décrivez votre activité en 5 minutes. On crée votre site sur-mesure.<br/>
-      <strong>Vous ne payez que lorsqu'il est prêt et qu'il vous plaît.</strong>
-    </p>
 
-    <div class="hero-actions">
-      <a href="/commander.html" class="btn-hero-main">
-        Créer mon site — 0€ aujourd'hui
-        <i data-icon="arrow-right" data-size="18"></i>
-      </a>
-      <a href="#realisations" class="btn-hero-ghost">Voir nos réalisations</a>
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        0€ à la commande &nbsp;·&nbsp; Payez quand c'est prêt
+      </div>
+
+      <h1 class="hero-title">
+        Votre site vitrine pro<br/>
+        pour <span class="price-glow">49€</span><br/>
+        <span class="hero-grad">livré en 48h</span>
+      </h1>
+
+      <p class="hero-desc">
+        Décrivez votre activité en 5 minutes. On crée votre site sur-mesure.<br/>
+        <strong>Vous ne payez que lorsqu'il est prêt et qu'il vous plaît.</strong>
+      </p>
+
+      <div class="hero-actions">
+        <a href="/commander.html" class="btn-primary">
+          Créer mon site — 0€ aujourd'hui
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+        <a href="#realisations" class="btn-ghost">Voir nos réalisations</a>
+      </div>
+
+      <div class="hero-social">
+        <div class="social-avatars">
+          <span class="av" style="--hue:250">MT</span>
+          <span class="av" style="--hue:340">SM</span>
+          <span class="av" style="--hue:160">KB</span>
+          <span class="av" style="--hue:30">LP</span>
+        </div>
+        <p><strong>+127 entrepreneurs</strong> nous font confiance ce mois-ci</p>
+      </div>
+
+      <div class="hero-trust-badges">
+        <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Zéro risque</span>
+        <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> Paiement sécurisé</span>
+        <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg> Livraison 48h</span>
+      </div>
     </div>
 
-    <div class="hero-trust">
-      <div class="trust-avatars">
-        <span class="avatar av-1">MT</span>
-        <span class="avatar av-2">SM</span>
-        <span class="avatar av-3">KB</span>
-        <span class="avatar av-4">LP</span>
-      </div>
-      <div class="trust-text">
-        <strong>+127 entrepreneurs</strong> nous ont fait confiance ce mois-ci
-      </div>
-    </div>
-  </div>
-
-  <!-- Browser mockup -->
-  <div class="hero-mockup">
-    <img src="/images/illustration-hero.svg" alt="" class="hero-illustration" aria-hidden="true" />
-    <div class="browser">
-      <div class="browser-bar">
-        <span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span>
-        <div class="browser-url">https://monrestaurant.fr</div>
-      </div>
-      <div class="browser-screen">
-        <div class="mock-hero-site">
-          <div class="mock-nav-site">
-            <div class="mock-logo"></div>
-            <div class="mock-links"><span></span><span></span><span></span></div>
+    <div class="hero-mockup">
+      <div class="mockup-browser">
+        <div class="browser-bar">
+          <div class="browser-dots">
+            <span class="bd-r"></span>
+            <span class="bd-y"></span>
+            <span class="bd-g"></span>
           </div>
-          <div class="mock-hero-content">
-            <div class="mock-title"></div>
-            <div class="mock-subtitle"></div>
-            <div class="mock-btn"></div>
+          <div class="browser-url">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            monentreprise.fr
           </div>
-          <div class="mock-cards">
-            <div class="mock-card"></div>
-            <div class="mock-card"></div>
-            <div class="mock-card"></div>
+        </div>
+        <div class="browser-screen">
+          <div class="mock-site-nav">
+            <div class="msn-logo"></div>
+            <div class="msn-links"><span></span><span></span><span></span></div>
+          </div>
+          <div class="mock-site-hero">
+            <div class="msh-text">
+              <div class="msh-h1"></div>
+              <div class="msh-h2"></div>
+              <div class="msh-btn"></div>
+            </div>
+            <div class="msh-img"></div>
+          </div>
+          <div class="mock-site-cards">
+            <div class="msc"><div class="msc-ico"></div><div class="msc-line"></div><div class="msc-line short"></div></div>
+            <div class="msc"><div class="msc-ico"></div><div class="msc-line"></div><div class="msc-line short"></div></div>
+            <div class="msc"><div class="msc-ico"></div><div class="msc-line"></div><div class="msc-line short"></div></div>
           </div>
         </div>
       </div>
+      <div class="mockup-float float-top">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        Livré en 38h
+      </div>
+      <div class="mockup-float float-bottom">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="#facc15" stroke="#facc15" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        5.0 · Parfait !
+      </div>
     </div>
-    <div class="mockup-badge mockup-badge-1"><i data-icon="check-circle" data-size="16"></i> Livré en 47h</div>
-    <div class="mockup-badge mockup-badge-2"><i data-icon="star" data-size="15" data-fill></i> 5/5 · Parfait !</div>
   </div>
 
-  <div class="hero-scroll-hint">
+  <div class="hero-scroll">
     <span>Découvrir</span>
-    <div class="scroll-arrow"></div>
+    <div class="scroll-chevron">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+    </div>
   </div>
 </section>
 
-<!-- TYPES DE CLIENTS -->
+<!-- ═══════════════════════════ STATS ═══════════════════════════ -->
+<section class="stats-strip">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item">
+        <div class="stat-num" data-target="127">0</div>
+        <div class="stat-label">Entrepreneurs servis</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <div class="stat-num" data-target="48" data-suffix="h">0</div>
+        <div class="stat-label">Délai de livraison</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <div class="stat-num" data-target="100" data-suffix="%">0</div>
+        <div class="stat-label">Clients satisfaits</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <div class="stat-num" data-prefix="€" data-target="49">0</div>
+        <div class="stat-label">Prix fixe garanti</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ CLIENTS BAR ═══════════════════════════ -->
 <section class="clients-bar">
   <div class="clients-inner">
     <span class="clients-label">Ils nous font confiance :</span>
-    <div class="clients-list">
-      <span><i data-icon="utensils" data-size="16"></i> Restaurants</span>
-      <span><i data-icon="sparkles" data-size="16"></i> Instituts beauté</span>
-      <span><i data-icon="hammer" data-size="16"></i> Artisans</span>
-      <span><i data-icon="dumbbell" data-size="16"></i> Coaches</span>
-      <span><i data-icon="stethoscope" data-size="16"></i> Médecins</span>
-      <span><i data-icon="home" data-size="16"></i> Agents immo</span>
-      <span><i data-icon="shopping-bag" data-size="16"></i> Boutiques</span>
-      <span><i data-icon="graduation-cap" data-size="16"></i> Formateurs</span>
+    <div class="clients-scroll">
+      <div class="clients-track">
+        <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l19-9-9 19-2-8-8-2z"/></svg> Restaurants</span>
+        <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg> Instituts beauté</span>
+        <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg> Artisans</span>
+        <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg> Coaches</span>
+        <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg> Médecins</span>
+        <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg> Agents immo</span>
+        <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg> Boutiques</span>
+        <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg> Formateurs</span>
+        <!-- duplicate for loop -->
+        <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l19-9-9 19-2-8-8-2z"/></svg> Restaurants</span>
+        <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg> Instituts beauté</span>
+        <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg> Artisans</span>
+        <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg> Coaches</span>
+        <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg> Médecins</span>
+        <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg> Agents immo</span>
+        <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg> Boutiques</span>
+        <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg> Formateurs</span>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- PROBLÈME → SOLUTION -->
-<section class="problem-section">
+<!-- ═══════════════════════════ PROBLÈME / SOLUTION ═══════════════════════════ -->
+<section class="compare-section">
   <div class="container">
-    <div class="problem-grid">
-      <div class="problem-col problem-col-bad">
-        <div class="problem-col-label bad"><i data-icon="x" data-size="18"></i> Sans site pro</div>
-        <ul class="problem-list">
-          <li><i data-icon="x" data-size="15" class="li-x"></i> Clients qui doutent de votre sérieux</li>
-          <li><i data-icon="x" data-size="15" class="li-x"></i> Devis d'agences à 2 000 – 5 000€</li>
-          <li><i data-icon="x" data-size="15" class="li-x"></i> Sites DIY qui font amateur</li>
-          <li><i data-icon="x" data-size="15" class="li-x"></i> Des mois d'attente</li>
-          <li><i data-icon="x" data-size="15" class="li-x"></i> Invisible sur Google</li>
+    <div class="section-tag">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+      Pourquoi Webify
+    </div>
+    <h2 class="section-title">La différence que ça fait<br/><span class="text-purple">d'avoir un vrai site pro</span></h2>
+
+    <div class="compare-grid">
+      <div class="compare-col compare-bad">
+        <div class="compare-col-header bad">
+          <div class="col-header-icon bad">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </div>
+          Sans site pro
+        </div>
+        <ul class="compare-list">
+          <li><svg class="li-x" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Clients qui doutent de votre sérieux</li>
+          <li><svg class="li-x" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Devis d'agences à 2 000 – 5 000€</li>
+          <li><svg class="li-x" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Sites DIY qui font amateur</li>
+          <li><svg class="li-x" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Des mois d'attente</li>
+          <li><svg class="li-x" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Invisible sur Google</li>
         </ul>
       </div>
-      <div class="problem-vs">VS</div>
-      <div class="problem-col problem-col-good">
-        <div class="problem-col-label good"><i data-icon="rocket" data-size="18"></i> Avec Webify</div>
-        <ul class="problem-list">
-          <li><i data-icon="check" data-size="15" class="li-c"></i> Image pro dès le premier clic</li>
-          <li><i data-icon="check" data-size="15" class="li-c"></i> <strong>49€ tout compris</strong>, sans surprise</li>
-          <li><i data-icon="check" data-size="15" class="li-c"></i> Design sur-mesure 100% unique</li>
-          <li><i data-icon="check" data-size="15" class="li-c"></i> <strong>Livré en 48h chrono</strong></li>
-          <li><i data-icon="check" data-size="15" class="li-c"></i> 0€ tant que vous n'avez pas validé</li>
+
+      <div class="compare-vs">VS</div>
+
+      <div class="compare-col compare-good">
+        <div class="compare-col-header good">
+          <div class="col-header-icon good">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          </div>
+          Avec Webify
+        </div>
+        <ul class="compare-list">
+          <li><svg class="li-c" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg> Image pro dès le premier clic</li>
+          <li><svg class="li-c" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg> <strong>49€ tout compris</strong>, sans surprise</li>
+          <li><svg class="li-c" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg> Design sur-mesure 100% unique</li>
+          <li><svg class="li-c" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg> <strong>Livré en 48h chrono</strong></li>
+          <li><svg class="li-c" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg> 0€ tant que vous n'avez pas validé</li>
         </ul>
       </div>
     </div>
   </div>
 </section>
 
-<!-- COMMENT CA MARCHE -->
+<!-- ═══════════════════════════ COMMENT ÇA MARCHE ═══════════════════════════ -->
 <section class="how-section" id="comment">
   <div class="container">
-    <div class="section-tag"><i data-icon="zap" data-size="14"></i> Simple comme bonjour</div>
+    <div class="section-tag">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      Simple comme bonjour
+    </div>
     <h2 class="section-title">De zéro à en ligne<br/><span class="text-purple">en 4 étapes</span></h2>
-
-    <img src="/images/illustration-process.svg" alt="Création de votre site en quelques étapes" class="process-illustration" />
+    <p class="section-sub">Aucune compétence technique requise. On s'occupe de tout.</p>
 
     <div class="how-steps">
-      <div class="how-step">
-        <div class="how-step-num">01</div>
-        <div class="how-step-icon"><i data-icon="clipboard" data-size="36"></i></div>
+      <div class="how-step reveal">
+        <div class="step-num">01</div>
+        <div class="step-icon purple">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        </div>
         <h3>Vous remplissez le brief</h3>
         <p>Activité, domaine, contenus, style : on vous demande tout ce qu'il faut, une seule fois. Gratuit et sans engagement.</p>
-        <div class="how-step-time"><i data-icon="clock" data-size="13"></i> 5 minutes · 0€</div>
+        <div class="step-tag">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          5 min · 0€
+        </div>
       </div>
-      <div class="how-connector">→</div>
-      <div class="how-step">
-        <div class="how-step-num">02</div>
-        <div class="how-step-icon"><i data-icon="palette" data-size="36"></i></div>
+
+      <div class="how-connector">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </div>
+
+      <div class="how-step reveal">
+        <div class="step-num">02</div>
+        <div class="step-icon violet">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r=".5"/><circle cx="17.5" cy="10.5" r=".5"/><circle cx="8.5" cy="7.5" r=".5"/><circle cx="6.5" cy="12.5" r=".5"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg>
+        </div>
         <h3>On crée votre site</h3>
-        <p>Notre équipe conçoit votre site sur-mesure. Vous suivez l'avancement en temps réel avec votre code de suivi.</p>
-        <div class="how-step-time"><i data-icon="clock" data-size="13"></i> 48 heures</div>
+        <p>Notre équipe conçoit votre site sur-mesure. Suivez l'avancement en temps réel avec votre code de suivi.</p>
+        <div class="step-tag">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          48 heures
+        </div>
       </div>
-      <div class="how-connector">→</div>
-      <div class="how-step">
-        <div class="how-step-num">03</div>
-        <div class="how-step-icon"><i data-icon="eye" data-size="36"></i></div>
+
+      <div class="how-connector">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </div>
+
+      <div class="how-step reveal">
+        <div class="step-num">03</div>
+        <div class="step-icon pink">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+        </div>
         <h3>Vous validez l'aperçu</h3>
         <p>On vous envoie le lien d'aperçu. Il vous plaît ? Vous payez 49€. Sinon, on retouche — ou vous ne payez rien.</p>
-        <div class="how-step-time"><i data-icon="credit-card" data-size="13"></i> 49€ seulement ici</div>
+        <div class="step-tag amber">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+          49€ seulement ici
+        </div>
       </div>
-      <div class="how-connector">→</div>
-      <div class="how-step">
-        <div class="how-step-num">04</div>
-        <div class="how-step-icon"><i data-icon="rocket" data-size="36"></i></div>
+
+      <div class="how-connector">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </div>
+
+      <div class="how-step reveal">
+        <div class="step-num">04</div>
+        <div class="step-icon green">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        </div>
         <h3>Mise en ligne</h3>
         <p>Votre site est publié sur votre nom de domaine, avec hébergement et SSL inclus pendant 1 an.</p>
-        <div class="how-step-time"><i data-icon="check" data-size="13"></i> C'est en ligne !</div>
+        <div class="step-tag green">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          C'est en ligne !
+        </div>
       </div>
+    </div>
+
+    <div class="how-cta">
+      <a href="/commander.html" class="btn-primary">
+        Démarrer maintenant — 0€ aujourd'hui
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
     </div>
   </div>
 </section>
 
-<!-- RÉALISATIONS -->
+<!-- ═══════════════════════════ RÉALISATIONS ═══════════════════════════ -->
 <section class="portfolio-section" id="realisations">
   <div class="container">
-    <div class="section-tag"><i data-icon="palette" data-size="14"></i> Notre travail</div>
+    <div class="section-tag">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r=".5"/><circle cx="17.5" cy="10.5" r=".5"/><circle cx="8.5" cy="7.5" r=".5"/><circle cx="6.5" cy="12.5" r=".5"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg>
+      Notre travail
+    </div>
     <h2 class="section-title">Des sites qui<br/><span class="text-purple">font la différence</span></h2>
     <p class="section-sub">Chaque site est unique, conçu spécialement pour votre activité</p>
 
     <div class="portfolio-grid">
-      <div class="portfolio-card" style="--c1:#1a1a2e;--c2:#16213e">
-        <div class="portfolio-preview" style="background:linear-gradient(135deg,var(--c1),var(--c2))">
-          <div class="pp-nav"><div class="pp-logo" style="background:#e94560"></div><div class="pp-links"></div></div>
-          <div class="pp-hero">
-            <div class="pp-h1" style="width:70%"></div>
-            <div class="pp-h2" style="width:50%"></div>
-            <div class="pp-btn" style="background:#e94560"></div>
-          </div>
-          <div class="pp-grid3">
-            <div class="pp-item" style="background:rgba(233,69,96,.2)"></div>
-            <div class="pp-item" style="background:rgba(233,69,96,.2)"></div>
-            <div class="pp-item" style="background:rgba(233,69,96,.2)"></div>
-          </div>
+      <div class="portfolio-card reveal" style="--c1:#1a1a2e;--c2:#16213e;--ac:#e94560">
+        <div class="portfolio-preview">
+          <div class="pp-nav"><div class="pp-logo" style="background:var(--ac)"></div><div class="pp-links"></div></div>
+          <div class="pp-hero"><div class="pp-h1"></div><div class="pp-h2"></div><div class="pp-btn" style="background:var(--ac)"></div></div>
+          <div class="pp-grid3"><div class="pp-item" style="background:rgba(233,69,96,.2)"></div><div class="pp-item" style="background:rgba(233,69,96,.2)"></div><div class="pp-item" style="background:rgba(233,69,96,.2)"></div></div>
         </div>
         <div class="portfolio-info">
-          <div class="portfolio-tag"><i data-icon="utensils" data-size="13"></i> Restaurant</div>
-          <div class="portfolio-name">La Bella Italia</div>
-          <div class="portfolio-time"><i data-icon="zap" data-size="13"></i> Livré en 38h</div>
+          <span class="ptag"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l19-9-9 19-2-8-8-2z"/></svg> Restaurant</span>
+          <strong>La Bella Italia</strong>
+          <span class="ptime"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg> Livré en 38h</span>
         </div>
       </div>
 
-      <div class="portfolio-card" style="--c1:#0f2027;--c2:#203a43">
-        <div class="portfolio-preview" style="background:linear-gradient(135deg,var(--c1),var(--c2))">
-          <div class="pp-nav"><div class="pp-logo" style="background:#43b89c"></div><div class="pp-links"></div></div>
-          <div class="pp-hero">
-            <div class="pp-h1" style="width:65%"></div>
-            <div class="pp-h2" style="width:45%"></div>
-            <div class="pp-btn" style="background:#43b89c"></div>
-          </div>
-          <div class="pp-grid3">
-            <div class="pp-item" style="background:rgba(67,184,156,.15)"></div>
-            <div class="pp-item" style="background:rgba(67,184,156,.15)"></div>
-            <div class="pp-item" style="background:rgba(67,184,156,.15)"></div>
-          </div>
+      <div class="portfolio-card reveal" style="--c1:#0f2027;--c2:#203a43;--ac:#43b89c">
+        <div class="portfolio-preview">
+          <div class="pp-nav"><div class="pp-logo" style="background:var(--ac)"></div><div class="pp-links"></div></div>
+          <div class="pp-hero"><div class="pp-h1"></div><div class="pp-h2"></div><div class="pp-btn" style="background:var(--ac)"></div></div>
+          <div class="pp-grid3"><div class="pp-item" style="background:rgba(67,184,156,.15)"></div><div class="pp-item" style="background:rgba(67,184,156,.15)"></div><div class="pp-item" style="background:rgba(67,184,156,.15)"></div></div>
         </div>
         <div class="portfolio-info">
-          <div class="portfolio-tag"><i data-icon="sparkles" data-size="13"></i> Institut beauté</div>
-          <div class="portfolio-name">Sens & Beauté</div>
-          <div class="portfolio-time"><i data-icon="zap" data-size="13"></i> Livré en 44h</div>
+          <span class="ptag"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg> Institut beauté</span>
+          <strong>Sens &amp; Beauté</strong>
+          <span class="ptime"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg> Livré en 44h</span>
         </div>
       </div>
 
-      <div class="portfolio-card" style="--c1:#1c1c1c;--c2:#2d2d2d">
-        <div class="portfolio-preview" style="background:linear-gradient(135deg,var(--c1),var(--c2))">
-          <div class="pp-nav"><div class="pp-logo" style="background:#f4a261"></div><div class="pp-links"></div></div>
-          <div class="pp-hero">
-            <div class="pp-h1" style="width:75%"></div>
-            <div class="pp-h2" style="width:55%"></div>
-            <div class="pp-btn" style="background:#f4a261"></div>
-          </div>
-          <div class="pp-grid3">
-            <div class="pp-item" style="background:rgba(244,162,97,.15)"></div>
-            <div class="pp-item" style="background:rgba(244,162,97,.15)"></div>
-            <div class="pp-item" style="background:rgba(244,162,97,.15)"></div>
-          </div>
+      <div class="portfolio-card reveal" style="--c1:#1c1c1c;--c2:#2d2d2d;--ac:#f4a261">
+        <div class="portfolio-preview">
+          <div class="pp-nav"><div class="pp-logo" style="background:var(--ac)"></div><div class="pp-links"></div></div>
+          <div class="pp-hero"><div class="pp-h1"></div><div class="pp-h2"></div><div class="pp-btn" style="background:var(--ac)"></div></div>
+          <div class="pp-grid3"><div class="pp-item" style="background:rgba(244,162,97,.15)"></div><div class="pp-item" style="background:rgba(244,162,97,.15)"></div><div class="pp-item" style="background:rgba(244,162,97,.15)"></div></div>
         </div>
         <div class="portfolio-info">
-          <div class="portfolio-tag"><i data-icon="hammer" data-size="13"></i> Artisan</div>
-          <div class="portfolio-name">Renovpro 34</div>
-          <div class="portfolio-time"><i data-icon="zap" data-size="13"></i> Livré en 41h</div>
+          <span class="ptag"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg> Artisan</span>
+          <strong>Renovpro 34</strong>
+          <span class="ptime"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg> Livré en 41h</span>
         </div>
       </div>
 
-      <div class="portfolio-card" style="--c1:#0d0221;--c2:#1a0533">
-        <div class="portfolio-preview" style="background:linear-gradient(135deg,var(--c1),var(--c2))">
-          <div class="pp-nav"><div class="pp-logo" style="background:#8b5cf6"></div><div class="pp-links"></div></div>
-          <div class="pp-hero">
-            <div class="pp-h1" style="width:60%"></div>
-            <div class="pp-h2" style="width:40%"></div>
-            <div class="pp-btn" style="background:#8b5cf6"></div>
-          </div>
-          <div class="pp-grid3">
-            <div class="pp-item" style="background:rgba(139,92,246,.2)"></div>
-            <div class="pp-item" style="background:rgba(139,92,246,.2)"></div>
-            <div class="pp-item" style="background:rgba(139,92,246,.2)"></div>
-          </div>
+      <div class="portfolio-card reveal" style="--c1:#0d0221;--c2:#1a0533;--ac:#8b5cf6">
+        <div class="portfolio-preview">
+          <div class="pp-nav"><div class="pp-logo" style="background:var(--ac)"></div><div class="pp-links"></div></div>
+          <div class="pp-hero"><div class="pp-h1"></div><div class="pp-h2"></div><div class="pp-btn" style="background:var(--ac)"></div></div>
+          <div class="pp-grid3"><div class="pp-item" style="background:rgba(139,92,246,.2)"></div><div class="pp-item" style="background:rgba(139,92,246,.2)"></div><div class="pp-item" style="background:rgba(139,92,246,.2)"></div></div>
         </div>
         <div class="portfolio-info">
-          <div class="portfolio-tag"><i data-icon="dumbbell" data-size="13"></i> Coach</div>
-          <div class="portfolio-name">Transform'Fit</div>
-          <div class="portfolio-time"><i data-icon="zap" data-size="13"></i> Livré en 36h</div>
+          <span class="ptag"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg> Coach</span>
+          <strong>Transform'Fit</strong>
+          <span class="ptime"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg> Livré en 36h</span>
         </div>
       </div>
 
-      <div class="portfolio-card" style="--c1:#001f3f;--c2:#003366">
-        <div class="portfolio-preview" style="background:linear-gradient(135deg,var(--c1),var(--c2))">
-          <div class="pp-nav"><div class="pp-logo" style="background:#00b4d8"></div><div class="pp-links"></div></div>
-          <div class="pp-hero">
-            <div class="pp-h1" style="width:68%"></div>
-            <div class="pp-h2" style="width:48%"></div>
-            <div class="pp-btn" style="background:#00b4d8"></div>
-          </div>
-          <div class="pp-grid3">
-            <div class="pp-item" style="background:rgba(0,180,216,.15)"></div>
-            <div class="pp-item" style="background:rgba(0,180,216,.15)"></div>
-            <div class="pp-item" style="background:rgba(0,180,216,.15)"></div>
-          </div>
+      <div class="portfolio-card reveal" style="--c1:#001f3f;--c2:#003366;--ac:#00b4d8">
+        <div class="portfolio-preview">
+          <div class="pp-nav"><div class="pp-logo" style="background:var(--ac)"></div><div class="pp-links"></div></div>
+          <div class="pp-hero"><div class="pp-h1"></div><div class="pp-h2"></div><div class="pp-btn" style="background:var(--ac)"></div></div>
+          <div class="pp-grid3"><div class="pp-item" style="background:rgba(0,180,216,.15)"></div><div class="pp-item" style="background:rgba(0,180,216,.15)"></div><div class="pp-item" style="background:rgba(0,180,216,.15)"></div></div>
         </div>
         <div class="portfolio-info">
-          <div class="portfolio-tag"><i data-icon="stethoscope" data-size="13"></i> Médical</div>
-          <div class="portfolio-name">Cabinet Dr. Morin</div>
-          <div class="portfolio-time"><i data-icon="zap" data-size="13"></i> Livré en 48h</div>
+          <span class="ptag"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg> Médical</span>
+          <strong>Cabinet Dr. Morin</strong>
+          <span class="ptime"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg> Livré en 48h</span>
         </div>
       </div>
 
-      <div class="portfolio-card portfolio-card-cta">
-        <div class="portfolio-cta-content">
-          <div class="cta-icn"><i data-icon="palette" data-size="40"></i></div>
+      <div class="portfolio-card portfolio-cta-card reveal">
+        <div class="pcta-inner">
+          <div class="pcta-icon">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r=".5"/><circle cx="17.5" cy="10.5" r=".5"/><circle cx="8.5" cy="7.5" r=".5"/><circle cx="6.5" cy="12.5" r=".5"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg>
+          </div>
           <h3>Votre site ici</h3>
           <p>Rejoignez nos clients satisfaits</p>
-          <a href="/commander.html" class="btn-sm-cta">Commencer →</a>
+          <a href="/commander.html" class="btn-sm-white">Commencer →</a>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- TÉMOIGNAGES -->
+<!-- ═══════════════════════════ TÉMOIGNAGES ═══════════════════════════ -->
 <section class="testi-section">
   <div class="container">
-    <div class="section-tag"><i data-icon="message-circle" data-size="14"></i> Ils en parlent mieux que nous</div>
+    <div class="section-tag">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      Ils en parlent mieux que nous
+    </div>
     <h2 class="section-title">Ce que disent<br/><span class="text-purple">nos clients</span></h2>
 
     <div class="testi-grid">
-      <div class="testi-card testi-featured">
-        <div class="testi-stars"><i data-icon="star" data-size="16" data-fill></i><i data-icon="star" data-size="16" data-fill></i><i data-icon="star" data-size="16" data-fill></i><i data-icon="star" data-size="16" data-fill></i><i data-icon="star" data-size="16" data-fill></i></div>
-        <p class="testi-text">"Le fait de ne rien payer avant d'avoir vu le site, c'est ce qui m'a décidé. En 38 heures j'avais exactement ce que je voulais. Le design est magnifique, mes clients me complimentent tous les jours dessus. Pour 49€, c'est imbattable."</p>
+      <div class="testi-featured reveal">
+        <div class="testi-stars">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#facc15" stroke="#facc15" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#facc15" stroke="#facc15" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#facc15" stroke="#facc15" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#facc15" stroke="#facc15" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#facc15" stroke="#facc15" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <div class="testi-quote">"</div>
+        <p class="testi-text">Le fait de ne rien payer avant d'avoir vu le site, c'est ce qui m'a décidé. En 38 heures j'avais exactement ce que je voulais. Le design est magnifique, mes clients me complimentent tous les jours dessus. Pour 49€, c'est imbattable.</p>
         <div class="testi-author">
-          <span class="testi-avatar">MT</span>
+          <span class="testi-av" style="--hue:250">MT</span>
           <div>
             <strong>Marco T.</strong>
             <span>Restaurant La Bella Italia · Lyon</span>
           </div>
         </div>
-      </div>
-      <div class="testi-card">
-        <div class="testi-stars"><i data-icon="star" data-size="14" data-fill></i><i data-icon="star" data-size="14" data-fill></i><i data-icon="star" data-size="14" data-fill></i><i data-icon="star" data-size="14" data-fill></i><i data-icon="star" data-size="14" data-fill></i></div>
-        <p class="testi-text">"Franchement bluffée. J'avais peur que ce soit générique mais non, le site ressemble vraiment à ma marque. Et la réactivité de l'équipe est top !"</p>
-        <div class="testi-author">
-          <span class="testi-avatar">SM</span>
-          <div>
-            <strong>Sarah M.</strong>
-            <span>Institut Sens & Beauté · Paris</span>
-          </div>
+        <div class="testi-verified">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          Client vérifié
         </div>
       </div>
-      <div class="testi-card">
-        <div class="testi-stars"><i data-icon="star" data-size="14" data-fill></i><i data-icon="star" data-size="14" data-fill></i><i data-icon="star" data-size="14" data-fill></i><i data-icon="star" data-size="14" data-fill></i><i data-icon="star" data-size="14" data-fill></i></div>
-        <p class="testi-text">"En tant qu'artisan je n'y connaissais rien aux sites web. Le formulaire est simple, le résultat pro. J'ai déjà eu 3 devis grâce à mon site la première semaine !"</p>
-        <div class="testi-author">
-          <span class="testi-avatar">KB</span>
-          <div>
-            <strong>Karim B.</strong>
-            <span>Artisan peintre · Marseille</span>
+
+      <div class="testi-col">
+        <div class="testi-card reveal">
+          <div class="testi-stars">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#facc15" stroke="#facc15" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#facc15" stroke="#facc15" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#facc15" stroke="#facc15" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#facc15" stroke="#facc15" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#facc15" stroke="#facc15" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <p>"Franchement bluffée. J'avais peur que ce soit générique mais non, le site ressemble vraiment à ma marque. Et la réactivité de l'équipe est top !"</p>
+          <div class="testi-author">
+            <span class="testi-av" style="--hue:340">SM</span>
+            <div><strong>Sarah M.</strong><span>Institut Sens &amp; Beauté · Paris</span></div>
           </div>
         </div>
-      </div>
-      <div class="testi-card">
-        <div class="testi-stars"><i data-icon="star" data-size="14" data-fill></i><i data-icon="star" data-size="14" data-fill></i><i data-icon="star" data-size="14" data-fill></i><i data-icon="star" data-size="14" data-fill></i><i data-icon="star" data-size="14" data-fill></i></div>
-        <p class="testi-text">"J'avais des devis d'agences à 4 000€. Ici j'ai payé 49€, à la livraison, une fois le site validé. Honnêtement je ne comprends pas comment c'est possible mais je recommande à 200%."</p>
-        <div class="testi-author">
-          <span class="testi-avatar">LP</span>
-          <div>
-            <strong>Léa P.</strong>
-            <span>Coach business · Bordeaux</span>
+
+        <div class="testi-card reveal">
+          <div class="testi-stars">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#facc15" stroke="#facc15" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#facc15" stroke="#facc15" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#facc15" stroke="#facc15" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#facc15" stroke="#facc15" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#facc15" stroke="#facc15" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <p>"En tant qu'artisan je n'y connaissais rien aux sites web. Le formulaire est simple, le résultat pro. J'ai déjà eu 3 devis grâce à mon site la première semaine !"</p>
+          <div class="testi-author">
+            <span class="testi-av" style="--hue:160">KB</span>
+            <div><strong>Karim B.</strong><span>Artisan peintre · Marseille</span></div>
+          </div>
+        </div>
+
+        <div class="testi-card reveal">
+          <div class="testi-stars">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#facc15" stroke="#facc15" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#facc15" stroke="#facc15" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#facc15" stroke="#facc15" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#facc15" stroke="#facc15" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#facc15" stroke="#facc15" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <p>"J'avais des devis d'agences à 4 000€. Ici j'ai payé 49€, à la livraison. Honnêtement je ne comprends pas comment c'est possible mais je recommande à 200%."</p>
+          <div class="testi-author">
+            <span class="testi-av" style="--hue:30">LP</span>
+            <div><strong>Léa P.</strong><span>Coach business · Bordeaux</span></div>
           </div>
         </div>
       </div>
@@ -401,151 +524,285 @@
   </div>
 </section>
 
-<!-- TARIF -->
+<!-- ═══════════════════════════ TARIF ═══════════════════════════ -->
 <section class="pricing-section" id="tarifs">
   <div class="container">
-    <div class="section-tag"><i data-icon="euro" data-size="14"></i> Transparent &amp; sans surprise</div>
-    <h2 class="section-title">Un seul prix.<br/><span class="text-purple">Tout compris.</span></h2>
-    <p class="section-sub">Et vous ne payez qu'à la livraison, une fois votre site validé.</p>
-
-    <div class="pricing-single">
-      <div class="price-card price-card-popular price-card-main">
-        <div class="price-popular-tag"><i data-icon="zap" data-size="13"></i> Offre de lancement</div>
-        <div class="price-top">
-          <div class="price-name">Site vitrine complet</div>
-          <div class="price-amount"><span class="price-currency">€</span>49</div>
-          <div class="price-desc">Payable uniquement à la livraison — 0€ aujourd'hui</div>
-        </div>
-        <ul class="price-features">
-          <li><span class="check"><i data-icon="check" data-size="15"></i></span> Site sur-mesure jusqu'à 3 pages</li>
-          <li><span class="check"><i data-icon="check" data-size="15"></i></span> Nom de domaine .fr ou .com (1 an inclus)</li>
-          <li><span class="check"><i data-icon="check" data-size="15"></i></span> Hébergement + certificat SSL (1 an inclus)</li>
-          <li><span class="check"><i data-icon="check" data-size="15"></i></span> Design responsive mobile / tablette</li>
-          <li><span class="check"><i data-icon="check" data-size="15"></i></span> Formulaire de contact + Google Maps</li>
-          <li><span class="check"><i data-icon="check" data-size="15"></i></span> Référencement Google de base</li>
-          <li><span class="check"><i data-icon="check" data-size="15"></i></span> Livraison en 48h + 1 révision gratuite</li>
-        </ul>
-        <a href="/commander.html" class="price-btn price-btn-popular">Créer mon site — 0€ aujourd'hui</a>
-      </div>
-
-      <div class="price-options-card">
-        <div class="price-options-title"><i data-icon="settings" data-size="18"></i> Options à la carte</div>
-        <ul class="price-options-list">
-          <li><span>Page supplémentaire (au-delà de 3)</span><strong>+10€</strong></li>
-          <li><span>Réservation en ligne</span><strong>+29€</strong></li>
-          <li><span>Blog / actualités</span><strong>+19€</strong></li>
-          <li><span>Galerie photos avancée</span><strong>+15€</strong></li>
-          <li><span>Création de logo simple</span><strong>+25€</strong></li>
-          <li><span>Livraison prioritaire 24h</span><strong>+20€</strong></li>
-        </ul>
-        <div class="price-options-note">Les options se choisissent dans le formulaire de commande. Tout reste payable à la livraison.</div>
-      </div>
+    <div class="section-tag">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+      Transparent &amp; sans surprise
     </div>
+    <h2 class="section-title">Un seul prix.<br/><span class="text-purple">Tout compris.</span></h2>
+    <p class="section-sub">Vous ne payez qu'à la livraison, une fois votre site validé.</p>
 
-    <div class="pricing-guarantee">
-      <img src="/images/illustration-guarantee.svg" alt="" class="guarantee-illustration" aria-hidden="true" />
-      <div>
-        <strong>Garantie zéro risque</strong>
-        <p>Vous ne payez rien à la commande. Si le site livré ne vous plaît pas après révision, vous ne payez rien du tout. C'est aussi simple que ça.</p>
+    <div class="pricing-wrap">
+      <div class="price-main reveal">
+        <div class="price-badge">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          Offre de lancement
+        </div>
+        <div class="price-name">Site vitrine complet</div>
+        <div class="price-amount">
+          <span class="pa-currency">€</span>
+          <span class="pa-number">49</span>
+        </div>
+        <p class="price-when">Payable uniquement à la livraison — <strong>0€ aujourd'hui</strong></p>
+
+        <ul class="price-features">
+          <li>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Site sur-mesure jusqu'à 3 pages
+          </li>
+          <li>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Nom de domaine .fr ou .com (1 an inclus)
+          </li>
+          <li>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Hébergement + certificat SSL (1 an inclus)
+          </li>
+          <li>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Design responsive mobile / tablette
+          </li>
+          <li>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Formulaire de contact + Google Maps
+          </li>
+          <li>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Référencement Google de base
+          </li>
+          <li>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Livraison en 48h + 1 révision gratuite
+          </li>
+        </ul>
+
+        <a href="/commander.html" class="price-btn">
+          Créer mon site — 0€ aujourd'hui
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+
+        <div class="price-guarantee">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <span>Garantie zéro risque — 0€ si pas satisfait</span>
+        </div>
+      </div>
+
+      <div class="price-options reveal">
+        <div class="price-options-header">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>
+          Options à la carte
+        </div>
+        <p class="price-options-sub">Ajoutez des fonctionnalités selon vos besoins</p>
+        <ul class="price-options-list">
+          <li>
+            <div class="pol-left">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+              Page supplémentaire
+            </div>
+            <strong>+10€</strong>
+          </li>
+          <li>
+            <div class="pol-left">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              Réservation en ligne
+            </div>
+            <strong>+29€</strong>
+          </li>
+          <li>
+            <div class="pol-left">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+              Blog / actualités
+            </div>
+            <strong>+19€</strong>
+          </li>
+          <li>
+            <div class="pol-left">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+              Galerie photos avancée
+            </div>
+            <strong>+15€</strong>
+          </li>
+          <li>
+            <div class="pol-left">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="13.5" cy="6.5" r=".5"/><circle cx="17.5" cy="10.5" r=".5"/><circle cx="8.5" cy="7.5" r=".5"/><circle cx="6.5" cy="12.5" r=".5"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg>
+              Création de logo simple
+            </div>
+            <strong>+25€</strong>
+          </li>
+          <li>
+            <div class="pol-left">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+              Livraison prioritaire 24h
+            </div>
+            <strong>+20€</strong>
+          </li>
+        </ul>
+        <p class="pol-note">Tout reste payable à la livraison. Choisissez vos options dans le formulaire de commande.</p>
+
+        <div class="price-options-cta">
+          <a href="/commander.html" class="btn-outline-purple">Voir le formulaire complet</a>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- FAQ -->
+<!-- ═══════════════════════════ FAQ ═══════════════════════════ -->
 <section class="faq-section" id="faq">
   <div class="container">
-    <div class="section-tag"><i data-icon="message-circle" data-size="14"></i> Vos questions</div>
+    <div class="section-tag">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      Vos questions
+    </div>
     <h2 class="section-title">On répond à tout</h2>
 
-    <div class="faq-list">
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">
-          Je ne paie vraiment rien à la commande ? <span class="faq-arrow"><i data-icon="chevron-down" data-size="16"></i></span>
-        </button>
-        <div class="faq-a">
-          Exactement. Vous passez commande gratuitement, sans carte bancaire. On crée votre site, on vous envoie un aperçu. S'il vous plaît, vous réglez 49€ (+ vos options éventuelles) par carte via un lien sécurisé Stripe, et on met le site en ligne. S'il ne vous plaît pas après révision, vous ne payez rien.
+    <div class="faq-grid">
+      <div class="faq-list">
+        <div class="faq-item reveal">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            Je ne paie vraiment rien à la commande ?
+            <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-a">
+            Exactement. Vous passez commande gratuitement, sans carte bancaire. On crée votre site, on vous envoie un aperçu. S'il vous plaît, vous réglez 49€ (+ vos options éventuelles) par carte via un lien sécurisé Stripe, et on met le site en ligne. S'il ne vous plaît pas après révision, vous ne payez rien.
+          </div>
+        </div>
+
+        <div class="faq-item reveal">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            Comment ça peut coûter seulement 49€ ?
+            <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-a">
+            Nous avons industrialisé notre méthode de création : brief ultra-complet dès le départ (donc zéro aller-retour inutile), outils modernes, et un volume de commandes qui nous permet de garder des prix bas. Vous obtenez la qualité d'une agence, sans payer la structure d'une agence.
+          </div>
+        </div>
+
+        <div class="faq-item reveal">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            Que se passe-t-il pour mon nom de domaine ?
+            <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-a">
+            Si vous n'en avez pas, on achète et configure pour vous un .fr ou .com (1ère année incluse dans les 49€). Si vous en avez déjà un, on vous guide pour la connexion : soit une simple modification DNS que l'on vous explique pas à pas, soit vous nous transmettez les accès par un canal sécurisé.
+          </div>
+        </div>
+
+        <div class="faq-item reveal">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            Et si je n'ai ni textes, ni logo, ni photos ?
+            <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-a">
+            Aucun problème, c'est le cas de la plupart de nos clients. On rédige vos textes à partir de votre description (inclus), on utilise des photos professionnelles libres de droits (inclus), et on peut créer un logo simple (+25€) ou utiliser votre nom dans une belle typographie (gratuit).
+          </div>
+        </div>
+
+        <div class="faq-item reveal">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            Le site fonctionnera sur mobile ?
+            <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-a">
+            Absolument. Tous nos sites s'adaptent parfaitement aux smartphones, tablettes et ordinateurs. La majorité de vos visiteurs viendront depuis leur téléphone — c'est notre priorité n°1.
+          </div>
+        </div>
+
+        <div class="faq-item reveal">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            Que se passe-t-il après la première année ?
+            <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-a">
+            Le domaine et l'hébergement sont inclus 1 an. Ensuite, le renouvellement est de 39€/an (domaine + hébergement + SSL), sans engagement. Vous êtes prévenu 1 mois avant, et vous restez propriétaire de votre site et de votre domaine.
+          </div>
         </div>
       </div>
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">
-          Comment ça peut coûter seulement 49€ ? <span class="faq-arrow"><i data-icon="chevron-down" data-size="16"></i></span>
-        </button>
-        <div class="faq-a">
-          Nous avons industrialisé notre méthode de création : brief ultra-complet dès le départ (donc zéro aller-retour inutile), outils modernes, et un volume de commandes qui nous permet de garder des prix bas. Vous obtenez la qualité d'une agence, sans payer la structure d'une agence.
+
+      <div class="faq-aside">
+        <div class="faq-aside-card">
+          <div class="fac-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3>Garantie zéro risque</h3>
+          <p>0€ à la commande. Si le site livré ne vous plaît pas après révision, vous ne payez rien du tout.</p>
         </div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">
-          Que se passe-t-il pour mon nom de domaine ? <span class="faq-arrow"><i data-icon="chevron-down" data-size="16"></i></span>
-        </button>
-        <div class="faq-a">
-          Si vous n'en avez pas, on achète et configure pour vous un .fr ou .com (1ère année incluse dans les 49€). Si vous en avez déjà un, on vous guide pour la connexion : soit une simple modification DNS que l'on vous explique pas à pas, soit vous nous transmettez les accès par un canal sécurisé (jamais par le formulaire).
-        </div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">
-          Et si je n'ai ni textes, ni logo, ni photos ? <span class="faq-arrow"><i data-icon="chevron-down" data-size="16"></i></span>
-        </button>
-        <div class="faq-a">
-          Aucun problème, c'est le cas de la plupart de nos clients. On rédige vos textes à partir de votre description (inclus), on utilise des photos professionnelles libres de droits adaptées à votre secteur (inclus), et on peut créer un logo simple (+25€) ou utiliser votre nom dans une belle typographie (gratuit).
-        </div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">
-          Le site fonctionnera sur mobile ? <span class="faq-arrow"><i data-icon="chevron-down" data-size="16"></i></span>
-        </button>
-        <div class="faq-a">
-          Absolument. Tous nos sites s'adaptent parfaitement aux smartphones, tablettes et ordinateurs. La majorité de vos visiteurs viendront depuis leur téléphone — c'est notre priorité n°1.
-        </div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">
-          Que se passe-t-il après la première année ? <span class="faq-arrow"><i data-icon="chevron-down" data-size="16"></i></span>
-        </button>
-        <div class="faq-a">
-          Le domaine et l'hébergement sont inclus 1 an. Ensuite, le renouvellement est de 39€/an (domaine + hébergement + SSL), sans engagement. Vous êtes prévenu 1 mois avant, et vous restez propriétaire de votre site et de votre domaine.
+        <div class="faq-aside-card">
+          <div class="fac-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          </div>
+          <h3>Une question ?</h3>
+          <p>Notre équipe répond en moins de 2h.</p>
+          <a href="mailto:contact@webify.fr" class="btn-outline-purple sm">Nous contacter</a>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CTA FINAL -->
+<!-- ═══════════════════════════ CTA FINAL ═══════════════════════════ -->
 <section class="final-cta">
-  <div class="final-cta-bg">
-    <div class="final-orb-1"></div>
-    <div class="final-orb-2"></div>
+  <div class="final-bg">
+    <div class="f-orb f-orb-1"></div>
+    <div class="f-orb f-orb-2"></div>
+    <div class="f-orb f-orb-3"></div>
+    <div class="f-grid"></div>
   </div>
-  <div class="container final-cta-inner">
-    <h2>Votre site pro à <span>49€</span>,<br/>sans risque, dans 48h ?</h2>
+  <div class="container final-inner">
+    <div class="final-badge">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      Offre limitée
+    </div>
+    <h2>Votre site pro à <span>49€</span>,<br/>sans risque, dans 48h</h2>
     <p>0€ aujourd'hui. Vous payez uniquement quand votre site est prêt et vous plaît.</p>
-    <a href="/commander.html" class="btn-final">Créer mon site maintenant →</a>
-    <div class="final-badges">
-      <span><i data-icon="zap" data-size="14"></i> Livraison 48h</span>
-      <span><i data-icon="shield" data-size="14"></i> 0€ si pas satisfait</span>
-      <span><i data-icon="lock" data-size="14"></i> Paiement sécurisé Stripe</span>
+    <a href="/commander.html" class="btn-final">
+      Créer mon site maintenant
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </a>
+    <div class="final-trust">
+      <span>
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        Livraison 48h
+      </span>
+      <span>
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        0€ si pas satisfait
+      </span>
+      <span>
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        Paiement sécurisé Stripe
+      </span>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
+<!-- ═══════════════════════════ FOOTER ═══════════════════════════ -->
 <footer class="footer">
   <div class="container footer-inner">
-    <div class="footer-logo"><span class="logo-mark logo-mark-sm"><img src="/images/logo.svg" alt="Webify" /></span> <strong>Webify</strong></div>
+    <div class="footer-brand">
+      <a href="/" class="footer-logo">
+        <span class="nav-logo-icon sm">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        </span>
+        <strong>Webify</strong>
+      </a>
+      <p>Site vitrine pro à 49€, livré en 48h.</p>
+    </div>
     <div class="footer-links">
       <a href="/tracking.html">Suivi de commande</a>
       <a href="#faq">FAQ</a>
+      <a href="/blog.html">Blog</a>
       <a href="mailto:contact@webify.fr">Contact</a>
       <a href="/admin">Admin</a>
     </div>
-    <div class="footer-copy">© 2026 Site Vitrine Express · Tous droits réservés</div>
+    <div class="footer-copy">© 2026 Webify · Tous droits réservés</div>
   </div>
 </footer>
 
 <div id="toast" class="toast"></div>
 
-<script src="/js/icons.js"></script>
 <script src="/js/pixel.js"></script>
 <script src="/js/landing.js"></script>
 </body>
