@@ -3,22 +3,7 @@
   "devCommand": "node server.js",
   "framework": "express",
   "env": {
-    "STRIPE_PUBLISHABLE_KEY": "@STRIPE_PUBLISHABLE_KEY",
-    "STRIPE_SECRET_KEY": "@STRIPE_SECRET_KEY",
-    "STRIPE_WEBHOOK_SECRET": "@STRIPE_WEBHOOK_SECRET",
-    "SUPABASE_URL": "@SUPABASE_URL",
-    "SUPABASE_ANON_KEY": "@SUPABASE_ANON_KEY",
-    "SUPABASE_SERVICE_ROLE_KEY": "@SUPABASE_SERVICE_ROLE_KEY",
-    "SESSION_SECRET": "@SESSION_SECRET",
-    "ADMIN_EMAIL": "@ADMIN_EMAIL",
-    "ADMIN_PASSWORD": "@ADMIN_PASSWORD",
-    "SMTP_HOST": "@SMTP_HOST",
-    "SMTP_PORT": "@SMTP_PORT",
-    "SMTP_USER": "@SMTP_USER",
-    "SMTP_PASS": "@SMTP_PASS",
-    "RESEND_API_KEY": "@RESEND_API_KEY",
     "EMAIL_FROM": "Webify <noreply@webify-app.com>",
-    "BASE_URL": "https://webify-app.com",
-    "META_PIXEL_ID": "@META_PIXEL_ID"
+    "BASE_URL": "https://webify-app.com"
   }
 }
