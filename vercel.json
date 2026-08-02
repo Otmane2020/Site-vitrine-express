@@ -3,13 +3,22 @@
   "devCommand": "node server.js",
   "framework": "express",
   "env": {
-    "STRIPE_SECRET_KEY": "sk_test_REMPLACEZ_PAR_VOTRE_CLE",
-    "STRIPE_PUBLISHABLE_KEY": "pk_test_REMPLACEZ_PAR_VOTRE_CLE",
-    "STRIPE_WEBHOOK_SECRET": "whsec_test",
-    "SUPABASE_URL": "https://lwvdqvsgwirzbtvfqovz.supabase.co",
-    "SUPABASE_ANON_KEY": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx3dmRxdnNnd2lyemJ0dmZxb3Z6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODQ0ODUxOTEsImV4cCI6MjEwMDA2MTE5MX0.WdkN0d3yDSC3n4wpEKx0zJBU52mY-MREyEUW5Tfie6E",
-    "SESSION_SECRET": "site-vitrine-express-secret-2025",
-    "ADMIN_EMAIL": "admin@example.com",
-    "ADMIN_PASSWORD": "admin123"
+    "STRIPE_PUBLISHABLE_KEY": "@STRIPE_PUBLISHABLE_KEY",
+    "STRIPE_SECRET_KEY": "@STRIPE_SECRET_KEY",
+    "STRIPE_WEBHOOK_SECRET": "@STRIPE_WEBHOOK_SECRET",
+    "SUPABASE_URL": "@SUPABASE_URL",
+    "SUPABASE_ANON_KEY": "@SUPABASE_ANON_KEY",
+    "SUPABASE_SERVICE_ROLE_KEY": "@SUPABASE_SERVICE_ROLE_KEY",
+    "SESSION_SECRET": "@SESSION_SECRET",
+    "ADMIN_EMAIL": "@ADMIN_EMAIL",
+    "ADMIN_PASSWORD": "@ADMIN_PASSWORD",
+    "SMTP_HOST": "@SMTP_HOST",
+    "SMTP_PORT": "@SMTP_PORT",
+    "SMTP_USER": "@SMTP_USER",
+    "SMTP_PASS": "@SMTP_PASS",
+    "RESEND_API_KEY": "@RESEND_API_KEY",
+    "EMAIL_FROM": "Webify <noreply@webify-app.com>",
+    "BASE_URL": "https://webify-app.com",
+    "META_PIXEL_ID": "@META_PIXEL_ID"
   }
 }

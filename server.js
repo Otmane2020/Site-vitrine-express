@@ -30,6 +30,7 @@ app.get('/api/config', (req, res) => {
 app.use('/api/orders', require('./src/routes/orders'));
 app.use('/api/payment', require('./src/routes/payment'));
 app.use('/api/admin', require('./src/routes/admin'));
+app.use('/api/blog', require('./src/routes/blog'));
 app.use('/webhook', require('./src/routes/webhook'));
 
 // SPA fallback for admin panel
@@ -38,6 +39,9 @@ app.get('/admin*', (req, res) => {
 });
 app.get('/tracking*', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'tracking.html'));
+});
+app.get('/blog*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'blog.html'));
 });
 app.get('/success', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'success.html'));

@@ -3,6 +3,18 @@ const router = express.Router();
 const { v4: uuidv4 } = require('uuid');
 const { run, get, all } = require('../db');
 const { computeTotal } = require('../pricing');
+const nodemailer = require('nodemailer');
+
+// Config email
+const transporter = nodemailer.createTransport({
+  host: process.env.SMTP_HOST || 'smtp.gmail.com',
+  port: parseInt(process.env.SMTP_PORT || '587'),
+  secure: false,
+  auth: {
+    user: process.env.SMTP_USER,
+    pass: process.env.SMTP_PASS
+  }
+});
 
 function generateTrackingCode() {
   return 'WEB-' + Math.random().toString(36).substring(2, 8).toUpperCase();
@@ -64,6 +76,27 @@ router.post('/', async (req, res) => {
       [id, 'in_progress', `Livraison prévue avant le ${new Date(deadline).toLocaleString('fr-FR')}`]);
 
     await run("UPDATE orders SET status = 'in_progress' WHERE id = ?", [id]);
+
+    // Envoyer email de confirmation
+    try {
+      const trackingUrl = `${process.env.BASE_URL || 'https://webify-app.com'}/tracking.html?code=${tracking_code}`;
+      await transporter.sendMail({
+        from: process.env.EMAIL_FROM || 'noreply@webify-app.com',
+        to: client_email,
+        subject: `Votre commande Webify reçue — Suivi: ${tracking_code}`,
+        html: `
+          <h2>Merci pour votre commande !</h2>
+          <p>Nous avons reçu votre demande pour <strong>${business_name}</strong>.</p>
+          <p><strong>Code de suivi:</strong> ${tracking_code}</p>
+          <p><strong>Montant:</strong> ${total}€ (à payer à la livraison)</p>
+          <p><strong>Livraison prévue:</strong> ${new Date(deadline).toLocaleString('fr-FR')}</p>
+          <p><a href="${trackingUrl}" style="background: #0066ff; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; display: inline-block;">Suivre ma commande</a></p>
+          <p>Nous vous contacterons au <strong>${client_phone}</strong> pour valider les détails.</p>
+        `
+      });
+    } catch (emailErr) {
+      console.warn('Email non envoyé (non bloquant):', emailErr.message);
+    }
 
     res.json({ order_id: id, tracking_code, amount: total });
   } catch (err) {
