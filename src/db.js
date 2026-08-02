@@ -4,6 +4,7 @@ const path = require('path');
 const fs = require('fs');
 const bcrypt = require('bcryptjs');
 
+
 const USE_SUPABASE = !!(process.env.SUPABASE_URL && process.env.SUPABASE_SERVICE_ROLE_KEY);
 
 let supabase;
@@ -35,19 +36,31 @@ function parseInsert(sql, params) {
 }
 
 function parseUpdate(sql, params) {
-  // UPDATE table SET col1 = ?, col2 = ? WHERE id = ?
+  // UPDATE table SET col1 = ?, col2 = 'literal' WHERE id = ?
   const tableMatch = sql.match(/UPDATE\s+(\w+)\s+SET/i);
   const whereMatch = sql.match(/WHERE\s+(\w+)\s*=\s*\?/i);
   if (!tableMatch) throw new Error('Cannot parse UPDATE: ' + sql);
 
   const table = tableMatch[1];
   const setStr = sql.match(/SET\s+(.*?)\s*WHERE/i)?.[1] || sql.match(/SET\s+(.*)/i)?.[1];
-  const setCols = setStr.split(',').map(s => s.trim().split(/\s*=\s*\?/)[0].trim());
 
   const updates = {};
-  setCols.forEach((col, i) => { updates[col] = params[i]; });
+  let paramIdx = 0;
+  for (const pair of setStr.split(',').map(s => s.trim())) {
+    const eqIdx = pair.indexOf('=');
+    const col = pair.substring(0, eqIdx).trim();
+    const valStr = pair.substring(eqIdx + 1).trim();
+    if (valStr === '?') {
+      updates[col] = params[paramIdx++];
+    } else if (valStr.startsWith("'") && valStr.endsWith("'")) {
+      updates[col] = valStr.slice(1, -1);
+    } else {
+      updates[col] = params[paramIdx++];
+    }
+  }
+
   const whereCol = whereMatch?.[1] || 'id';
-  const whereVal = params[setCols.length];
+  const whereVal = params[paramIdx];
 
   return { table, updates, whereCol, whereVal };
 }
