@@ -27,6 +27,7 @@ app.get('/api/config', (req, res) => {
 });
 
 // Routes
+app.use('/api/init', require('./src/routes/init'));
 app.use('/api/orders', require('./src/routes/orders'));
 app.use('/api/payment', require('./src/routes/payment'));
 app.use('/api/admin', require('./src/routes/admin'));

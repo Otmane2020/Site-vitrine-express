@@ -20,7 +20,10 @@ function getDb() {
 function run(sql, params = []) {
   return new Promise((resolve, reject) => {
     getDb().run(sql, params, function (err) {
-      if (err) return reject(err);
+      if (err) {
+        console.error('❌ DB Error:', err.message, '\nSQL:', sql);
+        return reject(err);
+      }
       resolve({ lastID: this.lastID, changes: this.changes });
     });
   });
@@ -28,13 +31,25 @@ function run(sql, params = []) {
 
 function get(sql, params = []) {
   return new Promise((resolve, reject) => {
-    getDb().get(sql, params, (err, row) => err ? reject(err) : resolve(row));
+    getDb().get(sql, params, (err, row) => {
+      if (err) {
+        console.error('❌ DB Error:', err.message, '\nSQL:', sql);
+        return reject(err);
+      }
+      resolve(row);
+    });
   });
 }
 
 function all(sql, params = []) {
   return new Promise((resolve, reject) => {
-    getDb().all(sql, params, (err, rows) => err ? reject(err) : resolve(rows));
+    getDb().all(sql, params, (err, rows) => {
+      if (err) {
+        console.error('❌ DB Error:', err.message, '\nSQL:', sql);
+        return reject(err);
+      }
+      resolve(rows);
+    });
   });
 }
 
@@ -100,10 +115,10 @@ async function initDb() {
     const password = process.env.ADMIN_PASSWORD || 'admin123';
     const hash = bcrypt.hashSync(password, 10);
     await run('INSERT INTO admins (email, password) VALUES (?, ?)', [email, hash]);
-    console.log(`👤 Admin créé: ${email} / ${password}`);
+    console.log(`👤 Admin créé: ${email}`);
   }
 
-  console.log('🗄️  Base de données initialisée');
+  console.log('🗄️  Base de données SQLite initialisée');
 }
 
 module.exports = { getDb, initDb, run, get, all };
