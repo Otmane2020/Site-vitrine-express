@@ -71,6 +71,9 @@ router.post('/', async (req, res) => {
     // Envoyer email de confirmation avec Resend
     try {
       const trackingUrl = `${process.env.BASE_URL || 'https://webify-app.com'}/tracking.html?code=${tracking_code}`;
+      const adminUrl = `${process.env.BASE_URL || 'https://webify-app.com'}/admin`;
+
+      // Email client
       await resend.emails.send({
         from: process.env.EMAIL_FROM || 'Webify <noreply@webify-app.com>',
         to: client_email,
@@ -83,6 +86,30 @@ router.post('/', async (req, res) => {
           <p><strong>Livraison prévue:</strong> ${new Date(deadline).toLocaleString('fr-FR')}</p>
           <p><a href="${trackingUrl}" style="background: #7c3aed; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; display: inline-block;">Suivre ma commande</a></p>
           <p>Nous vous contacterons au <strong>${client_phone}</strong> pour valider les détails.</p>
+        `
+      });
+
+      // Email admin — notification nouvelle commande
+      await resend.emails.send({
+        from: process.env.EMAIL_FROM || 'Webify <noreply@webify-app.com>',
+        to: 'oben.rockman@gmail.com',
+        subject: `🆕 Nouvelle commande — ${business_name} (${tracking_code})`,
+        html: `
+          <h2>Nouvelle commande reçue</h2>
+          <table style="border-collapse:collapse;width:100%;font-family:sans-serif;font-size:14px">
+            <tr><td style="padding:8px;font-weight:bold;background:#f3f4f6">Client</td><td style="padding:8px">${client_name}</td></tr>
+            <tr><td style="padding:8px;font-weight:bold;background:#f3f4f6">Email</td><td style="padding:8px"><a href="mailto:${client_email}">${client_email}</a></td></tr>
+            <tr><td style="padding:8px;font-weight:bold;background:#f3f4f6">Téléphone</td><td style="padding:8px"><a href="tel:${client_phone}">${client_phone}</a></td></tr>
+            <tr><td style="padding:8px;font-weight:bold;background:#f3f4f6">Entreprise</td><td style="padding:8px">${business_name}</td></tr>
+            <tr><td style="padding:8px;font-weight:bold;background:#f3f4f6">Secteur</td><td style="padding:8px">${business_type || '—'}</td></tr>
+            <tr><td style="padding:8px;font-weight:bold;background:#f3f4f6">Description</td><td style="padding:8px">${description}</td></tr>
+            <tr><td style="padding:8px;font-weight:bold;background:#f3f4f6">Montant</td><td style="padding:8px"><strong>${total}€</strong></td></tr>
+            <tr><td style="padding:8px;font-weight:bold;background:#f3f4f6">Code suivi</td><td style="padding:8px">${tracking_code}</td></tr>
+            <tr><td style="padding:8px;font-weight:bold;background:#f3f4f6">Domaine</td><td style="padding:8px">${domain_choice || '—'}${domain_name ? ' — ' + domain_name : ''}</td></tr>
+            <tr><td style="padding:8px;font-weight:bold;background:#f3f4f6">Livraison</td><td style="padding:8px">${new Date(deadline).toLocaleString('fr-FR')}</td></tr>
+          </table>
+          <br>
+          <a href="${adminUrl}" style="background:#7c3aed;color:white;padding:12px 24px;text-decoration:none;border-radius:6px;display:inline-block;font-weight:bold">Ouvrir l'admin</a>
         `
       });
     } catch (emailErr) {
