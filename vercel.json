@@ -4,6 +4,7 @@
   "framework": "express",
   "env": {
     "EMAIL_FROM": "Webify <noreply@webify-app.com>",
-    "BASE_URL": "https://webify-app.com"
+    "BASE_URL": "https://webify-app.com",
+    "META_PIXEL_ID": "884375811042009"
   }
 }
