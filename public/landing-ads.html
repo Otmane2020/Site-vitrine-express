@@ -120,10 +120,13 @@
   </div>
 </div>
 
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18368274637"></script>
 <script>
-// Google Analytics conversion tracking
+// Google Ads conversion tracking (compte 9639623084 — action "Webify — Lead formulaire")
 window.dataLayer = window.dataLayer || [];
 function gtag() { dataLayer.push(arguments); }
+gtag('js', new Date());
+gtag('config', 'AW-18368274637');
 
 document.getElementById('leadForm').addEventListener('submit', async (e) => {
   e.preventDefault();
@@ -149,10 +152,9 @@ document.getElementById('leadForm').addEventListener('submit', async (e) => {
     });
 
     if (res.ok) {
-      // Google Analytics conversion
+      // Conversion Google Ads réelle — déclenchée uniquement après un lead accepté par /api/leads
       gtag('event', 'conversion', {
-        'conversion_id': 'AW-16759234568',
-        'conversion_label': 'webify_lead'
+        'send_to': 'AW-18368274637/h8Q1CO6uh9wcEM3B1rZE'
       });
 
       document.getElementById('leadForm').style.display = 'none';
