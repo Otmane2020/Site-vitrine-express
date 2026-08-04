@@ -362,4 +362,68 @@ router.post('/create-campaign', async (req, res) => {
   }
 });
 
+// ── STEP 5: Remplacer un mot-clé (ex: volume de recherche trop faible) par des alternatives plus larges ──
+router.post('/replace-keyword/:customerId', async (req, res) => {
+  let { customerId } = req.params;
+  const {
+    oldKeywordText,
+    newKeywords = ['création site internet', 'site internet pas cher', 'création site web pas cher']
+  } = req.body;
+
+  if (!oldKeywordText) {
+    return res.status(400).json({ error: 'oldKeywordText manquant' });
+  }
+  customerId = String(customerId).replace('customers/', '');
+
+  try {
+    const accessToken = await getValidAccessToken();
+    if (!accessToken) {
+      return res.status(401).json({ error: 'Non connecté. Va sur /connect d\'abord' });
+    }
+
+    // 1) Retrouver le mot-clé et son groupe d'annonces
+    const searchRes = await axios.post(
+      `${ADS_API_BASE}/customers/${customerId}/googleAds:search`,
+      {
+        query: `SELECT ad_group_criterion.resource_name, ad_group_criterion.ad_group, ad_group_criterion.keyword.text
+                 FROM ad_group_criterion
+                 WHERE ad_group_criterion.type = 'KEYWORD'`
+      },
+      { headers: adsHeaders(accessToken, customerId) }
+    );
+
+    const match = (searchRes.data.results || []).find(
+      r => r.adGroupCriterion.keyword.text.toLowerCase() === oldKeywordText.toLowerCase()
+    );
+
+    if (!match) {
+      return res.status(404).json({ error: `Mot-clé "${oldKeywordText}" introuvable` });
+    }
+
+    const adGroupResourceName = match.adGroupCriterion.adGroup;
+    const oldResourceName = match.adGroupCriterion.resourceName;
+
+    // 2) Retirer l'ancien mot-clé
+    await mutate(customerId, 'adGroupCriteria', accessToken, [{ remove: oldResourceName }]);
+
+    // 3) Ajouter les remplacements (correspondance expression, comme les autres)
+    const createResults = await mutate(customerId, 'adGroupCriteria', accessToken,
+      newKeywords.map(text => ({
+        create: { adGroup: adGroupResourceName, status: 'ENABLED', keyword: { text, matchType: 'PHRASE' } }
+      }))
+    );
+
+    res.json({
+      success: true,
+      removed: oldKeywordText,
+      added: createResults.map(r => r.resourceName)
+    });
+
+  } catch (err) {
+    const details = err.response?.data;
+    console.error('❌ Erreur remplacement mot-clé:', JSON.stringify(details || err.message));
+    res.status(500).json({ error: 'Erreur lors du remplacement du mot-clé', details });
+  }
+});
+
 module.exports = router;
