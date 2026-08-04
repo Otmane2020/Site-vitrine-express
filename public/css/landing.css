@@ -11,12 +11,12 @@
 
 /* ── Design Tokens (skill output) ── */
 :root {
-  /* Backgrounds — OLED-safe, no pure #000 */
-  --bg:          #040813;
-  --bg-base:     #060c1a;
-  --bg-elevated: #0d1526;
-  --surface:     rgba(255,255,255,.04);
-  --surface-2:   rgba(255,255,255,.07);
+  /* Backgrounds — light theme, dark blocks (hero/nav) override locally below */
+  --bg:          #FFFFFF;
+  --bg-base:     #F7F8FB;
+  --bg-elevated: #F1F2F7;
+  --surface:     rgba(15,17,23,.035);
+  --surface-2:   rgba(15,17,23,.06);
 
   /* Accents */
   --accent:      #5E6AD2;          /* indigo — premium */
@@ -29,13 +29,13 @@
   --red:         #ef4444;
 
   /* Foreground */
-  --fg:          #EDEDEF;
-  --fg-muted:    #8A8F98;
-  --fg-dim:      #435470;
+  --fg:          #14151A;
+  --fg-muted:    #5B5F6B;
+  --fg-dim:      #9AA0AC;
 
   /* Borders */
-  --border:      rgba(255,255,255,.08);
-  --border-2:    rgba(94,106,210,.20);
+  --border:      rgba(15,17,23,.09);
+  --border-2:    rgba(94,106,210,.25);
 
   /* Geometry */
   --r:           14px;
@@ -47,8 +47,8 @@
   --ease-out:    cubic-bezier(0.22,1,0.36,1);
 
   /* Shadows */
-  --shadow:      0 4px 24px rgba(0,0,0,.6);
-  --shadow-lg:   0 12px 56px rgba(0,0,0,.7);
+  --shadow:      0 4px 24px rgba(15,17,23,.08);
+  --shadow-lg:   0 12px 56px rgba(15,17,23,.12);
   --shadow-glow: 0 0 48px var(--accent-glow);
 }
 
@@ -63,10 +63,36 @@ body {
   -webkit-tap-highlight-color: transparent;
   /* ambient grid pattern */
   background-image:
+    radial-gradient(ellipse 80% 60% at 50% -10%, rgba(94,106,210,.06), transparent),
+    linear-gradient(rgba(15,17,23,.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(15,17,23,.02) 1px, transparent 1px);
+  background-size: auto, 72px 72px, 72px 72px;
+}
+
+/* ── Dark blocks — hero stays on the original Dark Cinema palette ── */
+.nav,
+.hero {
+  --bg:          #040813;
+  --bg-base:     #060c1a;
+  --bg-elevated: #0d1526;
+  --surface:     rgba(255,255,255,.04);
+  --surface-2:   rgba(255,255,255,.07);
+  --fg:          #EDEDEF;
+  --fg-muted:    #8A8F98;
+  --fg-dim:      #435470;
+  --border:      rgba(255,255,255,.08);
+  --border-2:    rgba(94,106,210,.20);
+  --shadow:      0 4px 24px rgba(0,0,0,.6);
+  --shadow-lg:   0 12px 56px rgba(0,0,0,.7);
+}
+.hero {
+  background: var(--bg);
+  background-image:
     radial-gradient(ellipse 80% 60% at 50% -10%, rgba(94,106,210,.12), transparent),
     linear-gradient(rgba(255,255,255,.013) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255,255,255,.013) 1px, transparent 1px);
   background-size: auto, 72px 72px, 72px 72px;
+  color: var(--fg);
 }
 
 h1, h2, h3, h4 {
