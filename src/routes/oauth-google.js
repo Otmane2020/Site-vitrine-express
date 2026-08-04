@@ -141,6 +141,29 @@ router.get('/accounts', async (req, res) => {
   }
 });
 
+// ── Diagnostic: statut réel du compte (pourquoi CUSTOMER_NOT_ENABLED etc.) ──
+router.get('/customer-status/:customerId', async (req, res) => {
+  const customerId = String(req.params.customerId).replace('customers/', '');
+  try {
+    const accessToken = await getValidAccessToken();
+    if (!accessToken) {
+      return res.status(401).json({ error: 'Non connecté. Va sur /connect d\'abord' });
+    }
+
+    const response = await axios.post(
+      `${ADS_API_BASE}/customers/${customerId}/googleAds:search`,
+      { query: 'SELECT customer.id, customer.descriptive_name, customer.status, customer.test_account, customer.manager, customer.currency_code, customer.time_zone FROM customer LIMIT 1' },
+      { headers: adsHeaders(accessToken, customerId) }
+    );
+
+    res.json(response.data);
+
+  } catch (err) {
+    console.error('❌ Erreur statut compte:', JSON.stringify(err.response?.data || err.message));
+    res.status(500).json({ error: 'Erreur lors de la lecture du statut', details: err.response?.data });
+  }
+});
+
 async function mutate(customerId, resource, accessToken, operations) {
   const res = await axios.post(
     `${ADS_API_BASE}/customers/${customerId}/${resource}:mutate`,
