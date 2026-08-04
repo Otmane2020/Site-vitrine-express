@@ -37,9 +37,12 @@ router.post('/', async (req, res) => {
       return res.status(400).json({ error: 'Email invalide' });
     }
 
+    // created_at est omis volontairement : la colonne a un DEFAULT now() côté base,
+    // qui ne s'applique que si on ne l'insère pas explicitement (le mini-ORM db.js
+    // ne sait pas évaluer datetime('now') et insérerait NULL sinon).
     await run(
-      `INSERT INTO leads (name, email, phone, business, source, created_at)
-       VALUES (?, ?, ?, ?, ?, datetime('now'))`,
+      `INSERT INTO leads (name, email, phone, business, source)
+       VALUES (?, ?, ?, ?, ?)`,
       [name, email, phone, business, source || 'direct']
     );
 
