@@ -206,25 +206,24 @@
 </div>
 
 <script>
-  // Vérifier s'il y a un error dans l'URL
+  // Vérifier s'il y a un statut dans l'URL (posé par /oauth/callback après redirection)
   const params = new URLSearchParams(location.search);
   const error = params.get('error');
-  const code = params.get('code');
+  const success = params.get('success');
 
   const statusEl = document.getElementById('status');
-  const warningEl = document.getElementById('warningBox');
 
   if (error) {
     statusEl.className = 'status error';
     statusEl.textContent = `❌ Erreur: ${error}`;
-  } else if (code) {
-    statusEl.className = 'status loading';
-    statusEl.textContent = '⏳ Vérification en cours... Patiente quelques secondes';
-    // Le serveur a traité le code, on peut afficher un message de succès
-    setTimeout(() => {
-      statusEl.className = 'status success';
-      statusEl.textContent = '✅ Succès! Tes comptes Google Ads sont maintenant connectés.';
-    }, 2000);
+  } else if (success) {
+    statusEl.className = 'status success';
+    statusEl.textContent = '✅ Succès ! Ton compte Google Ads est connecté et stocké de façon sécurisée côté serveur.';
+  }
+
+  // Nettoyer l'URL pour ne pas garder de paramètres dans l'historique
+  if (error || success) {
+    window.history.replaceState({}, '', '/connect');
   }
 
   // Afficher l'avertissement de sécurité (optionnel)
