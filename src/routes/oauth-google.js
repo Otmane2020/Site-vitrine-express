@@ -268,7 +268,7 @@ router.post('/create-campaign', async (req, res) => {
     const budgetResourceName = budgetResults[0].resourceName;
 
     // 2) Campagne Search — PAUSED par sécurité, Google Search uniquement (pas Display/partenaires)
-    const startDate = new Date(Date.now() + 86400000).toISOString().slice(0, 10).replace(/-/g, '');
+    const startDateTime = new Date(Date.now() + 86400000).toISOString().slice(0, 10) + ' 00:00:00';
     const campaignResults = await mutate(customerId, 'campaigns', accessToken, [{
       create: {
         name: `${campaignName} ${Date.now()}`,
@@ -282,7 +282,7 @@ router.post('/create-campaign', async (req, res) => {
           targetContentNetwork: false,
           targetPartnerSearchNetwork: false
         },
-        startDate
+        startDateTime
       }
     }]);
     const campaignResourceName = campaignResults[0].resourceName;
