@@ -1,34 +1,17 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 320" width="480" height="320">
-  <!-- Background -->
   <rect width="480" height="320" fill="#f0f6ff"/>
-  <!-- Nav -->
-  <rect width="480" height="44" fill="#fff"/>
+  <rect width="480" height="44" fill="#ffffff"/>
   <rect y="44" width="480" height="1" fill="#e2e8f0"/>
-  <!-- Logo -->
   <circle cx="28" cy="22" r="12" fill="#1d4ed8"/>
   <text x="46" y="27" font-family="Arial,sans-serif" font-weight="700" font-size="13" fill="#1e293b">Fontaine Plomberie</text>
-  <!-- Nav links -->
   <text x="260" y="27" font-family="Arial,sans-serif" font-size="11" fill="#64748b">Services</text>
   <text x="315" y="27" font-family="Arial,sans-serif" font-size="11" fill="#64748b">Urgences</text>
   <text x="368" y="27" font-family="Arial,sans-serif" font-size="11" fill="#64748b">Avis</text>
-  <!-- CTA btn -->
   <rect x="408" y="12" width="60" height="22" rx="4" fill="#1d4ed8"/>
-  <text x="438" y="27" font-family="Arial,sans-serif" font-weight="600" font-size="10" fill="#fff" text-anchor="middle">Appeler</text>
+  <text x="438" y="27" font-family="Arial,sans-serif" font-weight="600" font-size="10" fill="#ffffff" text-anchor="middle">Appeler</text>
 
-  <!-- Hero section -->
   <rect y="45" width="480" height="160" fill="#1e3a5f"/>
-  <!-- Hero image overlay -->
-  <rect y="45" width="480" height="160" fill="url(#h1)" opacity="0.6"/>
-  <defs>
-    <linearGradient id="h1" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#1e3a5f" stop-opacity="1"/>
-      <stop offset="55%" stop-color="#1e3a5f" stop-opacity="0.7"/>
-      <stop offset="100%" stop-color="#1e3a5f" stop-opacity="0"/>
-    </linearGradient>
-  </defs>
-  <!-- Pipe icon illustration -->
-  <rect x="300" y="65" width="160" height="120" rx="4" fill="rgba(30,58,95,0)" opacity="0.3"/>
-  <!-- Simple pipe illustration -->
+  <rect x="300" y="65" width="160" height="120" rx="4" fill="#1e3a5f" opacity="0.3"/>
   <rect x="310" y="90" width="140" height="18" rx="9" fill="#60a5fa" opacity="0.7"/>
   <rect x="350" y="64" width="18" height="70" rx="9" fill="#60a5fa" opacity="0.5"/>
   <rect x="408" y="64" width="18" height="70" rx="9" fill="#60a5fa" opacity="0.5"/>
@@ -36,43 +19,36 @@
   <circle cx="426" cy="64" r="10" fill="#93c5fd" opacity="0.6"/>
   <rect x="310" y="140" width="140" height="14" rx="7" fill="#3b82f6" opacity="0.4"/>
 
-  <!-- Hero text -->
-  <text x="28" y="86" font-family="Arial,sans-serif" font-weight="700" font-size="22" fill="#fff">Plombier à Lyon</text>
+  <text x="28" y="86" font-family="Arial,sans-serif" font-weight="700" font-size="22" fill="#ffffff">Plombier a Lyon</text>
   <text x="28" y="106" font-family="Arial,sans-serif" font-weight="700" font-size="22" fill="#60a5fa">Intervention rapide</text>
-  <text x="28" y="130" font-family="Arial,sans-serif" font-size="12" fill="rgba(255,255,255,0.75)">Dépannage urgence 7j/7 — Devis gratuit</text>
-  <text x="28" y="146" font-family="Arial,sans-serif" font-size="12" fill="rgba(255,255,255,0.75)">Intervention sous 2h dans tout Lyon</text>
-  <!-- CTA -->
+  <text x="28" y="130" font-family="Arial,sans-serif" font-size="12" fill="#e2e8f0">Depannage urgence 7j/7 - Devis gratuit</text>
+  <text x="28" y="146" font-family="Arial,sans-serif" font-size="12" fill="#e2e8f0">Intervention sous 2h dans tout Lyon</text>
   <rect x="28" y="158" width="120" height="32" rx="6" fill="#2563eb"/>
-  <text x="88" y="179" font-family="Arial,sans-serif" font-weight="700" font-size="12" fill="#fff" text-anchor="middle">Appel urgence</text>
-  <rect x="160" y="158" width="100" height="32" rx="6" fill="transparent" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/>
-  <text x="210" y="179" font-family="Arial,sans-serif" font-size="12" fill="rgba(255,255,255,0.85)" text-anchor="middle">Devis gratuit</text>
+  <text x="88" y="179" font-family="Arial,sans-serif" font-weight="700" font-size="12" fill="#ffffff" text-anchor="middle">Appel urgence</text>
+  <rect x="160" y="158" width="100" height="32" rx="6" fill="none" stroke="#93c5fd" stroke-width="1.5"/>
+  <text x="210" y="179" font-family="Arial,sans-serif" font-size="12" fill="#e2e8f0" text-anchor="middle">Devis gratuit</text>
 
-  <!-- Services section -->
-  <rect y="205" width="480" height="115" fill="#fff"/>
+  <rect y="205" width="480" height="115" fill="#ffffff"/>
   <text x="240" y="228" font-family="Arial,sans-serif" font-weight="700" font-size="14" fill="#1e293b" text-anchor="middle">Nos services</text>
 
-  <!-- Service cards -->
-  <!-- Card 1 -->
   <rect x="20" y="238" width="130" height="68" rx="8" fill="#f0f6ff" stroke="#e2e8f0" stroke-width="1"/>
   <circle cx="48" cy="260" r="14" fill="#dbeafe"/>
-  <text x="48" y="265" font-family="Arial,sans-serif" font-size="16" fill="#1d4ed8" text-anchor="middle">🔧</text>
-  <text x="75" y="260" font-family="Arial,sans-serif" font-weight="600" font-size="11" fill="#1e293b">Dépannage</text>
+  <path d="M43 260 l4 4 l6 -8" stroke="#1d4ed8" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="75" y="260" font-family="Arial,sans-serif" font-weight="600" font-size="11" fill="#1e293b">Depannage</text>
   <text x="75" y="274" font-family="Arial,sans-serif" font-size="10" fill="#64748b">Urgence 24h/24</text>
   <text x="75" y="288" font-family="Arial,sans-serif" font-size="10" fill="#64748b">7j/7</text>
 
-  <!-- Card 2 -->
   <rect x="165" y="238" width="130" height="68" rx="8" fill="#f0f9ff" stroke="#e2e8f0" stroke-width="1"/>
   <circle cx="193" cy="260" r="14" fill="#e0f2fe"/>
-  <text x="193" y="265" font-family="Arial,sans-serif" font-size="16" fill="#0369a1" text-anchor="middle">🚿</text>
+  <path d="M188 265 q5 -12 10 0" stroke="#0369a1" stroke-width="2" fill="none" stroke-linecap="round"/>
   <text x="220" y="260" font-family="Arial,sans-serif" font-weight="600" font-size="11" fill="#1e293b">Salle de bain</text>
   <text x="220" y="274" font-family="Arial,sans-serif" font-size="10" fill="#64748b">Installation</text>
-  <text x="220" y="288" font-family="Arial,sans-serif" font-size="10" fill="#64748b">& rénovation</text>
+  <text x="220" y="288" font-family="Arial,sans-serif" font-size="10" fill="#64748b">et renovation</text>
 
-  <!-- Card 3 -->
   <rect x="310" y="238" width="150" height="68" rx="8" fill="#f0fdf4" stroke="#e2e8f0" stroke-width="1"/>
   <circle cx="338" cy="260" r="14" fill="#dcfce7"/>
-  <text x="338" y="265" font-family="Arial,sans-serif" font-size="16" fill="#16a34a" text-anchor="middle">⭐</text>
-  <text x="365" y="256" font-family="Arial,sans-serif" font-weight="600" font-size="11" fill="#1e293b">4.9/5 — 148 avis</text>
-  <text x="365" y="270" font-family="Arial,sans-serif" font-size="10" fill="#64748b">★★★★★</text>
-  <text x="365" y="286" font-family="Arial,sans-serif" font-size="10" fill="#16a34a" font-weight="600">Certifié RGE</text>
+  <path d="M338 253 l2.5 5.5 l6 0.8 l-4.3 4.2 l1 6 l-5.2 -3 l-5.2 3 l1 -6 l-4.3 -4.2 l6 -0.8 z" fill="#16a34a"/>
+  <text x="365" y="256" font-family="Arial,sans-serif" font-weight="600" font-size="11" fill="#1e293b">4.9/5 - 148 avis</text>
+  <text x="365" y="270" font-family="Arial,sans-serif" font-size="10" fill="#16a34a">Excellent</text>
+  <text x="365" y="286" font-family="Arial,sans-serif" font-size="10" fill="#16a34a" font-weight="600">Certifie RGE</text>
 </svg>

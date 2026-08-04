@@ -1173,17 +1173,39 @@ a { color: inherit; text-decoration: none; }
 /* ════════════════════════════════
    FOOTER
 ════════════════════════════════ */
-.footer { background: var(--bg-elevated); border-top: 1px solid var(--border); padding: 48px 0 28px; }
-.footer-inner { display: flex; flex-direction: column; gap: 24px; }
+.footer { background: var(--bg-elevated); border-top: 1px solid var(--border); padding: 40px 0 28px; }
+
+/* Trust Avis badge */
+.footer-trust-row { display: flex; justify-content: center; margin-bottom: 36px; }
+.trust-avis-badge {
+  display: inline-flex; align-items: center; gap: 10px; background: var(--bg);
+  border: 1px solid var(--border); border-radius: 100px; padding: 8px 18px 8px 8px;
+  transition: border-color .2s, box-shadow .2s;
+}
+.trust-avis-badge:hover { border-color: var(--border-2); box-shadow: 0 4px 16px rgba(94,106,210,.1); }
+.ta-logo { display: flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: 7px; background: #2563eb; flex-shrink: 0; }
+.ta-name { font-size: .8rem; font-weight: 600; color: var(--fg-muted); }
+.ta-name strong { color: #2563eb; font-weight: 800; }
+.ta-sep { width: 1px; height: 20px; background: var(--border); flex-shrink: 0; }
+.ta-avatar { display: flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 7px; background: var(--surface-2); color: var(--fg); font-weight: 800; font-size: .78rem; flex-shrink: 0; }
+.ta-info { display: flex; flex-direction: column; gap: 1px; }
+.ta-brand { display: flex; align-items: center; gap: 4px; font-size: .78rem; font-weight: 700; color: var(--fg); }
+.ta-stars { display: flex; align-items: center; gap: 1px; font-size: .72rem; color: var(--fg-dim); }
+.ta-stars strong { color: var(--fg); margin-left: 3px; margin-right: 2px; }
+
+.footer-inner { display: flex; flex-direction: column; gap: 28px; }
 .footer-brand { display: flex; flex-direction: column; gap: 8px; }
 .footer-logo { display: flex; align-items: center; gap: 8px; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: .95rem; color: var(--fg); }
 .footer-brand p { font-size: .8rem; color: var(--fg-dim); }
-.footer-phone { display: inline-block; margin-top: 8px; font-size: .82rem; font-weight: 700; color: var(--accent); }
-.footer-phone:hover { color: #7c87f5; }
-.footer-nav { display: flex; flex-wrap: wrap; gap: 6px 18px; }
+.footer-nav { display: flex; flex-wrap: wrap; gap: 6px 18px; align-content: flex-start; }
 .footer-nav a { font-size: .8rem; color: var(--fg-dim); transition: color .2s; }
 .footer-nav a:hover { color: var(--accent); }
-.footer-copy { font-size: .72rem; color: var(--fg-dim); }
+.footer-contact-col { display: flex; flex-direction: column; gap: 10px; }
+.footer-contact-link { display: inline-flex; align-items: center; gap: 8px; font-size: .8rem; font-weight: 600; color: var(--fg-muted); transition: color .2s; }
+.footer-contact-link:hover { color: var(--accent); }
+.footer-contact-link svg { flex-shrink: 0; }
+.footer-whatsapp:hover { color: #25D366; }
+.footer-copy { font-size: .72rem; color: var(--fg-dim); margin-top: 32px; }
 
 
 /* ════════════════════════════════
