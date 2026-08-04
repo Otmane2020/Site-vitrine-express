@@ -275,6 +275,7 @@ router.post('/create-campaign', async (req, res) => {
         status: 'PAUSED',
         advertisingChannelType: 'SEARCH',
         campaignBudget: budgetResourceName,
+        containsEuPoliticalAdvertising: 'DOES_NOT_CONTAIN_EU_POLITICAL_ADVERTISING',
         manualCpc: {},
         networkSettings: {
           targetGoogleSearch: true,
