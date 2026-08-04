@@ -52,6 +52,9 @@ app.get('/success', (req, res) => {
 app.get('/connect', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'connect.html'));
 });
+app.get('/contact*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'contact.html'));
+});
 
 initDb();
 
