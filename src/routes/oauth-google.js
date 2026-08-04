@@ -141,13 +141,40 @@ router.get('/accounts', async (req, res) => {
   }
 });
 
-// ── STEP 4: Créer automatiquement une campagne ──
-router.post('/create-campaign', async (req, res) => {
-  const { customerId, campaignName, dailyBudget } = req.body;
+async function mutate(customerId, resource, accessToken, operations) {
+  const res = await axios.post(
+    `${ADS_API_BASE}/customers/${customerId}/${resource}:mutate`,
+    { operations },
+    { headers: adsHeaders(accessToken, customerId) }
+  );
+  return res.data.results;
+}
 
-  if (!customerId || !campaignName || !dailyBudget) {
-    return res.status(400).json({ error: 'Paramètres manquants' });
+const FRANCE_GEO_TARGET = 'geoTargetConstants/2250';
+const FRENCH_LANGUAGE = 'languageConstants/1002';
+
+// ── STEP 4: Créer une campagne Search réelle (budget + ciblage + groupe + mots-clés + annonce) ──
+// La campagne est créée en PAUSED — aucune dépense tant qu'elle n'est pas activée volontairement.
+router.post('/create-campaign', async (req, res) => {
+  let {
+    customerId,
+    campaignName = 'Webify — Leads Site Vitrine',
+    dailyBudgetEur = 5,
+    maxCpcEur = 1.5,
+    keywords = [
+      'site vitrine pas cher',
+      'création site 49 euros',
+      'site web artisan pas cher',
+      'site internet rapide',
+      'créer un site vitrine'
+    ],
+    finalUrl = 'https://webify-app.com/landing-ads.html?utm_source=google&utm_medium=cpc&utm_campaign=leads_prix'
+  } = req.body;
+
+  if (!customerId) {
+    return res.status(400).json({ error: 'customerId manquant (ex: 9639623084)' });
   }
+  customerId = String(customerId).replace('customers/', '');
 
   try {
     const accessToken = await getValidAccessToken();
@@ -155,16 +182,107 @@ router.post('/create-campaign', async (req, res) => {
       return res.status(401).json({ error: 'Non connecté. Va sur /connect d\'abord' });
     }
 
-    // TODO: Implémenter la création de campagne via Google Ads API
+    // 1) Budget quotidien
+    const budgetResults = await mutate(customerId, 'campaignBudgets', accessToken, [{
+      create: {
+        name: `${campaignName} - Budget ${Date.now()}`,
+        amountMicros: String(Math.round(dailyBudgetEur * 1_000_000)),
+        deliveryMethod: 'STANDARD'
+      }
+    }]);
+    const budgetResourceName = budgetResults[0].resourceName;
+
+    // 2) Campagne Search — PAUSED par sécurité, Google Search uniquement (pas Display/partenaires)
+    const startDate = new Date(Date.now() + 86400000).toISOString().slice(0, 10).replace(/-/g, '');
+    const campaignResults = await mutate(customerId, 'campaigns', accessToken, [{
+      create: {
+        name: `${campaignName} ${Date.now()}`,
+        status: 'PAUSED',
+        advertisingChannelType: 'SEARCH',
+        campaignBudget: budgetResourceName,
+        manualCpc: {},
+        networkSettings: {
+          targetGoogleSearch: true,
+          targetSearchNetwork: false,
+          targetContentNetwork: false,
+          targetPartnerSearchNetwork: false
+        },
+        startDate
+      }
+    }]);
+    const campaignResourceName = campaignResults[0].resourceName;
+
+    // 3) Ciblage France + Français
+    await mutate(customerId, 'campaignCriteria', accessToken, [
+      { create: { campaign: campaignResourceName, location: { geoTargetConstant: FRANCE_GEO_TARGET } } }
+    ]);
+    await mutate(customerId, 'campaignCriteria', accessToken, [
+      { create: { campaign: campaignResourceName, language: { languageConstant: FRENCH_LANGUAGE } } }
+    ]);
+
+    // 4) Groupe d'annonces
+    const adGroupResults = await mutate(customerId, 'adGroups', accessToken, [{
+      create: {
+        name: 'Site vitrine — Prix & rapidité',
+        campaign: campaignResourceName,
+        status: 'ENABLED',
+        type: 'SEARCH_STANDARD',
+        cpcBidMicros: String(Math.round(maxCpcEur * 1_000_000))
+      }
+    }]);
+    const adGroupResourceName = adGroupResults[0].resourceName;
+
+    // 5) Mots-clés (correspondance expression)
+    await mutate(customerId, 'adGroupCriteria', accessToken,
+      keywords.map(text => ({
+        create: {
+          adGroup: adGroupResourceName,
+          status: 'ENABLED',
+          keyword: { text, matchType: 'PHRASE' }
+        }
+      }))
+    );
+
+    // 6) Annonce responsive search
+    const adResults = await mutate(customerId, 'adGroupAds', accessToken, [{
+      create: {
+        adGroup: adGroupResourceName,
+        status: 'ENABLED',
+        ad: {
+          finalUrls: [finalUrl],
+          responsiveSearchAd: {
+            headlines: [
+              { text: 'Site vitrine pro 49€' },
+              { text: 'Livré en 48h chrono' },
+              { text: 'Devis gratuit 2 min' },
+              { text: 'Sans engagement' },
+              { text: '0€ avant validation' },
+              { text: 'Satisfait ou remboursé' }
+            ],
+            descriptions: [
+              { text: 'Création de site vitrine pro en 48h. Domaine et hébergement inclus. Devis gratuit.' },
+              { text: '0€ à la commande. Vous payez seulement si le site vous plaît. Sans engagement.' }
+            ]
+          }
+        }
+      }
+    }]);
+
     res.json({
       success: true,
-      message: `Campagne "${campaignName}" créée avec un budget de ${dailyBudget}€/jour`,
-      campaignId: 'TEMP_CAMPAIGN_ID'
+      status: 'PAUSED',
+      message: `Campagne créée en PAUSE — active-la dans Google Ads quand tu es prêt à dépenser`,
+      budget: budgetResourceName,
+      campaign: campaignResourceName,
+      adGroup: adGroupResourceName,
+      ad: adResults[0].resourceName,
+      keywordCount: keywords.length
     });
 
   } catch (err) {
-    console.error('❌ Erreur création campagne:', err.message);
-    res.status(500).json({ error: 'Erreur lors de la création de la campagne' });
+    const details = err.response?.data;
+    console.error('❌ Erreur création campagne:', JSON.stringify(details || err.message));
+    res.status(500).json({ error: 'Erreur lors de la création de la campagne', details });
   }
 });
 
