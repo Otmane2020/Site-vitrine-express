@@ -188,6 +188,12 @@ async function initDb() {
     FOREIGN KEY (order_id) REFERENCES orders(id)
   )`);
 
+  await run(`CREATE TABLE IF NOT EXISTS leads (
+    id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT NOT NULL,
+    email TEXT NOT NULL, phone TEXT, business TEXT NOT NULL,
+    source TEXT DEFAULT 'direct', created_at TEXT DEFAULT (datetime('now'))
+  )`);
+
   await run(`CREATE TABLE IF NOT EXISTS admins (
     id INTEGER PRIMARY KEY AUTOINCREMENT, email TEXT UNIQUE NOT NULL,
     password TEXT NOT NULL, created_at TEXT DEFAULT (datetime('now'))

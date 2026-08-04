@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 320" width="480" height="320">
+  <!-- Background -->
+  <rect width="480" height="320" fill="#f0fdf4"/>
+
+  <!-- Hero full bleed -->
+  <rect width="480" height="190" fill="#14532d"/>
+  <!-- Food texture overlay -->
+  <rect width="480" height="190" fill="url(#rg1)" opacity="0.7"/>
+  <defs>
+    <linearGradient id="rg1" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#14532d" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#052e16" stop-opacity="0.9"/>
+    </linearGradient>
+  </defs>
+  <!-- Decorative circles (food plates) -->
+  <circle cx="370" cy="80" r="70" fill="#166534" opacity="0.5"/>
+  <circle cx="370" cy="80" r="55" fill="#15803d" opacity="0.4"/>
+  <circle cx="370" cy="80" r="38" fill="#16a34a" opacity="0.3"/>
+  <!-- Food icon -->
+  <text x="370" y="100" font-family="Arial,sans-serif" font-size="52" text-anchor="middle" opacity="0.7">🥗</text>
+
+  <!-- Nav overlay on hero -->
+  <rect width="480" height="44" fill="rgba(5,46,22,0.7)"/>
+  <rect y="44" width="480" height="1" fill="rgba(255,255,255,0.1)"/>
+  <!-- Logo -->
+  <text x="24" y="27" font-family="Georgia,serif" font-style="italic" font-size="15" fill="#a3e635">Le Jardin Bio</text>
+  <text x="24" y="40" font-family="Arial,sans-serif" font-size="9" fill="rgba(255,255,255,0.5)" letter-spacing="2">CAFÉ · CANTINE</text>
+  <!-- Nav -->
+  <text x="250" y="27" font-family="Arial,sans-serif" font-size="11" fill="rgba(255,255,255,0.8)">Menu</text>
+  <text x="296" y="27" font-family="Arial,sans-serif" font-size="11" fill="rgba(255,255,255,0.8)">Boissons</text>
+  <text x="352" y="27" font-family="Arial,sans-serif" font-size="11" fill="rgba(255,255,255,0.8)">Livraison</text>
+  <!-- Reservation btn -->
+  <rect x="406" y="12" width="66" height="22" rx="4" fill="#4ade80"/>
+  <text x="439" y="27" font-family="Arial,sans-serif" font-weight="700" font-size="10" fill="#052e16" text-anchor="middle">Réserver</text>
+
+  <!-- Hero text -->
+  <text x="28" y="90" font-family="Georgia,serif" font-size="10" fill="rgba(163,230,53,0.9)" letter-spacing="2">100% BIO · LOCAL · FAIT MAISON</text>
+  <text x="28" y="118" font-family="Georgia,serif" font-weight="700" font-size="26" fill="#fff">Cuisiner avec</text>
+  <text x="28" y="148" font-family="Georgia,serif" font-weight="700" font-size="26" fill="#a3e635">la nature</text>
+  <text x="28" y="170" font-family="Arial,sans-serif" font-size="12" fill="rgba(255,255,255,0.7)">Cuisine biologique, produits locaux, zéro déchet.</text>
+  <rect x="28" y="178" width="115" height="6" rx="3" fill="#4ade80" opacity="0.5"/>
+
+  <!-- Menu section -->
+  <rect y="190" width="480" height="130" fill="#fff"/>
+  <text x="240" y="214" font-family="Georgia,serif" font-style="italic" font-size="15" fill="#14532d" text-anchor="middle">Menu du jour</text>
+  <rect x="210" y="219" width="60" height="2" rx="1" fill="#a3e635"/>
+
+  <!-- Menu items -->
+  <rect x="18" y="230" width="140" height="74" rx="8" fill="#f0fdf4" stroke="#d1fae5" stroke-width="1.5"/>
+  <text x="30" y="250" font-family="Arial,sans-serif" font-size="20">🥙</text>
+  <text x="62" y="249" font-family="Arial,sans-serif" font-weight="600" font-size="12" fill="#14532d">Wrap avocat</text>
+  <text x="62" y="263" font-family="Arial,sans-serif" font-size="10" fill="#64748b">Légumes grillés, feta</text>
+  <text x="62" y="278" font-family="Arial,sans-serif" font-size="10" fill="#64748b">bio, sauce tahini</text>
+  <text x="30" y="294" font-family="Arial,sans-serif" font-weight="700" font-size="12" fill="#16a34a">9,50€</text>
+  <text x="130" y="294" font-family="Arial,sans-serif" font-size="10" fill="#15803d" text-anchor="end">🌱 Vegan</text>
+
+  <rect x="170" y="230" width="140" height="74" rx="8" fill="#f0fdf4" stroke="#d1fae5" stroke-width="1.5"/>
+  <text x="182" y="250" font-family="Arial,sans-serif" font-size="20">🥗</text>
+  <text x="214" y="249" font-family="Arial,sans-serif" font-weight="600" font-size="12" fill="#14532d">Salade niçoise</text>
+  <text x="214" y="263" font-family="Arial,sans-serif" font-size="10" fill="#64748b">Thon MSC, œufs bio</text>
+  <text x="214" y="278" font-family="Arial,sans-serif" font-size="10" fill="#64748b">tomates du jardin</text>
+  <text x="182" y="294" font-family="Arial,sans-serif" font-weight="700" font-size="12" fill="#16a34a">11,90€</text>
+
+  <rect x="322" y="230" width="140" height="74" rx="8" fill="#f7fee7" stroke="#d9f99d" stroke-width="1.5"/>
+  <text x="334" y="250" font-family="Arial,sans-serif" font-size="20">☕</text>
+  <text x="364" y="249" font-family="Arial,sans-serif" font-weight="600" font-size="12" fill="#14532d">Menu déjeuner</text>
+  <text x="364" y="263" font-family="Arial,sans-serif" font-size="10" fill="#64748b">Plat + boisson + café</text>
+  <text x="364" y="278" font-family="Arial,sans-serif" font-size="10" fill="#64748b">ou dessert fait maison</text>
+  <text x="334" y="294" font-family="Arial,sans-serif" font-weight="700" font-size="12" fill="#16a34a">14,90€</text>
+  <rect x="400" y="284" width="54" height="16" rx="8" fill="#16a34a"/>
+  <text x="427" y="295" font-family="Arial,sans-serif" font-size="9" fill="#fff" font-weight="600" text-anchor="middle">★ Best-seller</text>
+</svg>

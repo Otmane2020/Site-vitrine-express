@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Site vitrine pro 49€ en 48h — Demande ton devis gratuit</title>
+  <meta name="description" content="Création de site vitrine professionnel en 48h à 49€ tout compris. Demande ton devis gratuit, aucun engagement." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/svg+xml" href="/images/favicon.svg" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Poppins', sans-serif; background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); color: #333; min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 20px; }
+    .container { max-width: 600px; width: 100%; }
+
+    .hero-cta { background: #fff; border-radius: 20px; padding: 40px; box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
+
+    .badge { display: inline-block; background: #e3f2fd; color: #1976d2; padding: 8px 16px; border-radius: 100px; font-size: 0.85rem; font-weight: 600; margin-bottom: 20px; }
+
+    h1 { font-size: 2rem; font-weight: 800; margin-bottom: 12px; line-height: 1.2; color: #0a0a0f; }
+    .accent { color: #7c3aed; }
+
+    .sub { font-size: 1rem; color: #64748b; margin-bottom: 30px; line-height: 1.6; }
+
+    .features { list-style: none; margin-bottom: 30px; }
+    .features li { padding: 10px 0; padding-left: 30px; position: relative; color: #475569; font-size: 0.95rem; }
+    .features li::before { content: '✓'; position: absolute; left: 0; color: #10b981; font-weight: 700; }
+
+    .form-group { margin-bottom: 16px; }
+    label { display: block; font-weight: 600; margin-bottom: 6px; font-size: 0.9rem; color: #334155; }
+    input, select { width: 100%; padding: 12px 14px; border: 2px solid #e2e8f0; border-radius: 8px; font-family: inherit; font-size: 1rem; }
+    input:focus, select:focus { outline: none; border-color: #7c3aed; box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.1); }
+
+    .btn-submit { width: 100%; background: linear-gradient(135deg, #7c3aed, #ec4899); color: #fff; border: none; padding: 14px; border-radius: 10px; font-weight: 700; font-size: 1rem; cursor: pointer; transition: all 0.3s; font-family: inherit; }
+    .btn-submit:hover { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(124, 58, 237, 0.4); }
+    .btn-submit:active { transform: translateY(0); }
+
+    .guarantee { text-align: center; margin-top: 20px; padding-top: 20px; border-top: 1px solid #e2e8f0; font-size: 0.85rem; color: #64748b; }
+    .guarantee strong { color: #10b981; }
+
+    .loading { display: none; text-align: center; color: #7c3aed; }
+    .success-msg { display: none; background: #d1fae5; color: #065f46; padding: 16px; border-radius: 10px; text-align: center; margin-bottom: 20px; }
+    .error-msg { display: none; background: #fee2e2; color: #991b1b; padding: 16px; border-radius: 10px; text-align: center; margin-bottom: 20px; }
+
+    .social-proof { margin-bottom: 24px; padding: 16px; background: #f8fafc; border-radius: 10px; text-align: center; font-size: 0.9rem; color: #475569; }
+    .social-proof strong { color: #7c3aed; }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="hero-cta">
+    <span class="badge">🚀 Offre limitée — 5€ de découverte</span>
+
+    <h1>Votre site pro<br><span class="accent">en 48h</span><br>à <span class="accent">49€</span></h1>
+
+    <p class="sub">Création de site vitrine professionnel. Gratuit à la demande — vous ne payez que si vous êtes satisfait.</p>
+
+    <ul class="features">
+      <li>Site vitrine professionnel (3 pages)</li>
+      <li>Domaine .fr inclus pour 1 an</li>
+      <li>Hébergement 1 an offert</li>
+      <li>Design mobile responsive</li>
+      <li>Livré en 48h maximum</li>
+      <li>Satisfait ou remboursé</li>
+    </ul>
+
+    <div class="social-proof">
+      <strong>127+ entrepreneurs</strong> nous ont fait confiance — Note moyenne: <strong>4.9/5</strong>
+    </div>
+
+    <div class="success-msg" id="successMsg">
+      ✓ Merci ! Nous vous recontacterons dans les 2h pour valider votre projet.
+    </div>
+
+    <div class="error-msg" id="errorMsg">
+      Une erreur est survenue. Veuillez réessayer.
+    </div>
+
+    <form id="leadForm">
+      <div class="form-group">
+        <label for="name">Votre nom *</label>
+        <input type="text" id="name" name="name" required placeholder="Jean Dupont" />
+      </div>
+
+      <div class="form-group">
+        <label for="email">Votre email *</label>
+        <input type="email" id="email" name="email" required placeholder="jean@exemple.fr" />
+      </div>
+
+      <div class="form-group">
+        <label for="phone">Téléphone</label>
+        <input type="tel" id="phone" name="phone" placeholder="06 12 34 56 78" />
+      </div>
+
+      <div class="form-group">
+        <label for="business">Secteur d'activité *</label>
+        <select id="business" name="business" required>
+          <option value="">Sélectionnez votre secteur</option>
+          <option>Restaurant / Café / Bar</option>
+          <option>Beauté / Bien-être</option>
+          <option>Artisan / BTP</option>
+          <option>Commerce / Boutique</option>
+          <option>Services</option>
+          <option>Immobilier</option>
+          <option>Coach / Consulting</option>
+          <option>Autre</option>
+        </select>
+      </div>
+
+      <button type="submit" class="btn-submit">
+        <span id="btnText">Demander mon devis gratuit</span>
+        <span class="loading" id="loading">Envoi en cours...</span>
+      </button>
+    </form>
+
+    <div class="guarantee">
+      <strong>✓ 100% gratuit et sans engagement</strong> — Aucune donnée bancaire demandée
+    </div>
+  </div>
+</div>
+
+<script>
+// Google Analytics conversion tracking
+window.dataLayer = window.dataLayer || [];
+function gtag() { dataLayer.push(arguments); }
+
+document.getElementById('leadForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+
+  const name = document.getElementById('name').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const phone = document.getElementById('phone').value.trim();
+  const business = document.getElementById('business').value.trim();
+
+  if (!name || !email || !business) {
+    document.getElementById('errorMsg').style.display = 'block';
+    return;
+  }
+
+  document.getElementById('btnText').style.display = 'none';
+  document.getElementById('loading').style.display = 'inline';
+
+  try {
+    const res = await fetch('/api/leads', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name, email, phone, business, source: 'google_ads' })
+    });
+
+    if (res.ok) {
+      // Google Analytics conversion
+      gtag('event', 'conversion', {
+        'conversion_id': 'AW-16759234568',
+        'conversion_label': 'webify_lead'
+      });
+
+      document.getElementById('leadForm').style.display = 'none';
+      document.getElementById('successMsg').style.display = 'block';
+    } else {
+      throw new Error('Erreur serveur');
+    }
+  } catch (err) {
+    console.error(err);
+    document.getElementById('errorMsg').style.display = 'block';
+    document.getElementById('btnText').style.display = 'inline';
+    document.getElementById('loading').style.display = 'none';
+  }
+});
+</script>
+
+</body>
+</html>

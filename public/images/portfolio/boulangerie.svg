@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 320" width="480" height="320">
+  <!-- Background -->
+  <rect width="480" height="320" fill="#fffbeb"/>
+  <!-- Nav -->
+  <rect width="480" height="44" fill="#fff"/>
+  <rect y="44" width="480" height="1" fill="#fde68a"/>
+  <!-- Logo with wheat -->
+  <text x="20" y="30" font-family="Arial,sans-serif" font-size="22">🌾</text>
+  <text x="48" y="28" font-family="Georgia,serif" font-style="italic" font-weight="700" font-size="16" fill="#78350f">Boulangerie</text>
+  <text x="48" y="41" font-family="Georgia,serif" font-style="italic" font-size="11" fill="#a16207">Maison Martin</text>
+  <!-- Nav -->
+  <text x="235" y="27" font-family="Arial,sans-serif" font-size="11" fill="#92400e">Nos pains</text>
+  <text x="291" y="27" font-family="Arial,sans-serif" font-size="11" fill="#92400e">Viennoiserie</text>
+  <text x="357" y="27" font-family="Arial,sans-serif" font-size="11" fill="#92400e">Gâteaux</text>
+  <!-- CTA -->
+  <rect x="402" y="12" width="66" height="22" rx="4" fill="#b45309"/>
+  <text x="435" y="27" font-family="Arial,sans-serif" font-weight="600" font-size="10" fill="#fff" text-anchor="middle">Commander</text>
+
+  <!-- Hero full -->
+  <rect y="44" width="480" height="150" fill="#78350f"/>
+  <rect y="44" width="480" height="150" fill="url(#bg1)" opacity="0.8"/>
+  <defs>
+    <linearGradient id="bg1" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#78350f" stop-opacity="1"/>
+      <stop offset="40%" stop-color="#78350f" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#78350f" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <!-- Bread illustrations -->
+  <circle cx="380" cy="115" r="60" fill="#92400e" opacity="0.5"/>
+  <text x="380" y="130" font-family="Arial,sans-serif" font-size="70" text-anchor="middle" opacity="0.8">🥐</text>
+  <text x="310" y="90" font-family="Arial,sans-serif" font-size="32" text-anchor="middle" opacity="0.5">🍞</text>
+  <text x="440" y="165" font-family="Arial,sans-serif" font-size="28" text-anchor="middle" opacity="0.4">🥖</text>
+
+  <!-- Hero text -->
+  <text x="28" y="82" font-family="Georgia,serif" font-size="10" fill="#fbbf24" letter-spacing="2">ARTISAN BOULANGER · DEPUIS 1987</text>
+  <text x="28" y="108" font-family="Georgia,serif" font-weight="700" font-size="24" fill="#fff">Le pain comme</text>
+  <text x="28" y="136" font-family="Georgia,serif" font-weight="700" font-size="24" fill="#fbbf24">autrefois</text>
+  <text x="28" y="158" font-family="Arial,sans-serif" font-size="12" fill="rgba(255,255,255,0.7)">Farines bio, levain naturel, cuisson au feu de bois</text>
+  <rect x="28" y="170" width="108" height="20" rx="4" fill="#f59e0b"/>
+  <text x="82" y="184" font-family="Arial,sans-serif" font-weight="700" font-size="11" fill="#fff" text-anchor="middle">Voir les produits</text>
+
+  <!-- Products section -->
+  <rect y="194" width="480" height="126" fill="#fff"/>
+  <text x="240" y="216" font-family="Georgia,serif" font-style="italic" font-size="14" fill="#78350f" text-anchor="middle">Nos spécialités</text>
+
+  <!-- Product cards -->
+  <!-- Card 1 -->
+  <rect x="16" y="224" width="106" height="86" rx="8" fill="#fffbeb" stroke="#fde68a" stroke-width="1.5"/>
+  <rect x="16" y="224" width="106" height="48" rx="8" fill="#fef3c7"/>
+  <rect x="16" y="260" width="106" height="12" fill="#fef3c7"/>
+  <text x="69" y="254" font-family="Arial,sans-serif" font-size="36" text-anchor="middle">🥖</text>
+  <text x="69" y="286" font-family="Arial,sans-serif" font-weight="600" font-size="10" fill="#78350f" text-anchor="middle">Baguette tradition</text>
+  <text x="69" y="300" font-family="Arial,sans-serif" font-weight="700" font-size="11" fill="#b45309" text-anchor="middle">1,20 €</text>
+
+  <!-- Card 2 -->
+  <rect x="130" y="224" width="106" height="86" rx="8" fill="#fffbeb" stroke="#fde68a" stroke-width="1.5"/>
+  <rect x="130" y="224" width="106" height="48" rx="8" fill="#fef3c7"/>
+  <rect x="130" y="260" width="106" height="12" fill="#fef3c7"/>
+  <text x="183" y="254" font-family="Arial,sans-serif" font-size="36" text-anchor="middle">🥐</text>
+  <text x="183" y="286" font-family="Arial,sans-serif" font-weight="600" font-size="10" fill="#78350f" text-anchor="middle">Croissant pur beurre</text>
+  <text x="183" y="300" font-family="Arial,sans-serif" font-weight="700" font-size="11" fill="#b45309" text-anchor="middle">1,50 €</text>
+
+  <!-- Card 3 -->
+  <rect x="244" y="224" width="106" height="86" rx="8" fill="#fffbeb" stroke="#fde68a" stroke-width="1.5"/>
+  <rect x="244" y="224" width="106" height="48" rx="8" fill="#fef3c7"/>
+  <rect x="244" y="260" width="106" height="12" fill="#fef3c7"/>
+  <text x="297" y="254" font-family="Arial,sans-serif" font-size="36" text-anchor="middle">🍞</text>
+  <text x="297" y="286" font-family="Arial,sans-serif" font-weight="600" font-size="10" fill="#78350f" text-anchor="middle">Pain au levain</text>
+  <text x="297" y="300" font-family="Arial,sans-serif" font-weight="700" font-size="11" fill="#b45309" text-anchor="middle">4,80 €</text>
+
+  <!-- Card 4 -->
+  <rect x="358" y="224" width="106" height="86" rx="8" fill="#fef3c7" stroke="#f59e0b" stroke-width="1.5"/>
+  <rect x="358" y="224" width="106" height="48" rx="8" fill="#fef3c7"/>
+  <rect x="358" y="260" width="106" height="12" fill="#fef3c7"/>
+  <text x="411" y="254" font-family="Arial,sans-serif" font-size="36" text-anchor="middle">🎂</text>
+  <text x="411" y="286" font-family="Arial,sans-serif" font-weight="600" font-size="10" fill="#78350f" text-anchor="middle">Gâteaux sur commande</text>
+  <text x="411" y="300" font-family="Arial,sans-serif" font-size="9" fill="#92400e" text-anchor="middle">Sur demande</text>
+</svg>

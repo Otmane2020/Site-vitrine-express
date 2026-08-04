@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 320" width="480" height="320">
+  <!-- Background -->
+  <rect width="480" height="320" fill="#f8fafc"/>
+
+  <!-- Nav -->
+  <rect width="480" height="48" fill="#fff"/>
+  <rect y="48" width="480" height="1" fill="#e2e8f0"/>
+  <!-- Logo -->
+  <rect x="18" y="14" width="20" height="20" rx="2" fill="#0f172a"/>
+  <text x="22" y="28" font-family="Arial,sans-serif" font-weight="900" font-size="13" fill="#fff">D</text>
+  <text x="44" y="27" font-family="Arial,sans-serif" font-weight="700" font-size="13" fill="#0f172a">Dupont</text>
+  <text x="44" y="40" font-family="Arial,sans-serif" font-size="9" fill="#64748b" letter-spacing="1">IMMOBILIER</text>
+  <!-- Nav links -->
+  <text x="210" y="28" font-family="Arial,sans-serif" font-size="11" fill="#64748b">Acheter</text>
+  <text x="266" y="28" font-family="Arial,sans-serif" font-size="11" fill="#64748b">Vendre</text>
+  <text x="320" y="28" font-family="Arial,sans-serif" font-size="11" fill="#64748b">Estimer</text>
+  <text x="374" y="28" font-family="Arial,sans-serif" font-size="11" fill="#64748b">L'agence</text>
+  <!-- CTA -->
+  <rect x="420" y="14" width="52" height="22" rx="4" fill="#0f172a"/>
+  <text x="446" y="29" font-family="Arial,sans-serif" font-weight="600" font-size="10" fill="#fff" text-anchor="middle">Estimer</text>
+
+  <!-- Search hero -->
+  <rect y="49" width="480" height="120" fill="#0f172a"/>
+  <!-- Subtle grid texture -->
+  <line x1="0" y1="70" x2="480" y2="70" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+  <line x1="0" y1="91" x2="480" y2="91" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+  <line x1="0" y1="112" x2="480" y2="112" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+  <line x1="0" y1="133" x2="480" y2="133" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+  <line x1="120" y1="49" x2="120" y2="169" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+  <line x1="240" y1="49" x2="240" y2="169" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+  <line x1="360" y1="49" x2="360" y2="169" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+
+  <text x="240" y="82" font-family="Arial,sans-serif" font-weight="700" font-size="20" fill="#fff" text-anchor="middle">Trouvez votre bien idéal</text>
+  <text x="240" y="100" font-family="Arial,sans-serif" font-size="12" fill="#94a3b8" text-anchor="middle">+2 400 annonces à Lyon et sa région</text>
+
+  <!-- Search bar -->
+  <rect x="28" y="112" width="320" height="34" rx="6" fill="#fff"/>
+  <text x="48" y="133" font-family="Arial,sans-serif" font-size="12" fill="#94a3b8">📍  Ville, quartier, code postal...</text>
+  <rect x="356" y="112" width="96" height="34" rx="6" fill="#0369a1"/>
+  <text x="404" y="133" font-family="Arial,sans-serif" font-weight="700" font-size="12" fill="#fff" text-anchor="middle">Rechercher</text>
+
+  <!-- Quick filters -->
+  <rect x="28" y="150" width="58" height="14" rx="7" fill="rgba(255,255,255,0.12)"/>
+  <text x="57" y="161" font-family="Arial,sans-serif" font-size="9" fill="rgba(255,255,255,0.7)" text-anchor="middle">Appartement</text>
+  <rect x="94" y="150" width="44" height="14" rx="7" fill="rgba(255,255,255,0.12)"/>
+  <text x="116" y="161" font-family="Arial,sans-serif" font-size="9" fill="rgba(255,255,255,0.7)" text-anchor="middle">Maison</text>
+  <rect x="146" y="150" width="56" height="14" rx="7" fill="rgba(255,255,255,0.12)"/>
+  <text x="174" y="161" font-family="Arial,sans-serif" font-size="9" fill="rgba(255,255,255,0.7)" text-anchor="middle">Commerce</text>
+  <rect x="210" y="150" width="50" height="14" rx="7" fill="rgba(255,255,255,0.12)"/>
+  <text x="235" y="161" font-family="Arial,sans-serif" font-size="9" fill="rgba(255,255,255,0.7)" text-anchor="middle">Terrain</text>
+
+  <!-- Property cards -->
+  <rect y="169" width="480" height="151" fill="#f8fafc"/>
+  <text x="28" y="192" font-family="Arial,sans-serif" font-weight="600" font-size="13" fill="#0f172a">Biens en vedette</text>
+  <text x="400" y="192" font-family="Arial,sans-serif" font-size="11" fill="#0369a1" text-anchor="end">Voir tout →</text>
+
+  <!-- Card 1 -->
+  <rect x="18" y="200" width="138" height="108" rx="8" fill="#fff" stroke="#e2e8f0" stroke-width="1"/>
+  <rect x="18" y="200" width="138" height="60" rx="8" fill="#cbd5e1"/>
+  <rect x="18" y="248" width="138" height="12" fill="#cbd5e1"/>
+  <text x="25" y="225" font-family="Arial,sans-serif" font-size="24" opacity="0.5">🏠</text>
+  <rect x="22" y="204" width="40" height="14" rx="7" fill="#0369a1"/>
+  <text x="42" y="214" font-family="Arial,sans-serif" font-size="9" fill="#fff" font-weight="600" text-anchor="middle">Vente</text>
+  <text x="26" y="274" font-family="Arial,sans-serif" font-weight="700" font-size="12" fill="#0f172a">245 000 €</text>
+  <text x="26" y="288" font-family="Arial,sans-serif" font-size="10" fill="#64748b">Appt 3P · 68m² · Lyon 3e</text>
+  <text x="26" y="301" font-family="Arial,sans-serif" font-size="9" fill="#94a3b8">🛏 3 · 🚿 1 · 🅿️ 1</text>
+
+  <!-- Card 2 -->
+  <rect x="170" y="200" width="138" height="108" rx="8" fill="#fff" stroke="#e2e8f0" stroke-width="1"/>
+  <rect x="170" y="200" width="138" height="60" rx="8" fill="#bfdbfe"/>
+  <rect x="170" y="248" width="138" height="12" fill="#bfdbfe"/>
+  <text x="177" y="225" font-family="Arial,sans-serif" font-size="24" opacity="0.6">🏡</text>
+  <rect x="174" y="204" width="52" height="14" rx="7" fill="#15803d"/>
+  <text x="200" y="214" font-family="Arial,sans-serif" font-size="9" fill="#fff" font-weight="600" text-anchor="middle">Location</text>
+  <text x="178" y="274" font-family="Arial,sans-serif" font-weight="700" font-size="12" fill="#0f172a">1 200 €/mois</text>
+  <text x="178" y="288" font-family="Arial,sans-serif" font-size="10" fill="#64748b">Maison 5P · 120m² · Caluire</text>
+  <text x="178" y="301" font-family="Arial,sans-serif" font-size="9" fill="#94a3b8">🛏 4 · 🚿 2 · 🌿 Jardin</text>
+
+  <!-- Card 3 -->
+  <rect x="322" y="200" width="140" height="108" rx="8" fill="#fff" stroke="#e2e8f0" stroke-width="1"/>
+  <rect x="322" y="200" width="140" height="60" rx="8" fill="#fef3c7"/>
+  <rect x="322" y="248" width="140" height="12" fill="#fef3c7"/>
+  <text x="330" y="225" font-family="Arial,sans-serif" font-size="24" opacity="0.6">🏢</text>
+  <rect x="326" y="204" width="60" height="14" rx="7" fill="#b45309"/>
+  <text x="356" y="214" font-family="Arial,sans-serif" font-size="9" fill="#fff" font-weight="600" text-anchor="middle">Coup de ♥</text>
+  <text x="330" y="274" font-family="Arial,sans-serif" font-weight="700" font-size="12" fill="#0f172a">189 000 €</text>
+  <text x="330" y="288" font-family="Arial,sans-serif" font-size="10" fill="#64748b">Studio · 32m² · Presqu'île</text>
+  <text x="330" y="301" font-family="Arial,sans-serif" font-size="9" fill="#94a3b8">🛏 1 · 🚿 1 · Vue fleuve</text>
+</svg>

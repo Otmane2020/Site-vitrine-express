@@ -32,6 +32,8 @@ app.use('/api/orders', require('./src/routes/orders'));
 app.use('/api/payment', require('./src/routes/payment'));
 app.use('/api/admin', require('./src/routes/admin'));
 app.use('/api/blog', require('./src/routes/blog'));
+app.use('/api/leads', require('./src/routes/leads'));
+app.use('/oauth', require('./src/routes/oauth-google'));
 app.use('/webhook', require('./src/routes/webhook'));
 
 // SPA fallback for admin panel
@@ -46,6 +48,9 @@ app.get('/blog*', (req, res) => {
 });
 app.get('/success', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'success.html'));
+});
+app.get('/connect', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'connect.html'));
 });
 
 initDb();

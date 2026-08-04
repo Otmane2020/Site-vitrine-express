@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 320" width="480" height="320">
+  <!-- Background -->
+  <rect width="480" height="320" fill="#f0fdfa"/>
+  <!-- Nav -->
+  <rect width="480" height="44" fill="#fff"/>
+  <rect y="44" width="480" height="1" fill="#ccfbf1"/>
+  <!-- Logo -->
+  <circle cx="28" cy="22" r="12" fill="#0d9488"/>
+  <text x="28" y="27" font-family="Arial,sans-serif" font-weight="700" font-size="13" fill="#fff" text-anchor="middle">S</text>
+  <text x="46" y="27" font-family="Georgia,serif" font-style="italic" font-size="14" fill="#0f172a">Sarah Coach</text>
+  <!-- Nav -->
+  <text x="240" y="27" font-family="Arial,sans-serif" font-size="11" fill="#64748b">Ma méthode</text>
+  <text x="308" y="27" font-family="Arial,sans-serif" font-size="11" fill="#64748b">Témoignages</text>
+  <text x="386" y="27" font-family="Arial,sans-serif" font-size="11" fill="#64748b">Blog</text>
+  <!-- CTA -->
+  <rect x="420" y="12" width="48" height="22" rx="4" fill="#0d9488"/>
+  <text x="444" y="27" font-family="Arial,sans-serif" font-weight="600" font-size="10" fill="#fff" text-anchor="middle">Séance</text>
+
+  <!-- Hero - split -->
+  <rect y="45" width="480" height="155" fill="#fff"/>
+  <!-- Left content -->
+  <rect x="28" y="62" width="52" height="16" rx="8" fill="#ccfbf1"/>
+  <text x="54" y="74" font-family="Arial,sans-serif" font-size="10" fill="#0d9488" font-weight="600" text-anchor="middle">Coach certifiée</text>
+  <text x="28" y="100" font-family="Georgia,serif" font-weight="700" font-size="19" fill="#0f172a">Révélez votre</text>
+  <text x="28" y="124" font-family="Georgia,serif" font-weight="700" font-size="19" fill="#0d9488">meilleur potentiel</text>
+  <text x="28" y="148" font-family="Arial,sans-serif" font-size="11" fill="#64748b">Coaching de vie, gestion du stress,</text>
+  <text x="28" y="163" font-family="Arial,sans-serif" font-size="11" fill="#64748b">confiance en soi. Séances en ligne.</text>
+  <rect x="28" y="175" width="130" height="18" rx="9" fill="#0d9488"/>
+  <text x="93" y="188" font-family="Arial,sans-serif" font-weight="600" font-size="11" fill="#fff" text-anchor="middle">Séance découverte gratuite</text>
+
+  <!-- Right - photo placeholder -->
+  <rect x="270" y="52" width="190" height="140" rx="8" fill="#ccfbf1"/>
+  <circle cx="365" cy="112" r="52" fill="#99f6e4" opacity="0.6"/>
+  <circle cx="365" cy="92" r="28" fill="#5eead4" opacity="0.5"/>
+  <text x="365" y="140" font-family="Arial,sans-serif" font-size="56" text-anchor="middle" opacity="0.5">🧘</text>
+  <!-- Floating stats -->
+  <rect x="272" y="55" width="100" height="28" rx="8" fill="#fff" stroke="#ccfbf1" stroke-width="1.5"/>
+  <text x="282" y="69" font-family="Arial,sans-serif" font-size="18">🌟</text>
+  <text x="306" y="67" font-family="Arial,sans-serif" font-weight="700" font-size="11" fill="#0f172a">+200 clients</text>
+  <text x="306" y="79" font-family="Arial,sans-serif" font-size="9" fill="#64748b">accompagnés</text>
+  <rect x="350" y="152" width="108" height="28" rx="8" fill="#fff" stroke="#ccfbf1" stroke-width="1.5"/>
+  <text x="360" y="165" font-family="Arial,sans-serif" font-size="16">💚</text>
+  <text x="382" y="164" font-family="Arial,sans-serif" font-weight="700" font-size="11" fill="#0f172a">4.9/5 avis</text>
+  <text x="382" y="175" font-family="Arial,sans-serif" font-size="9" fill="#64748b">★★★★★</text>
+
+  <!-- Offers section -->
+  <rect y="200" width="480" height="120" fill="#f0fdfa"/>
+  <text x="240" y="222" font-family="Georgia,serif" font-style="italic" font-size="13" fill="#0d9488" text-anchor="middle">Mes programmes</text>
+
+  <!-- Program cards -->
+  <rect x="18" y="232" width="138" height="76" rx="8" fill="#fff" stroke="#ccfbf1" stroke-width="1.5"/>
+  <text x="28" y="252" font-family="Arial,sans-serif" font-weight="700" font-size="12" fill="#0f172a">Séance découverte</text>
+  <text x="28" y="268" font-family="Arial,sans-serif" font-size="10" fill="#64748b">45 min · Bilan complet</text>
+  <text x="28" y="283" font-family="Arial,sans-serif" font-weight="700" font-size="13" fill="#0d9488">Gratuit</text>
+  <rect x="28" y="295" width="72" height="8" rx="4" fill="#0d9488"/>
+
+  <rect x="170" y="232" width="138" height="76" rx="8" fill="#0d9488"/>
+  <text x="180" y="252" font-family="Arial,sans-serif" font-weight="700" font-size="12" fill="#fff">Pack 3 mois</text>
+  <text x="180" y="268" font-family="Arial,sans-serif" font-size="10" fill="rgba(255,255,255,0.75)">8 séances + suivi WhatsApp</text>
+  <text x="180" y="283" font-family="Arial,sans-serif" font-weight="700" font-size="13" fill="#a7f3d0">490€</text>
+  <rect x="180" y="292" width="72" height="8" rx="4" fill="#99f6e4" opacity="0.5"/>
+  <rect x="264" y="233" width="38" height="15" rx="7" fill="#f59e0b"/>
+  <text x="283" y="244" font-family="Arial,sans-serif" font-size="8" fill="#fff" font-weight="700" text-anchor="middle">⭐ Pop.</text>
+
+  <rect x="322" y="232" width="140" height="76" rx="8" fill="#fff" stroke="#ccfbf1" stroke-width="1.5"/>
+  <text x="332" y="252" font-family="Arial,sans-serif" font-weight="700" font-size="12" fill="#0f172a">Coaching annuel</text>
+  <text x="332" y="268" font-family="Arial,sans-serif" font-size="10" fill="#64748b">Suivi continu · Accès ressources</text>
+  <text x="332" y="283" font-family="Arial,sans-serif" font-weight="700" font-size="13" fill="#0d9488">1 490€</text>
+  <rect x="332" y="295" width="60" height="8" rx="4" fill="#0d9488" opacity="0.3"/>
+</svg>
