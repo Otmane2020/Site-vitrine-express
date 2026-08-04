@@ -173,7 +173,7 @@ router.get('/diagnostics/:customerId', async (req, res) => {
       return res.status(401).json({ error: 'Non connecté. Va sur /connect d\'abord' });
     }
 
-    const [campaigns, conversions] = await Promise.all([
+    const [campaigns, conversions, keywords] = await Promise.all([
       axios.post(
         `${ADS_API_BASE}/customers/${customerId}/googleAds:search`,
         { query: 'SELECT campaign.id, campaign.name, campaign.status, campaign.advertising_channel_type FROM campaign' },
@@ -185,12 +185,27 @@ router.get('/diagnostics/:customerId', async (req, res) => {
                    conversion_action.category, conversion_action.primary_for_goal
                    FROM conversion_action` },
         { headers: adsHeaders(accessToken, customerId) }
+      ),
+      axios.post(
+        `${ADS_API_BASE}/customers/${customerId}/googleAds:search`,
+        { query: `SELECT ad_group_criterion.resource_name, ad_group_criterion.keyword.text, ad_group_criterion.keyword.match_type,
+                   ad_group_criterion.status, ad_group_criterion.system_serving_status,
+                   ad_group_criterion.primary_status, ad_group_criterion.primary_status_reasons
+                   FROM ad_group_criterion WHERE ad_group_criterion.type = 'KEYWORD'` },
+        { headers: adsHeaders(accessToken, customerId) }
       )
     ]);
 
+    const keywordRows = keywords.data.results || [];
+    const lowVolumeKeywords = keywordRows
+      .filter(r => r.adGroupCriterion.systemServingStatus === 'RARELY_SERVED')
+      .map(r => r.adGroupCriterion.keyword.text);
+
     res.json({
       campaigns: campaigns.data.results || [],
-      conversionActions: conversions.data.results || []
+      conversionActions: conversions.data.results || [],
+      keywords: keywordRows,
+      lowVolumeKeywords
     });
 
   } catch (err) {
