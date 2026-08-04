@@ -164,6 +164,41 @@ router.get('/customer-status/:customerId', async (req, res) => {
   }
 });
 
+// ── Diagnostic: campagnes + actions de conversion du compte ──
+router.get('/diagnostics/:customerId', async (req, res) => {
+  const customerId = String(req.params.customerId).replace('customers/', '');
+  try {
+    const accessToken = await getValidAccessToken();
+    if (!accessToken) {
+      return res.status(401).json({ error: 'Non connecté. Va sur /connect d\'abord' });
+    }
+
+    const [campaigns, conversions] = await Promise.all([
+      axios.post(
+        `${ADS_API_BASE}/customers/${customerId}/googleAds:search`,
+        { query: 'SELECT campaign.id, campaign.name, campaign.status, campaign.advertising_channel_type FROM campaign' },
+        { headers: adsHeaders(accessToken, customerId) }
+      ),
+      axios.post(
+        `${ADS_API_BASE}/customers/${customerId}/googleAds:search`,
+        { query: `SELECT conversion_action.id, conversion_action.name, conversion_action.status, conversion_action.type,
+                   conversion_action.category, conversion_action.primary_for_goal
+                   FROM conversion_action` },
+        { headers: adsHeaders(accessToken, customerId) }
+      )
+    ]);
+
+    res.json({
+      campaigns: campaigns.data.results || [],
+      conversionActions: conversions.data.results || []
+    });
+
+  } catch (err) {
+    console.error('❌ Erreur diagnostics:', JSON.stringify(err.response?.data || err.message));
+    res.status(500).json({ error: 'Erreur lors du diagnostic', details: err.response?.data });
+  }
+});
+
 // ── STEP: Créer (ou récupérer) l'action de conversion "Lead" et son tag Google ──
 router.post('/create-conversion-action/:customerId', async (req, res) => {
   const customerId = String(req.params.customerId).replace('customers/', '');
