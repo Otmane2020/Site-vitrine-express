@@ -164,6 +164,58 @@ router.get('/customer-status/:customerId', async (req, res) => {
   }
 });
 
+// ── STEP: Créer (ou récupérer) l'action de conversion "Lead" et son tag Google ──
+router.post('/create-conversion-action/:customerId', async (req, res) => {
+  const customerId = String(req.params.customerId).replace('customers/', '');
+  try {
+    const accessToken = await getValidAccessToken();
+    if (!accessToken) {
+      return res.status(401).json({ error: 'Non connecté. Va sur /connect d\'abord' });
+    }
+
+    const createRes = await mutate(customerId, 'conversionActions', accessToken, [{
+      create: {
+        name: 'Webify — Lead formulaire',
+        type: 'WEBPAGE',
+        category: 'SUBMIT_LEAD_FORM',
+        status: 'ENABLED',
+        countingType: 'ONE_PER_CLICK',
+        valueSettings: { defaultValue: 20, defaultCurrencyCode: 'EUR', alwaysUseDefaultValue: true }
+      }
+    }]);
+    const conversionResourceName = createRes[0].resourceName;
+
+    const snippetRes = await axios.post(
+      `${ADS_API_BASE}/customers/${customerId}/googleAds:search`,
+      { query: `SELECT conversion_action.id, conversion_action.tag_snippets FROM conversion_action WHERE conversion_action.resource_name = '${conversionResourceName}'` },
+      { headers: adsHeaders(accessToken, customerId) }
+    );
+
+    const row = snippetRes.data.results?.[0]?.conversionAction;
+    const snippet = row?.tagSnippets?.find(s => s.type === 'WEBSITE') || row?.tagSnippets?.[0];
+    const eventSnippet = snippet?.eventSnippet || '';
+    const sendToMatch = eventSnippet.match(/send_to['"]?\s*:\s*['"]([^'"]+)['"]/);
+    const sendTo = sendToMatch ? sendToMatch[1] : null; // "AW-XXXXXXXXX/LABEL"
+    const awId = sendTo ? sendTo.split('/')[0] : null;
+    const label = sendTo ? sendTo.split('/')[1] : null;
+
+    res.json({
+      success: true,
+      conversionAction: conversionResourceName,
+      conversionActionId: row?.id,
+      awId,
+      label,
+      sendTo,
+      rawEventSnippet: eventSnippet
+    });
+
+  } catch (err) {
+    const details = err.response?.data;
+    console.error('❌ Erreur création conversion action:', JSON.stringify(details || err.message));
+    res.status(500).json({ error: 'Erreur lors de la création de la conversion action', details });
+  }
+});
+
 async function mutate(customerId, resource, accessToken, operations) {
   const res = await axios.post(
     `${ADS_API_BASE}/customers/${customerId}/${resource}:mutate`,
