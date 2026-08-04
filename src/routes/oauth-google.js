@@ -4,6 +4,18 @@ const axios = require('axios');
 const { supabase } = require('../supabaseClient');
 
 const GOOGLE_OAUTH_URL = 'https://oauth2.googleapis.com/token';
+const ADS_API_VERSION = 'v25';
+const ADS_API_BASE = `https://googleads.googleapis.com/${ADS_API_VERSION}`;
+
+function adsHeaders(accessToken, loginCustomerId) {
+  const headers = {
+    'Authorization': `Bearer ${accessToken}`,
+    'developer-token': process.env.GOOGLE_ADS_DEVELOPER_TOKEN,
+    'Content-Type': 'application/json'
+  };
+  if (loginCustomerId) headers['login-customer-id'] = loginCustomerId;
+  return headers;
+}
 
 // Stockage serveur uniquement — jamais renvoyé au navigateur.
 // Ligne unique (id=1) car il s'agit d'un compte Google Ads pour ce site.
@@ -117,16 +129,11 @@ router.get('/accounts', async (req, res) => {
     }
 
     const response = await axios.get(
-      'https://googleads.googleapis.com/v14/customers:list',
-      {
-        headers: {
-          'Authorization': `Bearer ${accessToken}`,
-          'developer-token': process.env.GOOGLE_ADS_DEVELOPER_TOKEN
-        }
-      }
+      `${ADS_API_BASE}/customers:listAccessibleCustomers`,
+      { headers: adsHeaders(accessToken) }
     );
 
-    res.json({ accounts: response.data.resource_names || [] });
+    res.json({ accounts: response.data.resourceNames || [] });
 
   } catch (err) {
     console.error('❌ Erreur API Google Ads:', err.response?.data || err.message);
