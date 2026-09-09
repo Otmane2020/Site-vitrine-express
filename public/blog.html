@@ -65,7 +65,37 @@
     .cta-link:hover { color: #0052cc; }
 
     /* Footer */
-    .footer { background: #1a1a1a; color: white; padding: 2rem; text-align: center; margin-top: 4rem; }
+    .footer { background: #F1F2F7; padding: 40px 20px 28px; margin-top: 4rem; }
+    .footer-inner-wrap { max-width: 1200px; margin: 0 auto; }
+    .footer-trust-row { display: flex; justify-content: center; margin-bottom: 36px; }
+    .trust-avis-badge { display: flex; align-items: center; gap: 10px; background: #fff; border: 1px solid rgba(15,17,23,.09); border-radius: 100px; padding: 8px 16px 8px 8px; text-decoration: none; transition: border-color .2s, box-shadow .2s; }
+    .trust-avis-badge:hover { border-color: rgba(94,106,210,.25); box-shadow: 0 4px 16px rgba(94,106,210,.1); }
+    .ta-logo { display: flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: 7px; background: #2563eb; flex-shrink: 0; }
+    .ta-name { font-size: .8rem; font-weight: 600; color: #5B5F6B; }
+    .ta-name strong { color: #2563eb; font-weight: 800; }
+    .ta-sep { width: 1px; height: 20px; background: rgba(15,17,23,.09); flex-shrink: 0; }
+    .ta-avatar { display: flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 7px; background: rgba(15,17,23,.06); color: #14151A; font-weight: 800; font-size: .78rem; flex-shrink: 0; }
+    .ta-info { display: flex; flex-direction: column; gap: 1px; }
+    .ta-brand { display: flex; align-items: center; gap: 4px; font-size: .78rem; font-weight: 700; color: #14151A; }
+    .ta-stars { display: flex; align-items: center; gap: 1px; font-size: .72rem; color: #9AA0AC; }
+    .ta-stars strong { color: #14151A; margin-left: 3px; margin-right: 2px; }
+    .footer-inner { display: flex; flex-direction: column; gap: 28px; text-align: left; }
+    .footer-brand { display: flex; flex-direction: column; gap: 8px; }
+    .footer-logo { display: flex; align-items: center; gap: 8px; font-family: 'Inter', sans-serif; font-weight: 800; font-size: .95rem; color: #14151A; text-decoration: none; }
+    .footer-logo img { width: 24px; height: 24px; border-radius: 6px; }
+    .footer-brand p { font-size: .8rem; color: #9AA0AC; margin: 0; }
+    .footer-nav { display: flex; flex-wrap: wrap; gap: 6px 18px; }
+    .footer-nav a { font-size: .8rem; color: #9AA0AC; text-decoration: none; transition: color .2s; }
+    .footer-nav a:hover { color: #5E6AD2; }
+    .footer-contact-col { display: flex; flex-direction: column; gap: 10px; }
+    .footer-contact-link { display: inline-flex; align-items: center; gap: 8px; font-size: .8rem; font-weight: 600; color: #5B5F6B; text-decoration: none; transition: color .2s; }
+    .footer-contact-link:hover { color: #5E6AD2; }
+    .footer-contact-link svg { flex-shrink: 0; }
+    .footer-whatsapp:hover { color: #25D366; }
+    .footer-copy { font-size: .72rem; color: #9AA0AC; margin-top: 32px; }
+    @media (min-width: 700px) {
+      .footer-inner { flex-direction: row; justify-content: space-between; }
+    }
 
     /* Mobile */
     @media (max-width: 768px) {
@@ -111,7 +141,59 @@
 
 <!-- Footer -->
 <footer class="footer">
-  <p>© 2026 Webify — Sites, applications & projets IA sur mesure</p>
+  <div class="footer-inner-wrap">
+    <div class="footer-trust-row">
+      <a href="https://trust-avis.com/entreprise/webify-app" target="_blank" rel="noopener noreferrer" class="trust-avis-badge">
+        <span class="ta-logo">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </span>
+        <span class="ta-name">Trust<strong>Avis</strong></span>
+        <span class="ta-sep"></span>
+        <span class="ta-avatar">W</span>
+        <span class="ta-info">
+          <span class="ta-brand">Webify <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#5E6AD2" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="9 12 12 15 17 9"/></svg></span>
+          <span class="ta-stars">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="#f59e0b"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="#f59e0b"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="#f59e0b"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="#f59e0b"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <strong>4.7</strong> · 1600 avis
+          </span>
+        </span>
+      </a>
+    </div>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="/" class="footer-logo">
+          <img src="/images/logo.svg" alt="Webify" />
+          Webify
+        </a>
+        <p>Sites, applications & projets IA sur mesure — devis gratuit.</p>
+      </div>
+      <nav class="footer-nav">
+        <a href="/">Accueil</a>
+        <a href="/blog">Blog</a>
+        <a href="/commander.html">Démarrer</a>
+        <a href="/tracking.html">Suivi commande</a>
+      </nav>
+      <div class="footer-contact-col">
+        <a href="tel:+33759703778" class="footer-contact-link">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          07 59 70 37 78
+        </a>
+        <a href="https://wa.me/33749072281" target="_blank" rel="noopener noreferrer" class="footer-contact-link footer-whatsapp">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.8 14.15c-.24.68-1.4 1.3-1.93 1.36-.5.06-1.02.28-3.42-.72-2.9-1.2-4.77-4.13-4.92-4.32-.14-.2-1.17-1.56-1.17-2.97 0-1.41.74-2.1 1-2.4.26-.3.57-.36.76-.36.19 0 .38 0 .55.01.18.01.42-.07.66.5.24.6.82 2.06.9 2.2.07.15.12.32.02.52-.1.2-.15.32-.3.5-.14.17-.3.38-.43.51-.14.14-.3.3-.13.58.17.29.76 1.25 1.63 2.03 1.12 1 2.06 1.31 2.35 1.46.3.14.47.12.64-.07.18-.2.75-.87.95-1.17.2-.3.4-.24.66-.14.28.1 1.72.81 2.02.96.3.14.5.22.57.33.08.13.08.7-.16 1.38z"/></svg>
+          WhatsApp
+        </a>
+        <a href="/contact.html" class="footer-contact-link">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          Formulaire de contact
+        </a>
+      </div>
+    </div>
+    <p class="footer-copy">© 2026 Webify — Tous droits réservés</p>
+  </div>
 </footer>
 
 <script>
@@ -141,6 +223,12 @@
     }
   }
 
+  function escapeHtml(str) {
+    const div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+  }
+
   // Charger et afficher un article spécifique
   async function loadArticle(slug) {
     try {
@@ -155,9 +243,18 @@
       const header = document.querySelector('.blog-header');
       if (header) header.style.display = 'none';
 
+      // Certains contenus (articles Ranki.ai) n'incluent pas de <h1> — le titre
+      // n'existe que dans le champ "title". On l'ajoute nous-mêmes si absent.
+      let html = article.content || '';
+      const hasOwnArticleWrapper = /<article[\s>]/i.test(html);
+      const hasH1 = /<h1[\s>]/i.test(html);
+      const titleHtml = hasH1 ? '' : `<h1>${escapeHtml(article.title)}</h1>`;
+
       // Remplacer le contenu (le bon conteneur, pas celui du bandeau)
       const container = document.getElementById('blog-container');
-      container.innerHTML = article.content;
+      container.innerHTML = hasOwnArticleWrapper
+        ? html
+        : `<article class="blog-article">${titleHtml}${html}</article>`;
 
       // Mettre à jour le titre
       document.title = article.title + ' — Webify Blog';
