@@ -7,4 +7,114 @@ Disallow: /success.html
 Disallow: /connect
 Disallow: /commander.html
 
+# LLM / AI crawlers — autorisés pour être cité par ChatGPT, Claude, Perplexity, Gemini...
+# (mêmes exclusions que ci-dessus : chaque bloc User-agent est indépendant)
+User-agent: GPTBot
+Allow: /
+Disallow: /admin
+Disallow: /api/
+Disallow: /tracking.html
+Disallow: /success.html
+Disallow: /connect
+Disallow: /commander.html
+
+User-agent: ChatGPT-User
+Allow: /
+Disallow: /admin
+Disallow: /api/
+Disallow: /tracking.html
+Disallow: /success.html
+Disallow: /connect
+Disallow: /commander.html
+
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /admin
+Disallow: /api/
+Disallow: /tracking.html
+Disallow: /success.html
+Disallow: /connect
+Disallow: /commander.html
+
+User-agent: ClaudeBot
+Allow: /
+Disallow: /admin
+Disallow: /api/
+Disallow: /tracking.html
+Disallow: /success.html
+Disallow: /connect
+Disallow: /commander.html
+
+User-agent: Claude-Web
+Allow: /
+Disallow: /admin
+Disallow: /api/
+Disallow: /tracking.html
+Disallow: /success.html
+Disallow: /connect
+Disallow: /commander.html
+
+User-agent: anthropic-ai
+Allow: /
+Disallow: /admin
+Disallow: /api/
+Disallow: /tracking.html
+Disallow: /success.html
+Disallow: /connect
+Disallow: /commander.html
+
+User-agent: PerplexityBot
+Allow: /
+Disallow: /admin
+Disallow: /api/
+Disallow: /tracking.html
+Disallow: /success.html
+Disallow: /connect
+Disallow: /commander.html
+
+User-agent: Perplexity-User
+Allow: /
+Disallow: /admin
+Disallow: /api/
+Disallow: /tracking.html
+Disallow: /success.html
+Disallow: /connect
+Disallow: /commander.html
+
+User-agent: Google-Extended
+Allow: /
+Disallow: /admin
+Disallow: /api/
+Disallow: /tracking.html
+Disallow: /success.html
+Disallow: /connect
+Disallow: /commander.html
+
+User-agent: GoogleOther
+Allow: /
+Disallow: /admin
+Disallow: /api/
+Disallow: /tracking.html
+Disallow: /success.html
+Disallow: /connect
+Disallow: /commander.html
+
+User-agent: CCBot
+Allow: /
+Disallow: /admin
+Disallow: /api/
+Disallow: /tracking.html
+Disallow: /success.html
+Disallow: /connect
+Disallow: /commander.html
+
+User-agent: Applebot-Extended
+Allow: /
+Disallow: /admin
+Disallow: /api/
+Disallow: /tracking.html
+Disallow: /success.html
+Disallow: /connect
+Disallow: /commander.html
+
 Sitemap: https://webify-app.com/sitemap.xml
