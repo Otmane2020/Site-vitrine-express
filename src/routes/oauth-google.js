@@ -288,7 +288,7 @@ router.post('/create-campaign', async (req, res) => {
     maxCpcEur = 1.5,
     keywords = [
       'site vitrine pas cher',
-      'création site 49 euros',
+      'création site sur mesure',
       'site web artisan pas cher',
       'site internet rapide',
       'créer un site vitrine'
@@ -378,16 +378,16 @@ router.post('/create-campaign', async (req, res) => {
           finalUrls: [finalUrl],
           responsiveSearchAd: {
             headlines: [
-              { text: 'Site vitrine pro 49€' },
+              { text: 'Site vitrine pro sur devis' },
               { text: 'Livré en 48h chrono' },
               { text: 'Devis gratuit 2 min' },
               { text: 'Sans engagement' },
-              { text: '0€ avant validation' },
+              { text: 'Devis gratuit' },
               { text: 'Satisfait ou remboursé' }
             ],
             descriptions: [
               { text: 'Création de site vitrine pro en 48h. Domaine et hébergement inclus. Devis gratuit.' },
-              { text: '0€ à la commande. Vous payez seulement si le site vous plaît. Sans engagement.' }
+              { text: 'Devis gratuit et sans engagement. Vous payez seulement si le résultat vous plaît.' }
             ]
           }
         }

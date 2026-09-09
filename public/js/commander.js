@@ -26,7 +26,7 @@ function computeTotal() {
 }
 
 function updateTotals() {
-  const t = computeTotal() + ' €';
+  const t = 'Devis personnalisé';
   const wizTotal = document.getElementById('wizTotal');
   const recapTotal = document.getElementById('recapTotal');
   if (wizTotal) wizTotal.textContent = t;
@@ -88,10 +88,10 @@ function buildRecap() {
   const extraPages = Math.max(0, pages.length - INCLUDED_PAGES);
   const opts = [];
   document.querySelectorAll('input[name="options"]:checked').forEach(el => {
-    opts.push(`${el.closest('.option-row').querySelector('.option-name').textContent} (+${el.dataset.price}€)`);
+    opts.push(`${el.closest('.option-row').querySelector('.option-name').textContent}`);
   });
   const logo = document.querySelector('input[name="logo_choice"]:checked')?.value;
-  if (logo === 'create') opts.push(`Création de logo (+${LOGO_PRICE}€)`);
+  if (logo === 'create') opts.push('Création de logo');
 
   const domainChoice = form.domain_choice.value;
   let domainTxt = 'À définir ensemble';
@@ -103,7 +103,7 @@ function buildRecap() {
     ['Contact', `${form.client_name.value} · ${form.client_email.value} · ${form.client_phone.value}`],
     ['Entreprise', `${form.business_name.value} — ${form.business_type.value}`],
     ['Domaine', domainTxt],
-    ['Pages', pages.join(', ') + (extraPages ? ` (${extraPages} page(s) supplémentaire(s) +${extraPages * EXTRA_PAGE}€)` : '')],
+    ['Pages', pages.join(', ') + (extraPages ? ` (${extraPages} page(s) supplémentaire(s))` : '')],
     ['Style', document.querySelector('input[name="style"]:checked')?.value || 'moderne'],
     ['Textes', form.content_choice.value === 'provided' ? 'Fournis par vous' : 'Rédigés par nous (inclus)'],
     ['Photos', form.photos_choice.value === 'own' ? 'Vos photos' : "Banque d'images pro (inclus)"],

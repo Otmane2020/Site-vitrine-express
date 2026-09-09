@@ -1,11 +1,12 @@
 const express = require('express');
 const router = express.Router();
+const geoArticles = require('./geo-articles');
 
 const articles = [
   {
     slug: 'site-vitrine-48h-auto-entrepreneur',
     title: 'Créer un site vitrine en 48h pour auto-entrepreneur : le guide complet',
-    description: 'Découvrez comment créer rapidement un site vitrine professionnel pour votre auto-entreprise à 49€ avec Webify.',
+    description: 'Découvrez comment créer rapidement un site vitrine professionnel pour votre auto-entreprise avec Webify, sur devis gratuit.',
     image: '/images/article-1.svg',
     date: '2026-01-15',
     readTime: '5 min',
@@ -22,14 +23,14 @@ const articles = [
     <li><strong>Crédibilité :</strong> Un site renforce votre professionnalisme</li>
     <li><strong>Visibilité :</strong> Vous apparaissez sur Google et attirez des clients</li>
     <li><strong>Conversion :</strong> Un site convertit 5x plus que les réseaux seuls</li>
-    <li><strong>ROI :</strong> À 49€, l'investissement est minimal</li>
+    <li><strong>ROI :</strong> Un investissement minimal pour un impact réel</li>
   </ul>
 
   <h2>Les erreurs à éviter quand on crée un site</h2>
   <p>Avant Webify, la plupart des auto-entrepreneurs choisissaient entre :</p>
   <ol>
     <li><strong>Faire seul</strong> → Prend des mois, c'est compliqué</li>
-    <li><strong>Engager un dev</strong> → 2000€ minimum, trop cher</li>
+    <li><strong>Engager un dev freelance</strong> → souvent 2000€ ou plus, trop cher pour démarrer</li>
     <li><strong>Utiliser Wix/Weebly</strong> → Lent, cher à long terme, pas professionnel</li>
   </ol>
 
@@ -38,12 +39,12 @@ const articles = [
   <ol>
     <li><strong>Décrire votre activité</strong> (5 min) : Vous nous envoyez vos infos</li>
     <li><strong>Notre équipe crée</strong> (48h) : Site sur-mesure, optimisé SEO</li>
-    <li><strong>Vous validez et payez</strong> : 0€ jusqu'à ce que vous soyez satisfait</li>
+    <li><strong>Vous validez et payez</strong> : rien jusqu'à ce que vous soyez satisfait du devis et du résultat</li>
   </ol>
 
   <h2>Cas réels : auto-entrepreneurs qui ont lancé en 48h</h2>
   <p><strong>Marie, coiffeuse à Paris :</strong> "Mon site était prêt vendredi. Lundi, j'avais 3 appels de nouveaux clients."</p>
-  <p><strong>Thomas, plombier à Lyon :</strong> "Je pensais que ça coûterait 2000€. 49€, c'est un no-brainer."</p>
+  <p><strong>Thomas, plombier à Lyon :</strong> "Je pensais que ça coûterait au moins 2000€. Le devis de Webify était bien plus accessible que ce que j'imaginais."</p>
 
   <h2>Optimisé SEO : apparaître sur Google</h2>
   <p>Tous nos sites incluent :</p>
@@ -65,7 +66,7 @@ const articles = [
   </ul>
 
   <h2>Combien ça coûte vraiment ?</h2>
-  <p><strong>49€ tout compris, jamais.</strong></p>
+  <p><strong>Sur devis, sans mauvaise surprise.</strong></p>
   <ul>
     <li>Création du site : inclus</li>
     <li>Design professionnel : inclus</li>
@@ -77,7 +78,7 @@ const articles = [
 
   <h2>Prêt à lancer votre site en 48h ?</h2>
   <p>Plus de 500 auto-entrepreneurs, artisans et petits professionnels font confiance à Webify. Votre tour.</p>
-  <p><a href="/commander.html" class="cta-link">Créer mon site maintenant — 0€ aujourd'hui</a></p>
+  <p><a href="/commander.html" class="cta-link">Créer mon site maintenant — devis gratuit</a></p>
 </article>
     `
   },
@@ -129,7 +130,7 @@ const articles = [
     <li>Avant : Page Facebook mal entretenue</li>
     <li>Après : "avocat droit du travail paris" sur Google page 1</li>
     <li>Résultat : +5 nouveaux clients le premier mois</li>
-    <li>Coût : 49€ (moins qu'un déjeuner)</li>
+    <li>Coût : très accessible, sur devis</li>
   </ul>
 
   <h2>Cas d'usage : médecin en province</h2>
@@ -158,11 +159,11 @@ const articles = [
   </ul>
 
   <h2>Combien ça coûte, avec Webify ?</h2>
-  <p><strong>49€. C'est tout.</strong></p>
+  <p><strong>Sur devis, adapté à votre projet.</strong></p>
   <p>Pas d'abonnement caché, pas de frais supplémentaires. Vous payez quand c'est prêt.</p>
 
   <h2>Prêt à avoir un site pro ?</h2>
-  <p><a href="/commander.html" class="cta-link">Créer mon site — 0€ maintenant</a></p>
+  <p><a href="/commander.html" class="cta-link">Créer mon site — devis gratuit</a></p>
 </article>
     `
   },
@@ -246,7 +247,7 @@ const articles = [
   <ul>
     <li>Plus vous attendez, plus vous perdez de clients</li>
     <li>Vos concurrents ont déjà un site</li>
-    <li>Le coût : 49€ (moins qu'un déjeuner)</li>
+    <li>Le coût : très accessible, sur devis</li>
     <li>Le délai : 48h (vous ne perdez pas de temps)</li>
   </ul>
 
@@ -263,10 +264,11 @@ const articles = [
   <p>Cherchez votre profession + votre ville sur Google. Si vous n'êtes pas dedans, c'est que vous perdez des clients à chaque recherche.</p>
 
   <p><strong>Prêt à vous rattraper ?</strong></p>
-  <p><a href="/commander.html" class="cta-link">Créer mon site en 48h — 0€ aujourd'hui</a></p>
+  <p><a href="/commander.html" class="cta-link">Créer mon site en 48h — devis gratuit</a></p>
 </article>
     `
-  }
+  },
+  ...geoArticles
 ];
 
 router.get('/', (req, res) => {
