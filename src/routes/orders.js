@@ -61,7 +61,7 @@ router.post('/', async (req, res) => {
     ]);
 
     await run('INSERT INTO order_events (order_id, status, message) VALUES (?, ?, ?)',
-      [id, 'new', 'Demande reçue — 0€ à payer aujourd\'hui. Nous démarrons la création de votre site.']);
+      [id, 'new', 'Demande reçue. Nous étudions votre projet et revenons vers vous avec un devis personnalisé.']);
 
     await run('INSERT INTO order_events (order_id, status, message) VALUES (?, ?, ?)',
       [id, 'in_progress', `Livraison prévue avant le ${new Date(deadline).toLocaleString('fr-FR')}`]);
@@ -82,7 +82,6 @@ router.post('/', async (req, res) => {
           <h2>Merci pour votre commande !</h2>
           <p>Nous avons reçu votre demande pour <strong>${business_name}</strong>.</p>
           <p><strong>Code de suivi:</strong> ${tracking_code}</p>
-          <p><strong>Montant:</strong> ${total}€ (à payer à la livraison)</p>
           <p><strong>Livraison prévue:</strong> ${new Date(deadline).toLocaleString('fr-FR')}</p>
           <p><a href="${trackingUrl}" style="background: #7c3aed; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; display: inline-block;">Suivre ma commande</a></p>
           <p>Nous vous contacterons au <strong>${client_phone}</strong> pour valider les détails.</p>
