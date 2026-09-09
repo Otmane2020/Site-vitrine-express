@@ -103,7 +103,7 @@
 </div>
 
 <!-- Articles -->
-<div class="container">
+<div class="container" id="blog-container">
   <div class="articles-grid" id="articles-list">
     <p style="grid-column: 1 / -1; text-align: center; color: #999;">Chargement des articles...</p>
   </div>
@@ -146,13 +146,17 @@
     try {
       const res = await fetch(`/api/blog/${slug}`);
       if (!res.ok) {
-        document.body.innerHTML = '<p style="padding: 2rem; text-align: center;">Article non trouvé</p>';
+        document.getElementById('blog-container').innerHTML = '<p style="padding: 2rem; text-align: center;">Article non trouvé</p>';
         return;
       }
       const article = await res.json();
 
-      // Remplacer le contenu
-      const container = document.querySelector('.container');
+      // Masquer le bandeau générique "Le Blog Webify" sur une page d'article
+      const header = document.querySelector('.blog-header');
+      if (header) header.style.display = 'none';
+
+      // Remplacer le contenu (le bon conteneur, pas celui du bandeau)
+      const container = document.getElementById('blog-container');
       container.innerHTML = article.content;
 
       // Mettre à jour le titre
