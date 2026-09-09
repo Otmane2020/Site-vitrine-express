@@ -2,5 +2,9 @@ User-agent: *
 Allow: /
 Disallow: /admin
 Disallow: /api/
+Disallow: /tracking.html
+Disallow: /success.html
+Disallow: /connect
+Disallow: /commander.html
 
-Sitemap: https://sitevitrineexpress.fr/sitemap.xml
+Sitemap: https://webify-app.com/sitemap.xml

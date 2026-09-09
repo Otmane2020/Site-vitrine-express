@@ -17,7 +17,7 @@ const articles = [
   <p class="intro">En tant qu'auto-entrepreneur, avoir un site vitrine professionnel n'est plus une option — c'est une nécessité. Mais comment créer rapidement un site sans compétences techniques ni budget énorme ? Voici comment Webify a aidé plus de 500 auto-entrepreneurs à lancer leur présence en ligne en 48h.</p>
 
   <h2>Pourquoi un site vitrine est essentiel pour un auto-entrepreneur</h2>
-  <p>Selon une étude 2024, 85% des professionnels indépendants perdent des clients faute de présence en ligne. Un site vitrine simple suffit à transformer cette statistique.</p>
+  <p>Selon une étude récente, 85% des professionnels indépendants perdent des clients faute de présence en ligne. Un site vitrine, une application ou un projet IA sur mesure suffisent à transformer cette statistique.</p>
   <ul>
     <li><strong>Crédibilité :</strong> Un site renforce votre professionnalisme</li>
     <li><strong>Visibilité :</strong> Vous apparaissez sur Google et attirez des clients</li>
@@ -168,17 +168,17 @@ const articles = [
   },
   {
     slug: 'pourquoi-site-vitrine-2024-entrepreneur-independant',
-    title: 'Pourquoi avoir un site vitrine en 2024 : chiffres et tendances',
-    description: 'Les chiffres 2024 qui prouvent qu\'un site vitrine est indispensable pour auto-entrepreneurs et petits professionnels en France.',
+    title: 'Pourquoi avoir un site vitrine, une application ou un projet IA aujourd\'hui : chiffres et tendances',
+    description: 'Les chiffres récents qui prouvent qu\'un site vitrine, une application ou l\'IA sont indispensables pour auto-entrepreneurs et petits professionnels en France.',
     image: '/images/article-3.svg',
     date: '2026-01-05',
     readTime: '4 min',
     category: 'Tendances',
     content: `
 <article class="blog-article">
-  <h1>Pourquoi avoir un site vitrine en 2024 : chiffres et tendances</h1>
+  <h1>Pourquoi avoir un site vitrine, une application ou un projet IA aujourd'hui : chiffres et tendances</h1>
 
-  <p class="intro">Vous pensez que les réseaux sociaux suffisent ? Les chiffres 2024 disent le contraire. Voici pourquoi un site vitrine est plus important que jamais pour les indépendants.</p>
+  <p class="intro">Vous pensez que les réseaux sociaux suffisent ? Les chiffres récents disent le contraire. Voici pourquoi un site vitrine, une application ou un projet IA sur mesure sont plus importants que jamais pour les indépendants.</p>
 
   <h2>Les chiffres qui changent tout</h2>
   <ul>
@@ -200,7 +200,7 @@ const articles = [
   </ul>
 
   <h2>Le coût réel d'être invisible en ligne</h2>
-  <p>Si vous avez pas de site en 2024 :</p>
+  <p>Si vous n'avez pas de site aujourd'hui :</p>
   <ul>
     <li>Vous perdez ~30% de vos clients potentiels (ils trouvent le concurrent)</li>
     <li>Vous sembler moins professionnel (pas de site = sketchy)</li>
@@ -208,7 +208,7 @@ const articles = [
     <li>Vous payez plus en pub (besoin de plus de visibility)</li>
   </ul>
 
-  <h2>Tendance 2024 : "Search before social"</h2>
+  <h2>Tendance actuelle : "Search before social"</h2>
   <p>Les comportements changent :</p>
   <ul>
     <li>Avant : Chercher sur Instagram</li>
@@ -252,7 +252,7 @@ const articles = [
 
   <h2>Ce que vous aurez avec Webify</h2>
   <ul>
-    <li>✅ Site mobile-first (obligatoire en 2024)</li>
+    <li>✅ Site mobile-first (indispensable aujourd'hui)</li>
     <li>✅ Optimisé SEO (pour Google)</li>
     <li>✅ Professionnel (crédibilité maximale)</li>
     <li>✅ Rapide à charger (Google récompense ça)</li>
