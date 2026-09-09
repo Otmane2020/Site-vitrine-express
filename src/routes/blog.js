@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const geoArticles = require('./geo-articles');
+const { listRankiArticles, getRankiArticleBySlug } = require('../ranki');
 
 const articles = [
   {
@@ -271,18 +272,27 @@ const articles = [
   ...geoArticles
 ];
 
-router.get('/', (req, res) => {
-  res.json(articles.map(a => ({
+router.get('/', async (req, res) => {
+  const rankiSummaries = await listRankiArticles();
+  const staticSummaries = articles.map(a => ({
     slug: a.slug,
     title: a.title,
     description: a.description,
     date: a.date,
     readTime: a.readTime,
     category: a.category
-  })));
+  }));
+  // Ranki articles take precedence on slug collision (freshest content wins).
+  const rankiSlugs = new Set(rankiSummaries.map(a => a.slug));
+  const merged = [...rankiSummaries, ...staticSummaries.filter(a => !rankiSlugs.has(a.slug))];
+  merged.sort((a, b) => (b.date || '').localeCompare(a.date || ''));
+  res.json(merged);
 });
 
-router.get('/:slug', (req, res) => {
+router.get('/:slug', async (req, res) => {
+  const rankiArticle = await getRankiArticleBySlug(req.params.slug);
+  if (rankiArticle) return res.json(rankiArticle);
+
   const article = articles.find(a => a.slug === req.params.slug);
   if (!article) {
     return res.status(404).json({ error: 'Article not found' });
@@ -290,4 +300,28 @@ router.get('/:slug', (req, res) => {
   res.json(article);
 });
 
+async function findArticleBySlug(slug) {
+  const rankiArticle = await getRankiArticleBySlug(slug);
+  if (rankiArticle) return rankiArticle;
+  const article = articles.find(a => a.slug === slug);
+  if (!article) return null;
+  return {
+    slug: article.slug,
+    title: article.title,
+    description: article.description,
+    date: article.date,
+    content: article.content,
+    keywords: []
+  };
+}
+
+async function listAllArticleSlugs() {
+  const rankiSummaries = await listRankiArticles();
+  const staticSlugs = articles.map(a => a.slug);
+  const rankiSlugs = rankiSummaries.map(a => a.slug);
+  return [...new Set([...rankiSlugs, ...staticSlugs])];
+}
+
 module.exports = router;
+module.exports.findArticleBySlug = findArticleBySlug;
+module.exports.listAllArticleSlugs = listAllArticleSlugs;
