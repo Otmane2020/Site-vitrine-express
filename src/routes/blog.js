@@ -280,7 +280,9 @@ router.get('/', async (req, res) => {
     description: a.description,
     date: a.date,
     readTime: a.readTime,
-    category: a.category
+    category: a.category,
+    image: a.image || null,
+    coverUrl: a.image || null
   }));
   // Ranki articles take precedence on slug collision (freshest content wins).
   const rankiSlugs = new Set(rankiSummaries.map(a => a.slug));
