@@ -25,6 +25,8 @@ function toArticleSummary(row) {
     date: (row.published_at || row.created_at || '').slice(0, 10),
     readTime: null,
     category: row.content_type || 'Actualités',
+    image: row.cover_url || null,
+    coverUrl: row.cover_url || null,
     source: 'ranki'
   };
 }
@@ -47,7 +49,7 @@ function toArticleFull(row) {
 async function listRankiArticles() {
   const { data, error } = await supabase
     .from('ranki_articles')
-    .select('slug, title, excerpt, content_type, published_at, created_at')
+    .select('slug, title, excerpt, content_type, published_at, created_at, cover_url')
     .eq('status', 'published')
     .order('published_at', { ascending: false });
   if (error) {
